@@ -1,0 +1,360 @@
+
+/*-- Slider --*/
+
+.slider {
+  position: relative;
+}
+
+.flex-container a:active,.flexslider a:active,.flex-container a:focus,.flexslider a:focus {
+  outline:none;
+}
+.slides,.flex-control-nav,.flex-direction-nav {
+  margin:0;
+  padding:0;
+  list-style:none;
+}
+
+.flex-control-nav {
+  display: none;
+}
+
+
+
+.flexslider .slides>li {
+  display:none;
+  -webkit-backface-visibility:hidden;
+}
+
+
+.flexslider .slides img {
+  width: 100%;
+  display: block;
+  
+}
+
+.flex-pauseplay span {
+  text-transform:capitalize;
+}
+.slides:after {
+  content:".";
+  display:block;
+  clear:both;
+  visibility:hidden;
+  line-height:0;
+  height:0;
+}
+.no-js .slides>li:first-child {
+  display:block;
+}
+.flexslider {
+  margin:0;
+  position:relative;
+  -webkit-border-radius:0px;
+  -moz-border-radius:0px;
+  -o-border-radius:0px;
+  border-radius:0px;
+  overflow:hidden;
+}
+.flex-viewport {
+  max-height:2000px;
+  -webkit-transition:all 1s ease;
+  -moz-transition:all 1s ease;
+  transition:all 1s ease;
+}
+.loading .flex-viewport {
+  max-height:300px;
+}
+.flexslider .slides {
+  zoom:1;
+}
+.carousel li {
+  margin-right:5px
+}
+.flex-direction-nav {
+  *height:0;
+}
+.flex-direction-nav a {
+  width:93px;
+  height:93px;
+  display:block;
+  background:url(../img/bg_direction_nav.png) no-repeat 0 0;
+  position:absolute;
+  right:0;
+  bottom:0px;
+  margin-top:-19px;
+  z-index:10;
+  cursor:pointer;
+  text-indent:-9999px;
+  opacity:0;
+  -webkit-transition:all .3s ease;
+}
+
+.flex-direction-nav .flex-next {
+  background-position:100% 0;
+}
+
+.flex-direction-nav .flex-prev {
+
+}
+
+.flexslider:hover .flex-next {
+  opacity:0.8;
+  right: 30px;
+  bottom: 38%;
+}
+.flexslider:hover .flex-prev {
+  opacity:0.8;
+  left: 30px;
+  bottom: 38%;
+}
+.flexslider:hover .flex-next:hover {
+  opacity:1;
+
+}
+.flexslider:hover .flex-prev:hover {
+  opacity:1;
+
+}
+.flex-direction-nav .flex-disabled {
+  opacity:.3!important;
+  filter:alpha(opacity=30);
+  cursor: default;
+}
+/* Control Nav */
+
+.flex-control-thumbs {
+  margin:5px 0 0;
+  position:static;
+  overflow:hidden;
+}
+.flex-control-thumbs li {
+  width:25%;
+  float:left;
+  margin:0;
+}
+.flex-control-thumbs img {
+  width:100%;
+  display:block;
+  opacity:.7;
+  cursor:pointer;
+}
+.flex-control-thumbs img:hover {
+  opacity:1;
+}
+.flex-control-thumbs .flex-active {
+  opacity:1;
+  cursor:default;
+}
+.flex-control-thumbs {
+  margin:5px 0 0;
+  position:static;
+  overflow:hidden;
+}
+.flex-control-thumbs li {
+  width:25%;
+  float:left;
+  margin:0;
+}
+.flex-control-thumbs img {
+  width:100%;
+  display:block;
+  opacity:.7;
+  cursor:pointer;
+}
+.flex-control-thumbs img:hover {
+  opacity:1;
+}
+.flex-control-thumbs .flex-active {
+  opacity:1;
+  cursor:default;
+}
+.flex-caption {
+  padding:0;
+  position:absolute;
+  bottom:150px;
+  font-size:46px;
+  width:100%;
+  opacity:0.8;
+  color:#fff;
+  font-family:Georgia;
+  font-style: italic;
+  text-align: center;
+  text-shadow: 1px 1px 3px #000;
+}
+
+
+
+
+/* Book a date */
+
+.book-form {
+ width: 1170px;
+ margin: auto;
+}
+
+.inner-form { 
+  width: 1170px;
+  height: 200px !important;
+  bottom: 0px;
+  margin: auto;
+  background: #000;
+  background: rgba(0,0,0,0.8);  
+  -moz-border-radius-topleft: 10px;
+  -moz-border-radius-topright: 10px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  height:135px;
+  overflow:hidden;
+}
+
+.book-form h4 img {
+  display: block;
+  margin: auto;
+  margin-bottom: 10px;
+}
+.book-form h4 {
+  margin-top: 0 !important;
+  height:  200px;
+  float: left;
+  color: #fff;
+  padding: 70px 0;
+  width: 250px;
+  text-align: center;
+    background: #2190d7;
+  -webkit-border-bottom-left-radius: 10px;
+  -moz-border-radius-topleft: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+.inputs input[type="text"], .inputs textarea {
+  float: left;
+  padding: 9px 9px 9px;
+  width: 190px;
+  margin-left: 20px;
+  margin-top: 12px;
+  -webkit-border-radius: 7px;
+  -moz-border-radius: 7px;
+  border-radius: 7px;
+  border:none;
+}
+
+.inputs textarea{
+  width: 96%;
+  height: 95px;
+}
+
+.book-form input[type="submit"] {
+float: left;
+color: #fff;
+padding: 36px 0px;
+width: 240px;
+background: #abd242;
+font-size: 20px;
+font-family: 'Open Sans';
+border: none;
+-webkit-border-radius: 7px;
+-moz-border-radius: 7px;
+border-radius: 7px;
+margin-top: 70px;
+margin-left: 20px;
+cursor: pointer;
+}
+
+.book-form input[type="submit"]:hover {
+  background: #A3C93F;
+}
+
+
+/* Featured Works */
+
+.features {
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.service-item .service-img {
+  display: inline-block;
+  margin-bottom: 0px;
+  
+  transition: all 0.7s ease-in-out;
+  -moz-transition: all 0.7s ease-in-out;
+  -webkit-transition: all 0.7s ease-in-out;
+  -o-transition: all 0.7s ease-in-out;
+}
+
+.service-item .service-img img {
+  display: block;
+}
+
+.service-item:hover .service-img {
+  -webkit-transform: rotateY(360deg);
+  -moz-transform: rotateY(360deg);
+  -ms-transform: rotateY(360deg);
+  -o-transform: rotateY(360deg);
+  transform: rotateY(360deg);
+}
+
+.features-items {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.features-items h4{
+  color: #5e5e5e;
+  font-size: 18px;
+  margin-bottom: 20px;
+
+}
+
+.line {
+  width: 50px;
+  border-bottom: 1px solid #2190d7;
+  text-align: center;
+  margin:auto;
+  border-width: 3px;
+  margin-bottom: 10px;
+}
+
+.features-items p{
+  color: #848484;
+  font-size: 13px;
+  line-height:22px;
+}
+
+
+.l-more {
+  margin: 25px 0;
+}
+
+.l-banner {
+   background: #2190d7;
+}
+
+.l-more p {
+  font-size: 21px;
+  float: left;
+  padding-left: 35px;
+  color: #fff;
+  margin: 35px 0;
+  font-weight: lighter;
+}
+
+.l-more a {
+  float: right;
+  background: #fff;
+  color: #000;
+  font-size: 19px;
+  font-family: Georgia;
+  padding: 14px 19px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  margin-right: 20px;
+  margin-top: 24px;
+  font-style: italic;
+}
+
+.l-more a:hover {
+  background: #000;
+  color:#fff;
+}

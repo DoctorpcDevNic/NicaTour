@@ -1,0 +1,26 @@
+/* Administrador */
+
+.noticias{
+    margin-top: 6em ;
+    width: 100% !important;
+}
+
+#addNoticias{
+	margin-top: 3em;
+}
+
+textarea{ resize:none } 
+
+.imgnoticias{
+	width: 20%;
+}
+
+.coment{
+	text-align: center;
+	margin-bottom: 5em;
+}
+
+.coment h1{
+	margin: 1em;
+}
+

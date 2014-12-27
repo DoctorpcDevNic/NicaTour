@@ -27,7 +27,7 @@
 											<h2 class="btn btn-primary">Editar</h2>
 										</a>
 										<a href="{{ URL::to('/administrador/Info/Del/'.$opcion.'/'.$depto->nombre.'/'.$key->id.'') }}">
-											<h2 class="btn btn-primary">Eliminar</h2>
+											<h2 class="btn btn-danger">Eliminar</h2>
 										</a>										
 									</div>									
 								</div>
@@ -47,7 +47,7 @@
 												<h2 class="btn btn-primary">Editar</h2>
 											</a>
 											<a href="{{ URL::to('/administrador/Info/Del/'.$opcion.'/'.$depto->nombre.'/'.$key->id.'') }}">
-												<h2 class="btn btn-primary">Eliminar</h2>
+												<h2 class="btn btn-danger">Eliminar</h2>
 											</a>										
 										</div>									
 									</div>

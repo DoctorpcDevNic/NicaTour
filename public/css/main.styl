@@ -3,11 +3,15 @@ borde = #5EBEBE
 
 @font-face {
     font-family: titulslide;
-    src: url('../fonts/GreatVibes-Regular.ttf');    
+    src: url('../fonts/Myriad Pro Regular.ttf');    
 }
 @font-face {
     font-family: titulmenu;
-    src: url('../fonts/Polo Brush.ttf');    
+    src: url('../fonts/Lato-Black.ttf');    
+}
+@font-face {
+    font-family: subtitulmenu;
+    src: url('../fonts/Lato-BoldItalic.ttf');    
 }
 @font-face {
     font-family: subtitulslide;
@@ -111,7 +115,10 @@ textarea
       top 0   
       z-index 4 
 
-        
+.dropdown-menu
+	li
+		a
+			font-family subtitulmenu !important
 .nica
     background #AE3E17
 
@@ -183,6 +190,7 @@ textarea
 				right 0
 				text-align center
 				width 100%
+				font-family titulslide
 		.clima	
 			background rgba(5, 3, 4, 0.7)
 			border-bottom 15px solid #32475c
@@ -191,7 +199,8 @@ textarea
 				margin 0
 				padding 15% 0
 			p
-				font-size 18px	
+				font-size 18px
+				font-family titulslide	
 		.cambio
 			background #63aa8c
 			border-bottom 15px solid #90b755
@@ -206,6 +215,7 @@ textarea
 				margin 0
 				p
 					font-size 16px
+					font-family titulslide
 					margin 0
 					padding 0	
 		.contact
@@ -222,6 +232,7 @@ textarea
 				position absolute
 				right 0
 				text-align center
+				font-family titulslide
 			
 	.titul
 		color #834b9c

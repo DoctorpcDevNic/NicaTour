@@ -7,13 +7,14 @@
 		@if(!count($Info)==0)		
 			@foreach($depto as $value)
 				@foreach($Info as $key)
-					@if($key->id_dpto==$value->id)													
-							<div class="col-md-4">
-							<div>
-								<img class="img-responsive" src="{{ asset( 'img/'.$key->foto.'') }}" alt="">
-							</div>
-								<a href="{{ URL::to('/administrador/Locales/'.$local.'/'.$value->nombre.'') }}"><h2 class="titul">{{$value->nombre}}</h2></a>
-							</div>
+					@if($key->id_dpto==$value->id)
+						<?php $value->id+=17; ?>
+						<div class="col-md-4">
+						<div>
+							<img class="img-responsive" src="{{ asset( 'img/'.$key->foto.'') }}" alt="">
+						</div>
+							<a href="{{ URL::to('/administrador/Locales/Show/'.$local.'/'.$value->nombre.'') }}"><h2 class="titul">{{$value->nombre}}</h2></a>
+						</div>																		
 					@endif
 				@endforeach
 			@endforeach

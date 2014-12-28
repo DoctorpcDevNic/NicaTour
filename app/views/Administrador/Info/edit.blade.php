@@ -28,6 +28,50 @@
 								<div class="alert alert-info">{{ Session::get('message') }}</div>
 							@endif
 						</div>
+						{{Form::open(array('url'=>'administrador/Info/Update/General/'.$Info->id, 'class' => 'form-horizontal'))}}
+						<div class="form-group">
+							<div class="col-sm-6 control-label">
+								<h3>Informacion General</h3>
+							</div>
+						</div>
+						<div class="form-group">
+							{{ Form::label('lbldepartamento', 'Seleccionar departamento', array('class' => 'col-sm-2 control-label')) }}
+							<div class="col-sm-7">
+								<select class="form-control" id="departamento" name="departamento">
+									@foreach($DptosAll as $value)
+										@if($value->id==$depto->id)
+								  			<option value="{{$value->id}}" selected="">{{$value->nombre}}</option>
+								  		@else
+								  			<option value="{{$value->id}}">{{$value->nombre}}</option>
+								  		@endif
+								  	@endforeach					  
+								</select>
+							</div>				
+						</div>
+						<div class="form-group">
+							{{ Form::label('lbllocal', 'Tipo Informacion', array('class' => 'col-sm-2 control-label')) }}
+							<div class="col-sm-7">
+								<select class="form-control" id="tipo" name="tipo">
+									@foreach($TipoCultura as $value)
+										@if($value->id<5)
+											@if($value->id==$Info->id_info)
+									  			<option value="{{$value->id}}" selected="">{{$value->tipo}}</option>
+									  		@else
+									  			<option value="{{$value->id}}">{{$value->tipo}}</option>
+									  		@endif
+									  	@endif
+								  	@endforeach					  
+								</select>
+							</div>				
+						</div>
+						<div class="form-group">
+							<div class="col-sm-offset-2 col-sm-10">
+								{{ Form::submit('Actualizar' , array('class'=> 'btn btn-primary')) }}
+							</div>	
+						</div>
+						{{Form::close()}}
+						
+						<br>
 						@if(!count($Descripcion)==0)
 							@foreach($idioma as $key)
 								@foreach($Descripcion as $valor)

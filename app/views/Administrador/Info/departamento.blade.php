@@ -59,5 +59,6 @@
 		@else
 			<h2 class="titul">No se ha encontrado ninguna informacion</h2>
 		@endif		
+		<div>{{$Info->links()}}</div>
 	</div>
 @stop

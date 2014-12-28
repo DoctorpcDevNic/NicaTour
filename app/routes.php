@@ -85,15 +85,15 @@ Route::get('/', function()
     	
     	Route::group(array('prefix'=>'Slider'), function(){
     		
-    		Route::get('/', 'AdminController@show');
+    		Route::get('/', 'AdminController@SliderDpto');
     		
-    		Route::get('/Show/{departamento}', 'AdminController@Slider');
+    		Route::get('/Show/{departamento}', 'AdminController@SliderDptoShow');
 
-    		Route::get('/Add', 'AdminController@SliderAdd');
+    		Route::get('/Add', 'AdminController@SliderDptoAdd');
 
-    		Route::post('/Add', 'AdminController@SliderNew');
+    		Route::post('/Add', 'AdminController@SliderDptoNew');
 
-    		Route::get('/Del/{departamento}/{id}', 'AdminController@SliderDel');
+    		Route::get('/Del/{departamento}/{id}', 'AdminController@SliderDptoDel');
     	});
 
     	Route::group(array('prefix'=>'Info'), function(){
@@ -104,6 +104,7 @@ Route::get('/', function()
     		Route::get('/Add','AdminController@InfoAdd');
     		Route::post('/Add','AdminController@InfoNew');
     		Route::post('/Update/{opcion}/{departamento}/{id}','AdminController@InfoUpdate');
+    		Route::post('/Update/General/{id}','AdminController@InfoUpdateGeneral');
     		Route::post('/traduccion/{idioma}/{id}','AdminController@InfoTraduccion');
     		Route::get('/Del/{opcion}/{departamento}/{info}','AdminController@InfoDel');
 
@@ -111,7 +112,9 @@ Route::get('/', function()
     	
     	Route::group(array('prefix'=>'Locales'), function(){
 
-    		Route::get('/{local}','AdminController@Locales');
+    		Route::get('/Show/{local}','AdminController@Locales');
+    		Route::get('/Show/{local}/{departamento}','AdminController@LocalesDpto');
+    		Route::get('/Edit/{local}/{departamento}/{id}','AdminController@LocalesEdit');
     	});
 
 	});

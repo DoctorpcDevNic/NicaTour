@@ -3,12 +3,12 @@
 
 	<div class="container-fluid">
 		<h2 class="titul">Cultura Departamental - {{$opcion}}</h2>
-		<div class="row">
+		<div class="row"> 
 		@if(!count($Info)==0)		
 			@foreach($depto as $value)
 				@foreach($Info as $key)
 					@if($key->id_dpto==$value->id)
-						<?php $value->id++; ?>
+						<?php $value->id+=17; ?>
 						<div class="col-md-4">
 						<div>
 							<img class="img-responsive" src="{{ asset( 'img/'.$key->foto.'') }}" alt="">

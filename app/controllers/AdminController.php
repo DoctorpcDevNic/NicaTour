@@ -2,81 +2,45 @@
 
 class AdminController extends \BaseController {
 
-	/**
-	 * Display a listing of the resource.
-	 *
-	 * @return Response
-	 */
-	public function index()
+	//Inicio Funciones Slider Principal
+	public function SliderDpto()	
 	{
-		//
-	}
-
-
-	/**
-	 * Show the form for creating a new resource.
-	 *
-	 * @return Response
-	 */
-	public function create()
-	{
-		//
-	}
-
-
-	/**
-	 * Store a newly created resource in storage.
-	 *
-	 * @return Response
-	 */
-	public function store()
-	{
-		//
-	}
-
-
-	/**
-	 * Display the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function show()
-	{
+		//Muestra todos los departamentos que tienen imagen en el Slider departamental
 		$depto=DB::table('dpto')->get();
 
 		$Slider=DB::table('detalleslider')->get();
 
 		$conteo=1;
 
-		return View::make('SliderDpto.show', array('depto'=>$depto, 'Slider'=>$Slider));
+		return View::make('Administrador.SliderDpto.show', array('depto'=>$depto, 'Slider'=>$Slider));
 	}
 
-	public function Slider($departamento)
+	public function SliderDptoShow($departamento)
 	{
+		//Muestra todas las imagenes del departamento seleccionado
 		$depto=DB::table('dpto')
 			->where('nombre',$departamento)
 			->first();
 
 		$Slider=DB::table('detalleslider')
 			->where('id_dpto',$depto->id)
-			->paginate(6);
+			->paginate(6);		
 
-		$conteo=1;
-
-		return View::make('SliderDpto.edit', array('depto'=>$depto, 'Slider'=>$Slider));
+		return View::make('Administrador.SliderDpto.edit', array('depto'=>$depto, 'Slider'=>$Slider));
 	}
 
-	public function SliderAdd()
+	public function SliderDptoAdd()
 	{
+		//Muestra la vista para añadir una imagen al Slider principal departamental
 		$depto=DB::table('dpto')
 			->get();
 
-		return View::make('SliderDpto.add', array('depto'=>$depto));
+		return View::make('Administrador.SliderDpto.add', array('depto'=>$depto));
 	}
 
-	public function SliderNew()
+	public function SliderDptoNew()
 	{		
+		//Añadde  una imagen al Slider principal departamental
 			$file="no_img.png";
 
 			$Slider = new detalleslider();
@@ -100,8 +64,9 @@ class AdminController extends \BaseController {
 			}
 	}
 
-	public function SliderDel($departamento, $id)
+	public function SliderDptoDel($departamento, $id)
 	{
+		//Elimina una imagen del Slider de un departamento
 		$Slider=detalleslider::find($id);
 
 		$Slider->delete();
@@ -111,10 +76,13 @@ class AdminController extends \BaseController {
 
 		return Redirect::to('administrador/Slider/Show/'.$departamento.'');
 	}
-	
+	//Fin Slider Departamental
 
+
+	//Inicio Funciones para Informacion gastronomia, artesanias, etc.
 	public function Info($opcion)
 	{
+		//Muestra los departamentos que tiene informacion del tipo seleccionada
 		$depto=DB::table('dpto')
 			->get();
 
@@ -126,11 +94,12 @@ class AdminController extends \BaseController {
 			->where('id_info',$tipo->id)
 			->get();
 
-		return View::make('Info.show', array('depto'=>$depto, 'Info'=>$Info, 'opcion'=>$opcion));
+		return View::make('Administrador.Info.show', array('depto'=>$depto, 'Info'=>$Info, 'opcion'=>$opcion));
 	}
 
 	public function InfoDepartamento($opcion,$departamento)
 	{
+		//Muestra toda la informacion seleccionada del departamento seleeccionado
 		$depto=DB::table('dpto')
 			->where('nombre',$departamento)
 			->first();
@@ -142,16 +111,17 @@ class AdminController extends \BaseController {
 		$Info=DB::table('info_detalle')
 			->where('id_info',$tipo->id)
 			->where('id_dpto',$depto->id)
-			->get();
+			->paginate(5);
 
 		$Descripcion=DB::table('descripcion_infodetalle')
 			->get();		
 
-		return View::make('Info.departamento', array('depto'=>$depto, 'Info'=>$Info, 'opcion'=>$opcion, 'Descripcion'=>$Descripcion));
+		return View::make('Administrador.Info.departamento', array('depto'=>$depto, 'Info'=>$Info, 'opcion'=>$opcion, 'Descripcion'=>$Descripcion));
 	}
 
 	public function InfoEdit($opcion,$departamento,$id)
 	{
+		//Muestra la vista para editar la informacion de la foto seleccionada
 		$depto=DB::table('dpto')
 			->where('nombre',$departamento)
 			->first();
@@ -159,6 +129,12 @@ class AdminController extends \BaseController {
 		$tipo=DB::table('info')
 			->where('tipo',$opcion)
 			->first();
+
+		$DptosAll=DB::table('dpto')
+			->get();
+
+		$TipoCultura=DB::table('info')
+			->get();
 
 		$Info=DB::table('info_detalle')
 			->where('id',$id)
@@ -173,22 +149,24 @@ class AdminController extends \BaseController {
 		$idioma=DB::table('idioma')
 			->get();
 
-		return View::make('Info.edit', array('depto'=>$depto, 'Info'=>$Info, 'opcion'=>$opcion, 'Descripcion'=>$Descripcion, 'idioma'=>$idioma, 'id_info'=>$id));
+		return View::make('Administrador.Info.edit', array('depto'=>$depto, 'Info'=>$Info, 'opcion'=>$opcion, 'Descripcion'=>$Descripcion, 'idioma'=>$idioma, 'id_info'=>$id, 'DptosAll'=>$DptosAll, 'TipoCultura'=>$TipoCultura));
 	}
 
 	public function InfoAdd()
 	{
+		//Muestra la vista para agregar una imagen
 		$depto=DB::table('dpto')
 			->get();
 
 		$tipo=DB::table('info')
 			->get();
 
-		return View::make('Info.add', array('depto'=>$depto, 'tipo'=>$tipo));
+		return View::make('Administrador.Info.add', array('depto'=>$depto, 'tipo'=>$tipo));
 	}
 
 	public function InfoNew()
 	{		
+		//Agrega una imagen de una opcion y departamento y luego redirije para editar su descripcion
 			$file="no_img.png";
 
 			$Info = new info();
@@ -219,7 +197,9 @@ class AdminController extends \BaseController {
 			}
 	}
 
-	public function InfoDel($opcion, $departamento, $info){
+	public function InfoDel($opcion, $departamento, $info)
+	{
+		//Elimina primero todas las descripciones y luego la foto
 		$descripciones=DB::table('descripcion_infodetalle')
 			->where('id_infodetalle',$info)
 			->get();
@@ -238,7 +218,9 @@ class AdminController extends \BaseController {
 		return Redirect::back();
 	}
 
-	public function InfoUpdate($opcion, $departamento, $id){
+	public function InfoUpdate($opcion, $departamento, $id)
+	{
+		//Actualiza la descripcion de una foto
 
 		$Descripcion = descripcion::find($id);
 
@@ -253,7 +235,29 @@ class AdminController extends \BaseController {
 
 	}
 
-	public function InfoTraduccion($idioma, $id){
+	public function InfoUpdateGeneral($id)
+	{
+		//Actualiza la informacion general (departamento y tipo) de la imagen
+		$General=info::find($id);
+		$General->id_info=Input::get('tipo');
+		$General->id_dpto=Input::get('departamento');
+		$info=DB::table('info')
+			->where('id',$General->id_info)
+			->first();
+
+		$depto=DB::table('dpto')
+			->where('id',$General->id_dpto)
+			->first();
+
+		if($General->save()){
+			Session::flash('message','Informacion general actualizada');
+			return Redirect::to('administrador/Info/Edit/'.$info->tipo.'/'.$depto->nombre.'/'.$id);
+		}
+	}
+
+	public function InfoTraduccion($idioma, $id)
+	{
+		//Añade una descripcion o traduccion
 		$Descripcion= new descripcion();
 		$Descripcion->id_infodetalle=$id;
 		$Descripcion->id_idioma=$idioma;
@@ -265,9 +269,13 @@ class AdminController extends \BaseController {
 				return Redirect::back();
 			}
 	}
+	//Fin funciones de gastronomia, artesanias, etc
 
+
+	//Inicio funciones de locales
 	public function Locales($local)
 	{
+		//Muestra los departamentos que tienen alguna informacion del tipo seleccionada
 		$depto=DB::table('dpto')
 			->get();
 
@@ -279,46 +287,64 @@ class AdminController extends \BaseController {
 			->where('id_info',$tipo->id)
 			->get();
 
-		$conteo=1;
-
-		return View::make('Locales.show', array('depto'=>$depto, 'Info'=>$Info, 'local'=>$local));
+		return View::make('Administrador.Locales.show', array('depto'=>$depto, 'Info'=>$Info, 'local'=>$local));
 	}
 
-
-	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
+	public function LocalesDpto($local,$departamento)
 	{
-		//
+		//Muestra toda la informacion seleccionada del departamento seleeccionado
+		$depto=DB::table('dpto')
+			->where('nombre',$departamento)
+			->first();
+
+		$tipo=DB::table('info')
+			->where('tipo',$local)
+			->first();
+
+		$Info=DB::table('info_detalle')
+			->where('id_info',$tipo->id)
+			->where('id_dpto',$depto->id)
+			->paginate(5);
+
+		$Descripcion=DB::table('locales')
+			->get();		
+
+		return View::make('Administrador.Locales.departamento', array('depto'=>$depto, 'Info'=>$Info, 'local'=>$local, 'Descripcion'=>$Descripcion));
 	}
 
-
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function update($id)
+	public function LocalesEdit($local,$departamento,$id)
 	{
-		//
-	}
+		//Muestra la vista para editar la informacion de la foto seleccionada
+		$depto=DB::table('dpto')
+			->where('nombre',$departamento)
+			->first();
 
+		$DptosAll=DB::table('dpto')
+			->get();
 
-	/**
-	 * Remove the specified resource from storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function destroy($id)
-	{
-		//
+		$Localidades=DB::table('info')
+			->get();
+
+		$tipo=DB::table('info')
+			->where('tipo',$local)
+			->first();
+
+		$Info=DB::table('info_detalle')
+			->where('id',$id)
+			->where('id_info',$tipo->id)
+			->where('id_dpto',$depto->id)
+			->first();
+
+		$Descripcion=DB::table('locales')
+			->where('id_infodetalle',$id)
+			->get();
+
+		$idioma=DB::table('idioma')
+			->get();
+
+		return View::make('Administrador.Locales.edit', array('depto'=>$depto, 'Info'=>$Info, 'local'=>$local, 'Descripcion'=>$Descripcion, 'idioma'=>$idioma, 'id_info'=>$id, 'DptosAll'=>$DptosAll, 'Localidades'=>$Localidades));
 	}
+	
 
 
 }

@@ -2,8 +2,8 @@
 @section('contenido')
 
 	<div class="container-fluid">
-		<h2 class="titul">Slider Principal - Agregar Imagen</h2>
-		{{ Form::open(array('url' => 'administrador/Info/Add', 'files' => 'true', 'class' => 'form-horizontal')) }}
+		<h2 class="titul">Agregar Local</h2>
+		{{ Form::open(array('url' => 'administrador/Locales/Add', 'files' => 'true', 'class' => 'form-horizontal')) }}
 			
 			<div class="form-group">
 				{{ Form::label('lbldepartamento', 'Seleccionar Departamento', array('class' => 'col-sm-2 control-label')) }}
@@ -21,7 +21,7 @@
 				<div class="col-sm-7">
 					<select class="form-control" id="tipo" name="tipo">
 						@foreach($tipo as $key)
-							@if($key->id<5)
+							@if($key->id>=5)
 					  			<option value="{{$key->id}}">{{$key->tipo}}</option>
 					  		@endif
 					  	@endforeach					  

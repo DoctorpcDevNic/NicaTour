@@ -134,7 +134,7 @@
 													<div class="form-group">
 														{{ Form::label('direccion', 'Direccion', array('class' => 'col-sm-2 control-label')) }}
 														<div class="col-sm-7">
-															{{ Form::textarea('direccion', Input::old('texto') ? Input::old():'', array('class' => 'form-control', 'placeholder'=> 'Direccion del local', 'size' => '30x5')) }}
+															{{ Form::textarea('direccion', Input::old('direccion') ? Input::old():'', array('class' => 'form-control', 'placeholder'=> 'Direccion del local', 'size' => '30x5')) }}
 														</div>
 													</div>
 													<div class="form-group">
@@ -175,9 +175,9 @@
 												</div>
 											</div>
 											<div class="form-group">
-												{{ Form::label('descripcion', 'Direccion', array('class' => 'col-sm-2 control-label')) }}
+												{{ Form::label('direccion', 'Direccion', array('class' => 'col-sm-2 control-label')) }}
 												<div class="col-sm-7">
-													{{ Form::textarea('texto', Input::old('texto') ? Input::old():'', array('class' => 'form-control', 'placeholder'=> 'Direccion del local', 'size' => '30x5')) }}
+													{{ Form::textarea('direccion', Input::old('direccion') ? Input::old():'', array('class' => 'form-control', 'placeholder'=> 'Direccion del local', 'size' => '30x5')) }}
 												</div>
 											</div>
 											<div class="form-group">

@@ -344,6 +344,130 @@ class AdminController extends \BaseController {
 
 		return View::make('Administrador.Locales.edit', array('depto'=>$depto, 'Info'=>$Info, 'local'=>$local, 'Descripcion'=>$Descripcion, 'idioma'=>$idioma, 'id_info'=>$id, 'DptosAll'=>$DptosAll, 'Localidades'=>$Localidades));
 	}
+
+	public function LocalesAdd()
+	{
+		//Muestra la vista para agregar una imagen
+		$depto=DB::table('dpto')
+			->get();
+
+		$tipo=DB::table('info')
+			->get();
+
+		return View::make('Administrador.Locales.add', array('depto'=>$depto, 'tipo'=>$tipo));
+	}
+
+	public function LocalesNew()
+	{		
+		//Agrega una imagen de una opcion y departamento y luego redirije para editar su descripcion
+			$file="no_img.png";
+
+			$Info = new info();
+
+			$Info->id_info = Input::get('tipo');
+
+			$Info->id_dpto = Input::get('departamento');
+
+			$depto=DB::table('dpto')			
+				->where('id',$Info->id_dpto)
+				->first();
+
+			$opcion=DB::table('info')			
+				->where('id',$Info->id_info)
+				->first();
+
+			if(Input::hasFile('archivo')) {
+		       	Input::file('archivo')->move('img/'.$depto->nombre.'', Input::file("archivo")->getClientOriginalName());
+		       	$file = $depto->nombre.'/'.Input::file("archivo")->getClientOriginalName();
+	     	} 
+	     	
+	     	$Info->foto = $file;
+
+	     	if($Info->save()){	     			
+				Session::flash('message', 'Imagen Agregada Correctamente');
+				
+				return Redirect::to('administrador/Locales/Edit/'.$opcion->tipo.'/'.$depto->nombre.'/'.$Info->id);
+			}
+	}
+
+	public function LocalesDel($opcion, $departamento, $info)
+	{
+		//Elimina primero todas las descripciones y luego la foto
+		$descripciones=DB::table('locales')
+			->where('id_infodetalle',$info)
+			->get();
+
+		if(!count($descripciones)==0){
+			foreach ($descripciones as $key) {
+				$traduccion=locales::find($key->id);
+ 
+				$traduccion->delete();
+			}
+		}
+		$foto=info::find($info);
+		File::delete('img/'.$foto->img);
+		$foto->delete();
+		Session::flash('message', 'Informacion Eliminada');
+		return Redirect::back();
+	}
+
+	public function LocalesUpdate($opcion, $departamento, $id)
+	{
+		//Actualiza la descripcion de una foto
+
+		$Descripcion = locales::find($id);
+
+		$Descripcion->nombre=Input::get('nombre');
+
+		$Descripcion->telefono=Input::get('telefono');
+
+		$Descripcion->direccion=Input::get('direccion');
+
+		$Descripcion->descripcion=Input::get('descripcion');
+
+		if($Descripcion->save()){	     			
+				Session::flash('message', 'Descripcion Actualizada');
+				return Redirect::back();
+			}
+
+	}
+
+	public function LocalesUpdateGeneral($id)
+	{
+		//Actualiza la informacion general (departamento y tipo) de la imagen
+		$General=info::find($id);
+		$General->id_info=Input::get('tipo');
+		$General->id_dpto=Input::get('departamento');
+		$info=DB::table('info')
+			->where('id',$General->id_info)
+			->first();
+
+		$depto=DB::table('dpto')
+			->where('id',$General->id_dpto)
+			->first();
+
+		if($General->save()){
+			Session::flash('message','Informacion general actualizada');
+			return Redirect::to('administrador/Locales/Edit/'.$info->tipo.'/'.$depto->nombre.'/'.$id);
+		}
+	}
+
+	public function LocalesTraduccion($idioma, $id)
+	{
+		//Añade una descripcion o traduccion
+		$Descripcion= new locales();
+		$Descripcion->id_infodetalle=$id;
+		$Descripcion->id_idioma=$idioma;
+		$Descripcion->nombre=Input::get('nombre');
+		$Descripcion->telefono=Input::get('telefono');
+		$Descripcion->direccion=Input::get('direccion');
+		$Descripcion->descripcion=Input::get('descripcion');
+
+		if($Descripcion->save()){	     			
+				Session::flash('message', 'Traduccion Agregada');
+				return Redirect::back();
+			}
+	}
 	
 
 

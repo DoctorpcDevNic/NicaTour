@@ -115,6 +115,13 @@ Route::get('/', function()
     		Route::get('/Show/{local}','AdminController@Locales');
     		Route::get('/Show/{local}/{departamento}','AdminController@LocalesDpto');
     		Route::get('/Edit/{local}/{departamento}/{id}','AdminController@LocalesEdit');
+    		Route::post('/Update/{opcion}/{departamento}/{id}','AdminController@LocalesUpdate');
+    		Route::post('/Update/General/{id}','AdminController@LocalesUpdateGeneral');
+    		Route::post('/traduccion/{idioma}/{id}','AdminController@LocalesTraduccion');
+    		Route::get('/Del/{opcion}/{departamento}/{info}','AdminController@LocalesDel');
+    		Route::get('/Add','AdminController@LocalesAdd');
+    		Route::post('/Add','AdminController@LocalesNew');
+
     	});
 
 	});

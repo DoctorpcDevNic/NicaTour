@@ -11,7 +11,7 @@
 						<?php $value->id+=17; ?>
 						<div class="col-md-4">
 						<div>
-							<img class="img-responsive" src="{{ asset( 'img/'.$key->foto.'') }}" alt="">
+							<img class="img-responsive" src="{{ asset( 'img/'.$key->foto.'') }}" alt="" style="background:red;">
 						</div>
 							<a href="{{ URL::to('/administrador/Locales/Show/'.$local.'/'.$value->nombre.'') }}"><h2 class="titul">{{$value->nombre}}</h2></a>
 						</div>																		

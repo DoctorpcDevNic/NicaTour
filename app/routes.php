@@ -76,55 +76,77 @@ Route::get('/', function()
 
 	
 	/*Administrador*/
-    Route::group(array('prefix' => 'administrador'), function () {
+	Route::get('login', array('uses' => 'UsuariosController@viewLogin'));//muestra la interface de login
+	Route::post('usuarios/validar', array('uses'=> 'UsuariosController@validateLogin'));// se inicia seccion con username, pass	
 
-    	Route::get('/', function()
-			{
-				return View::make('admin');
-			});
-    	
-    	Route::group(array('prefix'=>'Slider'), function(){
-    		
-    		Route::get('/', 'AdminController@SliderDpto');
-    		
-    		Route::get('/Show/{departamento}', 'AdminController@SliderDptoShow');
+	Route::group(array('before' => 'auth'), function()		
+	{
+		Route::get('usuarios/logout', array('uses'=> 'UsuariosController@getLogout'));		//cerrar secion
 
-    		Route::get('/Add', 'AdminController@SliderDptoAdd');
+	    Route::group(array('prefix' => 'administrador'), function () {
 
-    		Route::post('/Add', 'AdminController@SliderDptoNew');
+	    	Route::get('/', function()
+				{
+					return View::make('admin');
+				});
+	    	Route::group(array('prefix'=>'usuarios'),function(){
+	    		
+	    		Route::post('/login', array('uses' => 'UsuariosController@register'));		//registra al usuario con sus datos
+		
+				Route::get('/registrar', array('uses' => 'UsuariosController@viewRegister'));// muestra la interface de registro
 
-    		Route::get('/Del/{departamento}/{id}', 'AdminController@SliderDptoDel');
-    	});
+				Route::get('/Show', function(){
+					$ShowUser=DB::table('usuarios')
+						->paginate(6);
+					return View::make('usuarios.show',array('ShowUser'=>$ShowUser));
+				});
 
-    	Route::group(array('prefix'=>'Info'), function(){
+				Route::get('/del/{id}', 'UsuariosController@eliminar');
+	    	});   	
+	    	
+	    	Route::group(array('prefix'=>'Slider'), function(){
+	    		
+	    		Route::get('/', 'AdminController@SliderDpto');
+	    		
+	    		Route::get('/Show/{departamento}', 'AdminController@SliderDptoShow');
 
-    		Route::get('/Show/{opcion}','AdminController@Info');
-    		Route::get('/Show/{opcion}/{departamento}','AdminController@InfoDepartamento');
-    		Route::get('/Edit/{opcion}/{departamento}/{id}','AdminController@InfoEdit');
-    		Route::get('/Add','AdminController@InfoAdd');
-    		Route::post('/Add','AdminController@InfoNew');
-    		Route::post('/Update/{opcion}/{departamento}/{id}','AdminController@InfoUpdate');
-    		Route::post('/Update/General/{id}','AdminController@InfoUpdateGeneral');
-    		Route::post('/traduccion/{idioma}/{id}','AdminController@InfoTraduccion');
-    		Route::get('/Del/{opcion}/{departamento}/{info}','AdminController@InfoDel');
+	    		Route::get('/Add', 'AdminController@SliderDptoAdd');
 
-    	});    	
-    	
-    	Route::group(array('prefix'=>'Locales'), function(){
+	    		Route::post('/Add', 'AdminController@SliderDptoNew');
 
-    		Route::get('/Show/{local}','AdminController@Locales');
-    		Route::get('/Show/{local}/{departamento}','AdminController@LocalesDpto');
-    		Route::get('/Edit/{local}/{departamento}/{id}','AdminController@LocalesEdit');
-    		Route::post('/Update/{opcion}/{departamento}/{id}','AdminController@LocalesUpdate');
-    		Route::post('/Update/General/{id}','AdminController@LocalesUpdateGeneral');
-    		Route::post('/traduccion/{idioma}/{id}','AdminController@LocalesTraduccion');
-    		Route::get('/Del/{opcion}/{departamento}/{info}','AdminController@LocalesDel');
-    		Route::get('/Add','AdminController@LocalesAdd');
-    		Route::post('/Add','AdminController@LocalesNew');
+	    		Route::get('/Del/{departamento}/{id}', 'AdminController@SliderDptoDel');
+	    	});
 
-    	});
+	    	Route::group(array('prefix'=>'Info'), function(){
 
-	});
+	    		Route::get('/Show/{opcion}','AdminController@Info');
+	    		Route::get('/Show/{opcion}/{departamento}','AdminController@InfoDepartamento');
+	    		Route::get('/Edit/{opcion}/{departamento}/{id}','AdminController@InfoEdit');
+	    		Route::get('/Add','AdminController@InfoAdd');
+	    		Route::post('/Add','AdminController@InfoNew');
+	    		Route::post('/Update/{opcion}/{departamento}/{id}','AdminController@InfoUpdate');
+	    		Route::post('/Update/General/{id}','AdminController@InfoUpdateGeneral');
+	    		Route::post('/traduccion/{idioma}/{id}','AdminController@InfoTraduccion');
+	    		Route::get('/Del/{opcion}/{departamento}/{info}','AdminController@InfoDel');
+
+	    	});    	
+	    	
+	    	Route::group(array('prefix'=>'Locales'), function(){
+
+	    		Route::get('/Show/{local}','AdminController@Locales');
+	    		Route::get('/Show/{local}/{departamento}','AdminController@LocalesDpto');
+	    		Route::get('/Edit/{local}/{departamento}/{id}','AdminController@LocalesEdit');
+	    		Route::post('/Update/{opcion}/{departamento}/{id}','AdminController@LocalesUpdate');
+	    		Route::post('/Update/General/{id}','AdminController@LocalesUpdateGeneral');
+	    		Route::post('/traduccion/{idioma}/{id}','AdminController@LocalesTraduccion');
+	    		Route::get('/Del/{opcion}/{departamento}/{info}','AdminController@LocalesDel');
+	    		Route::get('/Add','AdminController@LocalesAdd');
+	    		Route::post('/Add','AdminController@LocalesNew');
+
+	    	});
+
+		});
+});
 
 
 Route::post('contacto/enviar', function(){

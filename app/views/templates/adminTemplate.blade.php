@@ -53,23 +53,13 @@
             </div>
             <!-- /.navbar-header -->
 
-            <ul class="nav navbar-top-links navbar-right">
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        <i class="fa fa-envelope fa-fw"></i>  <i class="fa fa-caret-down"></i>
-                    </a>
-                    <ul class="dropdown-menu dropdown-messages">
-                        <li>
-                            <a href="#">Ver</a>
-                        </li>
-                                              
-                    </ul>
-                    <!-- /.dropdown-messages -->
-                </li>                          
+            <ul class="nav navbar-top-links navbar-right">                                    
                 <!-- /.dropdown -->              
-                <li class="dropdown">
+                <li class="dropdown nombreusuario">
+                    <a href="#" class="navbar-brand">{{ Auth::user()->nombre }}</a>
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
+                        <i class="fa fa-user fa-fw"></i>
+                        <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">                        
                         <li><a href="{{ URL::to('usuarios/logout') }}"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
@@ -83,7 +73,18 @@
 
             <div class="navbar-default sidebar" role="navigation">
                 <div class="sidebar-nav navbar-collapse">
-                    <ul class="nav" id="side-menu">                       
+                    <ul class="nav" id="side-menu">
+                        <li>
+                            <a href=""><i class="fa fa-bar-chart-o fa-fw"></i>Usuarios<span class="fa arrow"></span></a>
+                             <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="{{ URL::to('administrador/usuarios/Show') }}">Ver Todos</a>
+                                </li>
+                                 <li>
+                                    <a href="{{ URL::to('administrador/usuarios/registrar') }}">Agregar</a>
+                                </li>
+                             </ul>
+                        </li> 
                         <li>
                             <a href=""><i class="fa fa-bar-chart-o fa-fw"></i> Slider Principal <span class="fa arrow"></span></a>
                              <ul class="nav nav-second-level">

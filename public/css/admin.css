@@ -23,4 +23,6 @@ textarea{ resize:none }
 .coment h1{
 	margin: 1em;
 }
-
+.nombreusuario a{
+	float: left;
+}

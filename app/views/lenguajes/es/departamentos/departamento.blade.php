@@ -1,13 +1,3 @@
-<?php
-  $json_string = file_get_contents($clima->url);
-  $parsed_json = json_decode($json_string);
-  $location = $parsed_json->{'current_observation'}->{'display_location'}->{'city'};
-  $temp_c = $parsed_json->{'current_observation'}->{'temp_c'};
-  $icono = $parsed_json->{'current_observation'}->{'icon_url'};
-  $altura = $parsed_json->{'current_observation'}->{'observation_location'}->{'elevation'};
-  $humedad = $parsed_json->{'current_observation'}->{'relative_humidity'};
-?>
-
 @extends('templates.departamentotemplate')
 @section('anuncio')
 <div class="anuncio">
@@ -118,8 +108,8 @@
 				</div>
 				<div class="col-md-6 col-xs-6" style="padding:0">
 					<div class="clima">
-						<h3><?php echo $temp_c;?> C°</h3>
-						<p><?php echo $location;?></p>	
+						<h3>{{$clima->temperatura}} C°</h3>
+						<p>{{$clima->nombre}}</p>	
 					</div>
 				</div>
 			</div>

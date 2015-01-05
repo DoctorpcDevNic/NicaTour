@@ -1,12 +1,3 @@
-<?php
-  /*$json_string = file_get_contents("http://api.wunderground.com/api/c0bc1e930c0a0f3c/conditions/q/NK/Managua.json");
-  $parsed_json = json_decode($json_string);
-  $location = $parsed_json->{'current_observation'}->{'display_location'}->{'city'};
-  $temp_c = $parsed_json->{'current_observation'}->{'temp_c'};
-  $icono = $parsed_json->{'current_observation'}->{'icon_url'};
-  $altura = $parsed_json->{'current_observation'}->{'observation_location'}->{'elevation'};
-  $humedad = $parsed_json->{'current_observation'}->{'relative_humidity'};*/
-?>
 @extends('templates.maintemplate')
 @section('informacion')
 
@@ -19,8 +10,8 @@
 		</div>		
 		<div class="row">
 			<div class="col-md-4 col-xs-4 clima">
-				<h2> <?php /*echo $temp_c; */?> c°</h2>
-				<p><?php/* echo $location;*/ ?></p>
+				<h2> {{$clima->temperatura}} C°</h2>
+				<p>{{$clima->nombre}}</p>
 			</div>
 			<div class="col-md-4 col-xs-4 cambio">
 				<h2><img src="{{ asset('img/cambio.png')  }}"></h2>

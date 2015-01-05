@@ -138,7 +138,30 @@
                                     <a href="{{ URL::to('administrador/Locales/Add') }}">Agregar</a>
                                 </li>
                              </ul>
-                        </li>                                        
+                        </li>
+                         <li>
+                            <a href=""><i class="fa fa-bar-chart-o fa-fw"></i> Posicionamiento SEO <span class="fa arrow"></span></a>
+                             <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="{{ URL::to('administrador/Locales/Show/Restaurantes') }}">Pag. Principal Departamentos</a>
+                                </li>
+                                 <li>
+                                    <a href="{{ URL::to('administrador/Locales/Show/Hoteles') }}">Hoteles</a>
+                                </li>
+                                 <li>
+                                    <a href="{{ URL::to('administrador/Locales/Show/Traslado') }}">Transporte</a>
+                                </li>
+                                 <li>
+                                    <a href="{{ URL::to('administrador/Locales/Show/Tours Operadoras') }}">Tours Operadoras</a>
+                                </li>
+                                <li>
+                                    <a href="{{ URL::to('administrador/Locales/Show/Gasolineras') }}">Gasolineras</a>
+                                </li>
+                                 <li>
+                                    <a href="{{ URL::to('administrador/Locales/Add') }}">Agregar</a>
+                                </li>
+                             </ul>
+                        </li>
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->

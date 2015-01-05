@@ -22,8 +22,8 @@ Route::get('/', function()
     Route::group(array('prefix' => 'es'), function () {
 
     	Route::get('/', function()
-		{
-			return View::make('inicio');
+		{	$clima=Clima::find(10);
+			return View::make('inicio',array('clima'=>$clima));
 		});
 
 	     Route::get('contacto', function(){
@@ -74,7 +74,6 @@ Route::get('/', function()
 
 	});
 
-	
 	/*Administrador*/
 	Route::get('login', array('uses' => 'UsuariosController@viewLogin'));//muestra la interface de login
 	Route::post('usuarios/validar', array('uses'=> 'UsuariosController@validateLogin'));// se inicia seccion con username, pass	

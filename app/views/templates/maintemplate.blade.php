@@ -38,7 +38,21 @@
 		{{ HTML::style('css/camera.css') }}
 
     {{ HTML::style('css/animate.css') }}
+    <style>
 
+      .videoWrapper {
+        position: relative;
+        padding-bottom: 40%; /* 16:9 */
+        height: 0;
+      }
+      .videoWrapper embed {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+    </style>
 
 
         
@@ -108,18 +122,23 @@
 	                  <li class="about dropdown">
 	                    <a href="" class="dropdown-toggle" data-toggle="dropdown">departamentos <span class="caret"></span></a> 
 	                    <ul class="dropdown-menu deptos" role="menu">
+                        <li><a href="{{ URL::to('es/departamentos/Boaco') }}">Boaco</a></li>
+                        <li><a href="{{ URL::to('es/departamentos/Carazo') }}">Carazo</a></li>
                         <li><a href="{{ URL::to('es/departamentos/Chinandega') }}">Chinandega</a></li>
+                        <li><a href="{{ URL::to('es/departamentos/Chontales') }}">Chontales</a></li>
                         <li><a href="{{ URL::to('es/departamentos/Esteli') }}">Estelí</a></li>
 	                    	<li><a href="{{ URL::to('es/departamentos/Granada') }}">Granada</a></li>
+                        <li><a href="{{ URL::to('es/departamentos/Jinotega') }}">Jinotega</a></li>
                         <li><a href="{{ URL::to('es/departamentos/Leon') }}">Leon</a></li>
                         <li><a href="{{ URL::to('es/departamentos/Madriz') }}">Madriz</a></li>
                         <li><a href="{{ URL::to('es/departamentos/Managua') }}">Managua</a></li>
                         <li><a href="{{ URL::to('es/departamentos/Masaya') }}">Masaya</a></li>                        
                         <li><a href="{{ URL::to('es/departamentos/Matagalpa') }}">Matagalpa</a></li>
                         <li><a href="{{ URL::to('es/departamentos/Nueva Segovia') }}">Nueva Segovia</a></li>
-                        <li><a href="{{ URL::to('es/departamentos/RAAS') }}">RAAS</a></li>
-                        <li><a href="{{ URL::to('es/departamentos/Rio San Juan') }}">Rio San Juan</a></li>
                         <li><a href="{{ URL::to('es/departamentos/Rivas') }}">Rivas</a></li>
+                        <li><a href="{{ URL::to('es/departamentos/Rio San Juan') }}">Rio San Juan</a></li>
+                        <li><a href="{{ URL::to('es/departamentos/RAAN') }}">RAAN</a></li>
+                        <li><a href="{{ URL::to('es/departamentos/RAAS') }}">RAAS</a></li>
 	                    </ul>                 
 	                  </li>
 	                  <li class="explo">

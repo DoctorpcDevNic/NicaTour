@@ -5,7 +5,9 @@
 
 	<div class="infomain">
 		<div class="canal">
-			<img src="{{ asset('img/video.png') }}" class="img-responsive">
+			<div class="videoWrapper">
+				<embed src="http://www.youtube.com/v/{{$depto->youtube}}">
+			</div>
 			<h3>NICATOUR YouTube</h3>
 		</div>		
 		<div class="row">
@@ -18,7 +20,7 @@
 				<h4>
 					<p class="hidden-xs">Tipo de cambio:</p>
 					<p class="hidden-md">Cambio</p>
-					<p>26.22 C$ por C$1</p>
+					<p>C${{$depto->dolar}} por $1</p>
 				</h4>
 				<p class="bordercambio"></p>
 			</div>

@@ -1,4 +1,8 @@
 @extends('templates.departamentotemplate')
+@section('titulo')
+Nicaragua Tour - Conoce {{$depto->nombre}}
+@stop
+
 @section('anuncio')
 <div class="anuncio">
       <h2>Calendario Turistico</h2>
@@ -26,25 +30,25 @@
 	<div class="row">
       <div class="col-md-3 col-xs-3">
         <div class="cuadro gastronomia">
-          <a href="{{ URL::to('es/departamentos/'.$dpto.'/Gastronomia#descripcion') }}"><img src="{{ asset('img/comedor.png') }}">
+          <a href="{{ URL::to('es/departamentos/'.$depto->nombre.'/Gastronomia#descripcion') }}"><img src="{{ asset('img/comedor.png') }}">
           <h3>Gastronomia</h3></a>
         </div>
       </div>
       <div class="col-md-3 col-xs-3"> 
         <div class="cuadro tesoros">
-         <a href="{{ URL::to('es/departamentos/'.$dpto.'/Tesoros Coloniales#descripcion') }}">
+         <a href="{{ URL::to('es/departamentos/'.$depto->nombre.'/Tesoros Coloniales#descripcion') }}">
           <img src="{{ asset('img/tesoros.png') }}">
           <h3>Tesoros</h3></a>
         </div></div>
       <div class="col-md-3 col-xs-3"> 
         <div class="cuadro danza">
-         <a href="{{ URL::to('es/departamentos/'.$dpto.'/Danza#descripcion') }}">
+         <a href="{{ URL::to('es/departamentos/'.$depto->nombre.'/Danza#descripcion') }}">
           <img src="{{ asset('img/bailes.png') }}">
           <h3>Danza</h3></a>
         </div></div>
       <div class="col-md-3 col-xs-3"> 
         <div class="cuadro artesania">
-         <a href="{{ URL::to('es/departamentos/'.$dpto.'/Artesania#descripcion') }}">
+         <a href="{{ URL::to('es/departamentos/'.$depto->nombre.'/Artesania#descripcion') }}">
           <img src="{{ asset('img/artesania.png') }}">
           <h3>Artesania</h3>
           </a>
@@ -88,20 +92,22 @@
 	<div class="row">
 		<div class="col-md-8 col-xs-8">
 			<div class="youtube">
-				<img src="{{ asset('img/video.png') }}">
+				<div class="videoWrapper">
+					<embed src="http://www.youtube.com/v/{{$depto->youtube}}">
+				</div>			
 				<h3>NICATOUR You Tube</h3>
 			</div>	
 		</div>
 		<div class="col-md-4 col-xs-4" style="padding:0 5px 0 5px">
 			<div class="operadora">
-				<a href="{{ URL::to('es/departamentos/'.$dpto.'/locales/ToursOperadoras') }}">
+				<a href="{{ URL::to('es/departamentos/'.$depto->nombre.'/locales/ToursOperadoras') }}">
 					<img src="{{ asset('img/operadora.png') }}">
 					<h3 class="hidden-xs">Tours Operadora</h3>
 				</a>
 			</div>
 			<div class="row" style="padding: 3px 0">
 				<div class="col-md-6 col-xs-6 gasolina">
-					<a href="{{ URL::to('es/departamentos/'.$dpto.'/locales/Gasolineras') }}">
+					<a href="{{ URL::to('es/departamentos/Gasolineras/'.$depto->nombre) }}">
 						<img src="{{ asset('img/gasolina.png') }}">
 						<h3 class="hidden-xs">Gasolinera</h3>
 					</a>
@@ -118,7 +124,7 @@
 	<div class="row">
 		<div class="col-md-4 col-xs-4" style="padding:0 0 0 10px">
 			<div class="restaurante">
-				<a href="{{ URL::to('es/departamentos/'.$dpto.'/locales/Restaurantes') }}">
+				<a href="{{ URL::to('es/departamentos/'.$depto->nombre.'/locales/Restaurantes') }}">
 					<img src="{{ asset('img/restaurante.png') }}" alt="">
 					<h3>Restaurantes</h3>
 				</a>
@@ -126,7 +132,7 @@
 		</div>
 		<div class="col-md-4 col-xs-4" style="padding:0 0 0 5px">
 			<div class="hotel">
-				<a href="{{ URL::to('es/departamentos/'.$dpto.'/locales/Hoteles') }}">
+				<a href="{{ URL::to('es/departamentos/'.$depto->nombre.'/locales/Hoteles') }}">
 					<img src="{{ asset('img/hotel.png') }}">
 					<h3>Hoteles</h3>
 				</a>
@@ -134,7 +140,7 @@
 		</div>
 		<div class="col-md-4 col-xs-4" style="padding:0 5px 0 5px">
 			<div class="transporte">
-				<a href="{{ URL::to('es/departamentos/'.$dpto.'/locales/Traslado') }}">
+				<a href="{{ URL::to('es/departamentos/'.$depto->nombre.'/locales/Traslado') }}">
 					<img src="{{ asset('img/transporte.png') }}">
 					<h3 class="hidden-xs">Traslado</h3>
 				</a>

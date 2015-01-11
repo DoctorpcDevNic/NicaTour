@@ -6,8 +6,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="robots" content="noindex, nofollow">
 
     <title>Administrador NicaraguaTour</title>
 
@@ -126,16 +125,18 @@
                                     <a href="{{ URL::to('administrador/Locales/Show/Hoteles') }}">Hoteles</a>
                                 </li>
                                  <li>
-                                    <a href="{{ URL::to('administrador/Locales/Show/Traslado') }}">Transporte</a>
+                                    <a href="{{ URL::to('administrador/Locales/Add') }}">Agregar</a>
                                 </li>
-                                 <li>
-                                    <a href="{{ URL::to('administrador/Locales/Show/Tours Operadoras') }}">Tours Operadoras</a>
+                             </ul>
+                        </li>
+                        <li>
+                             <a href=""><i class="fa fa-bar-chart-o fa-fw"></i> Gasolineras <span class="fa arrow"></span></a>
+                             <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="{{ URL::to('administrador/Gasolineras/Show') }}">Ver por departamento</a>
                                 </li>
                                 <li>
-                                    <a href="{{ URL::to('administrador/Locales/Show/Gasolineras') }}">Gasolineras</a>
-                                </li>
-                                 <li>
-                                    <a href="{{ URL::to('administrador/Locales/Add') }}">Agregar</a>
+                                    <a href="{{ URL::to('administrador/Gasolineras/Add') }}">Agregar</a>
                                 </li>
                              </ul>
                         </li>
@@ -184,6 +185,7 @@
     {{ HTML::script('js/vendor/bootstrap.min.js') }}
     {{ HTML::script('js/sb-admin-2.js') }}
     {{ HTML::script('js/metisMenu.min.js') }}
+    @yield('Scripts')
 </body>
 
 </html>

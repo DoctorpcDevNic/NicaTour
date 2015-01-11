@@ -23,7 +23,8 @@ Route::get('/', function()
 
     	Route::get('/', function()
 		{	$clima=Clima::find(10);
-			return View::make('inicio',array('clima'=>$clima));
+			$depto=deptos::find(10);
+			return View::make('inicio',array('clima'=>$clima, 'depto'=>$depto));
 		});
 
 	     Route::get('contacto', function(){
@@ -36,11 +37,13 @@ Route::get('/', function()
 
 		Route::group(array('prefix' => 'departamentos'), function(){
 
-			Route::get('{dpto}/{opcion}', 'DepartamentosController@dptoinfo');
+			Route::get('{dpto}/Cultura/{opcion}', 'DepartamentosController@dptoinfo');
 
 			Route::get('{dpto}/locales/{localdpto}', 'DepartamentosController@dptlocal');
 
-			Route::get('{dpto}','DepartamentosController@view');			
+			Route::get('{dpto}','DepartamentosController@view');
+
+			Route::get('Gasolineras/{depto}','DepartamentosController@Gasview');
 			
 		});
 
@@ -132,15 +135,27 @@ Route::get('/', function()
 	    	
 	    	Route::group(array('prefix'=>'Locales'), function(){
 
-	    		Route::get('/Show/{local}','AdminController@Locales');
-	    		Route::get('/Show/{local}/{departamento}','AdminController@LocalesDpto');
-	    		Route::get('/Edit/{local}/{departamento}/{id}','AdminController@LocalesEdit');
-	    		Route::post('/Update/{opcion}/{departamento}/{id}','AdminController@LocalesUpdate');
-	    		Route::post('/Update/General/{id}','AdminController@LocalesUpdateGeneral');
-	    		Route::post('/traduccion/{idioma}/{id}','AdminController@LocalesTraduccion');
-	    		Route::get('/Del/{opcion}/{departamento}/{info}','AdminController@LocalesDel');
-	    		Route::get('/Add','AdminController@LocalesAdd');
-	    		Route::post('/Add','AdminController@LocalesNew');
+	    		Route::get('/Show/{local}','LocalesAdmin@ViewDepto');
+	    		Route::get('/Show/{local}/{departamento}','LocalesAdmin@LocalesDpto');
+	    		Route::get('/Edit/{local}/{departamento}/{id}','LocalesAdmin@LocalesEdit');
+	    		Route::post('/Update/Traduccion/{id}','LocalesAdmin@LocalesUpdate');
+	    		Route::post('/Update/General/{id}','LocalesAdmin@LocalesUpdateGeneral');
+	    		Route::post('/traduccion/add/{idioma}/{id}','LocalesAdmin@LocalesTraduccion');
+	    		Route::get('/Del/{info}','LocalesAdmin@LocalesDel');
+	    		Route::get('/Add','LocalesAdmin@LocalesAdd');
+	    		Route::post('/Add','LocalesAdmin@LocalesNew');
+
+	    	});
+
+	    	Route::group(array('prefix'=>'Gasolineras'), function(){
+
+	    		Route::get('/Show','GasolinerasAdmin@GasView');
+	    		Route::get('/Show/{departamento}','GasolinerasAdmin@GasDpto');
+	    		Route::get('/Edit/{departamento}','GasolinerasAdmin@GasEdit');
+	    		Route::post('/Update/Traduccion/{id}','GasolinerasAdmin@GasUpdate');
+	    		Route::get('/Del/{id}','GasolinerasAdmin@GasDel');
+	    		Route::get('/Add','GasolinerasAdmin@GasAdd');
+	    		Route::post('/Add','GasolinerasAdmin@GasNew');
 
 	    	});
 

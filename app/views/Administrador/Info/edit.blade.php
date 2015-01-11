@@ -54,7 +54,7 @@
 								<select class="form-control" id="tipo" name="tipo">
 									@foreach($TipoCultura as $value)
 										@if($value->id<5)
-											@if($value->id==$Info->id_info)
+											@if($value->id==$Info->id_tipo)
 									  			<option value="{{$value->id}}" selected="">{{$value->tipo}}</option>
 									  		@else
 									  			<option value="{{$value->id}}">{{$value->tipo}}</option>

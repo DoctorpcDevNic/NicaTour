@@ -1,11 +1,11 @@
 <?php 
-	class info extends Eloquent {
+	class fotocultura extends Eloquent {
 	
 		protected $guarded = array();
 
 		public static $rules = array();
 
-		protected $table = 'info_detalle';
+		protected $table = 'fotocultura';
 
 	
 }

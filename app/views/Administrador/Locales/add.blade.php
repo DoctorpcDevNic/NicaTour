@@ -20,22 +20,30 @@
 				{{ Form::label('lblTipo', 'Seleccionar Tipo', array('class' => 'col-sm-2 control-label')) }}
 				<div class="col-sm-7">
 					<select class="form-control" id="tipo" name="tipo">
-						@foreach($tipo as $key)
-							@if($key->id>=5)
-					  			<option value="{{$key->id}}">{{$key->tipo}}</option>
-					  		@endif
-					  	@endforeach					  
+					  	<option value="5">Restaurantes</option>
+					  	<option value="6">Hoteles</option>
 					</select>
 				</div>				
 			</div>
 
 			<div class="form-group">
-				{{ Form::label('imagen', 'Seleccionar Imagen', array('class' => 'col-sm-2 control-label')) }}
+				{{ Form::label('Titulo', 'Nombre', array('class' => 'col-sm-2 control-label')) }}
 				<div class="col-sm-7">
-					{{ Form::file('archivo') }}
+					{{ Form::text('nombre', Input::old('titulo') ? Input::old():'', array('class' => 'form-control', 'placeholder'=> 'Nombre del local')) }}
 				</div>
 			</div>
-
+			<div class="form-group">
+				{{ Form::label('telefono', 'Telefono', array('class' => 'col-sm-2 control-label')) }}
+				<div class="col-sm-7">
+					{{ Form::text('telefono', Input::old('telefono') ? Input::old():'', array('class' => 'form-control', 'placeholder'=> 'Telefono del local')) }}
+				</div>
+			</div>
+			<div class="form-group">
+				{{ Form::label('direccion', 'Direccion', array('class' => 'col-sm-2 control-label')) }}
+				<div class="col-sm-7">
+					{{ Form::textarea('direccion', Input::old('direccion') ? Input::old():'', array('class' => 'form-control', 'placeholder'=> 'Direccion del local', 'size' => '30x5')) }}
+				</div>
+			</div>
 			<div class="form-group">				
 				<div class="col-sm-offset-2 col-sm-10">
 					{{ Form::submit('Agregar' , array('class'=> 'btn btn-primary')) }}

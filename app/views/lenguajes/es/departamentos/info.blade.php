@@ -1,4 +1,8 @@
 @extends('templates.departamentotemplate')
+@section('titulo')
+Nicaragua Tour - {{$opcion}} de {{$dpto->nombre}}
+@stop
+
 
 @section('SliderDpto')
  <div class="fluid_container">              
@@ -64,7 +68,7 @@
                 <div class="slider responsive2">                                    
                    @foreach($info_detalle as $value)                      
                               @foreach($Descripcion as $key)
-                                  @if($key->id_infodetalle==$value->id)
+                                  @if($key->id_foto==$value->id)
                                   <div>
                                     <div class="container-fluid">
                                       <div class="row">

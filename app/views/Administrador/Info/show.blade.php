@@ -7,7 +7,7 @@
 		@if(!count($Info)==0)		
 			@foreach($depto as $value)
 				@foreach($Info as $key)
-					@if($key->id_dpto==$value->id)
+					@if($key->id_depto==$value->id)
 						<?php $value->id+=17; ?>
 						<div class="col-md-4">
 						<div>

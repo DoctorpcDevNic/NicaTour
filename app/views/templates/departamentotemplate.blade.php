@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html lang="es"> 
+<html lang="es">
   <head> 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>@yield('titulo')</title>
+    @yield('seo')
 
     <!-- Bootstrap -->
     {{ HTML::style('css/departamento.css') }}
@@ -16,6 +17,21 @@
     {{ HTML::style('css/styleSlidePost.css') }}
 
     {{ HTML::style('css/camera.css') }}
+    <style>
+
+      .videoWrapper {
+        position: relative;
+        padding-bottom: 48.25%; /* 16:9 */
+        height: 0;
+      }
+      .videoWrapper embed {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+    </style>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -46,7 +62,27 @@
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav navbar-right">
             <li><a href="">Nicaragua</a></li>
-            <li><a href="">Departamentos</a></li>
+            <li><a href="" class="dropdown-toggle" data-toggle="dropdown">Departamentos</a>
+              <ul class="dropdown-menu deptos" role="menu">
+                <li><a href="{{ URL::to('es/departamentos/Boaco') }}">Boaco</a></li>
+                <li><a href="{{ URL::to('es/departamentos/Carazo') }}">Carazo</a></li>
+                <li><a href="{{ URL::to('es/departamentos/Chinandega') }}">Chinandega</a></li>
+                <li><a href="{{ URL::to('es/departamentos/Chontales') }}">Chontales</a></li>
+                <li><a href="{{ URL::to('es/departamentos/Esteli') }}">Estelí</a></li>
+                <li><a href="{{ URL::to('es/departamentos/Granada') }}">Granada</a></li>
+                <li><a href="{{ URL::to('es/departamentos/Jinotega') }}">Jinotega</a></li>
+                <li><a href="{{ URL::to('es/departamentos/Leon') }}">Leon</a></li>
+                <li><a href="{{ URL::to('es/departamentos/Madriz') }}">Madriz</a></li>
+                <li><a href="{{ URL::to('es/departamentos/Managua') }}">Managua</a></li>
+                <li><a href="{{ URL::to('es/departamentos/Masaya') }}">Masaya</a></li>                        
+                <li><a href="{{ URL::to('es/departamentos/Matagalpa') }}">Matagalpa</a></li>
+                <li><a href="{{ URL::to('es/departamentos/Nueva Segovia') }}">Nueva Segovia</a></li>
+                <li><a href="{{ URL::to('es/departamentos/Rivas') }}">Rivas</a></li>
+                <li><a href="{{ URL::to('es/departamentos/Rio San Juan') }}">Rio San Juan</a></li>
+                <li><a href="{{ URL::to('es/departamentos/RAAN') }}">RAAN</a></li>
+                <li><a href="{{ URL::to('es/departamentos/RAAS') }}">RAAS</a></li>
+              </ul>
+            </li>
             <li><a href="">Explorar</a></li>
             <li><a href="">Idioma</a></li>
             <li><a href="">contactenos</a></li>
@@ -124,5 +160,6 @@
       
     });
   </script>
+  @yield('Scripts')
   </body>
 </html>

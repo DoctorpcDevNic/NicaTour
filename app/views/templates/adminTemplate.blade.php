@@ -140,6 +140,17 @@
                                 </li>
                              </ul>
                         </li>
+                        <li>
+                             <a href=""><i class="fa fa-bar-chart-o fa-fw"></i> YouTube <span class="fa arrow"></span></a>
+                             <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="{{ URL::to('administrador/Youtube/Show') }}">Ver por departamento</a>
+                                </li>
+                                <li>
+                                    <a href="{{ URL::to('administrador/Youtube/Add') }}">Agregar</a>
+                                </li>
+                             </ul>
+                        </li>
                          <li>
                             <a href=""><i class="fa fa-bar-chart-o fa-fw"></i> Posicionamiento SEO <span class="fa arrow"></span></a>
                              <ul class="nav nav-second-level">

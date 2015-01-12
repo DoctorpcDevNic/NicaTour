@@ -2,6 +2,9 @@
 @section('contenido')
 
 	<div class="container-fluid">
+		@if(Session::has('message'))
+			<div class="alert alert-info">{{ Session::get('message') }}</div>
+		@endif
 		<h2 class="titul">Gasolineras</h2>
 		<div class="row">
 		@if(!count($Gasolineras)==0)		

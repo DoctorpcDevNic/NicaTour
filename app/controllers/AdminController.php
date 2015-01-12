@@ -288,4 +288,20 @@ class AdminController extends \BaseController {
 	}
 	//Fin funciones de gastronomia, artesanias, etc
 
+	public function Youtube(){
+
+		$departamentos=DB::table('deptos')
+			->paginate(6);
+		return View::make('Administrador.Youtube.show', array('departamentos'=>$departamentos));
+	}
+
+	public function YoutubeUpdate(){
+		$Video=deptos::find(Input::get('departamento'));
+		$Video->youtube=Input::get('video');
+		if($Video->save()){
+			Session::flash('message','Video de actualizado');
+			return Redirect::back();
+		}
+	}
+
 }

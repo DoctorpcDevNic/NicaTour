@@ -159,6 +159,13 @@ Route::get('/', function()
 
 	    	});
 
+	    	Route::group(array('prefix'=>'Youtube'), function(){
+
+	    		Route::get('/Show','AdminController@Youtube');
+	    		Route::post('/Show','AdminController@YoutubeUpdate');
+
+	    	});
+
 		});
 });
 

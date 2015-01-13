@@ -3,6 +3,9 @@
 
 	<div class="container-fluid">
 		<h2 class="titul">Video mostrado desde Youtube</h2>
+		@if(Session::has('message'))
+			<div class="alert alert-info">{{ Session::get('message') }}</div>
+		@endif
 		<div class="row">
 			@foreach($departamentos as $value)
 				<div class="col-md-4">
@@ -41,7 +44,7 @@
 			</div>
 			<div class="form-group">				
 				<div class="col-sm-offset-2 col-sm-10">
-					{{ Form::submit('Cambiar' , array('class'=> 'btn btn-primary')) }}
+					{{ Form::submit('Cambiar Video' , array('class'=> 'btn btn-primary')) }}
 				</div>	
 			</div>
 			{{Form::close()}}

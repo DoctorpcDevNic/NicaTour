@@ -299,7 +299,24 @@ class AdminController extends \BaseController {
 		$Video=deptos::find(Input::get('departamento'));
 		$Video->youtube=Input::get('video');
 		if($Video->save()){
-			Session::flash('message','Video de actualizado');
+			Session::flash('message','Video de '.$Video->nombre.' actualizado');
+			return Redirect::back();
+		}
+	}
+
+	public function SEO(){
+
+		$departamentos=DB::table('deptos')
+			->get();
+		return View::make('Administrador.SEO.update', array('departamentos'=>$departamentos));
+	}
+
+	public function SEOUpdate(){
+		$SEO=deptos::find(Input::get('departamento'));
+		$SEO->keywords=Input::get('keywords');
+		$SEO->descripcion=Input::get('descripcion');
+		if($SEO->save()){
+			Session::flash('message','Etiquetas de '.$SEO->nombre.' actualizadas');
 			return Redirect::back();
 		}
 	}

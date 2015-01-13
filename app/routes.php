@@ -166,6 +166,13 @@ Route::get('/', function()
 
 	    	});
 
+	    	Route::group(array('prefix'=>'SEO'), function(){
+
+	    		Route::get('/Show','AdminController@SEO');
+	    		Route::post('/Update','AdminController@SEOUpdate');
+
+	    	});
+
 		});
 });
 

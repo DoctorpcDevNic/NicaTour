@@ -74,7 +74,7 @@
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
                         <li>
-                            <a href=""><i class="fa fa-bar-chart-o fa-fw"></i>Usuarios<span class="fa arrow"></span></a>
+                            <a href=""><i class="fa fa-users fa-fw"></i>Usuarios<span class="fa arrow"></span></a>
                              <ul class="nav nav-second-level">
                                 <li>
                                     <a href="{{ URL::to('administrador/usuarios/Show') }}">Ver Todos</a>
@@ -85,7 +85,7 @@
                              </ul>
                         </li> 
                         <li>
-                            <a href=""><i class="fa fa-bar-chart-o fa-fw"></i> Slider Principal <span class="fa arrow"></span></a>
+                            <a href=""><i class="fa fa-photo fa-fw"></i> Slider Principal <span class="fa arrow"></span></a>
                              <ul class="nav nav-second-level">
                                 <li>
                                     <a href="{{ URL::to('administrador/Slider') }}">Ver Todos</a>
@@ -116,7 +116,7 @@
                              </ul>
                         </li>
                         <li>
-                            <a href=""><i class="fa fa-bar-chart-o fa-fw"></i> Locales <span class="fa arrow"></span></a>
+                            <a href=""><i class="fa fa-cutlery fa-fw"></i> Locales <span class="fa arrow"></span></a>
                              <ul class="nav nav-second-level">
                                 <li>
                                     <a href="{{ URL::to('administrador/Locales/Show/Restaurantes') }}">Restaurantes</a>
@@ -130,7 +130,7 @@
                              </ul>
                         </li>
                         <li>
-                             <a href=""><i class="fa fa-bar-chart-o fa-fw"></i> Gasolineras <span class="fa arrow"></span></a>
+                             <a href=""><i class="fa fa-cab fa-fw"></i> Gasolineras <span class="fa arrow"></span></a>
                              <ul class="nav nav-second-level">
                                 <li>
                                     <a href="{{ URL::to('administrador/Gasolineras/Show') }}">Ver por departamento</a>
@@ -141,7 +141,7 @@
                              </ul>
                         </li>
                         <li>
-                             <a href=""><i class="fa fa-bar-chart-o fa-fw"></i> YouTube <span class="fa arrow"></span></a>
+                             <a href=""><i class="fa fa-youtube fa-fw"></i> YouTube <span class="fa arrow"></span></a>
                              <ul class="nav nav-second-level">
                                 <li>
                                     <a href="{{ URL::to('administrador/Youtube/Show') }}">Ver por departamento</a>
@@ -152,7 +152,7 @@
                              </ul>
                         </li>
                          <li>
-                            <a href=""><i class="fa fa-bar-chart-o fa-fw"></i> Posicionamiento SEO <span class="fa arrow"></span></a>
+                            <a href=""><i class="fa fa-search fa-fw"></i> Posicionamiento SEO <span class="fa arrow"></span></a>
                              <ul class="nav nav-second-level">
                                 <li>
                                     <a href="{{ URL::to('administrador/SEO/Show') }}">Pag. Principal Departamentos</a>

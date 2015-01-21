@@ -24,7 +24,7 @@
 								<a href="#" class="btn btn-primary">Editar</a>
 							</div>
 							<div class="col-sm-3">
-								<a href="#" class="btn btn-primary">Eliminar</a>
+								<a href="{{ URL::to('/administrador/Gasolineras/Del/'.$value->id.'') }}" class="btn btn-primary">Eliminar</a>
 							</div>
 						</div>						
 					</div>

@@ -133,17 +133,31 @@ Route::get('/', function()
 
 	    	});    	
 	    	
-	    	Route::group(array('prefix'=>'Locales'), function(){
+	    	Route::group(array('prefix'=>'Restaurantes'), function(){
 
-	    		Route::get('/Show/{local}','LocalesAdmin@ViewDepto');
-	    		Route::get('/Show/{local}/{departamento}','LocalesAdmin@LocalesDpto');
-	    		Route::get('/Edit/{local}/{departamento}/{id}','LocalesAdmin@LocalesEdit');
-	    		Route::post('/Update/Traduccion/{id}','LocalesAdmin@LocalesUpdate');
-	    		Route::post('/Update/General/{id}','LocalesAdmin@LocalesUpdateGeneral');
-	    		Route::post('/traduccion/add/{idioma}/{id}','LocalesAdmin@LocalesTraduccion');
-	    		Route::get('/Del/{info}','LocalesAdmin@LocalesDel');
-	    		Route::get('/Add','LocalesAdmin@LocalesAdd');
-	    		Route::post('/Add','LocalesAdmin@LocalesNew');
+	    		Route::get('/Show','RestaurantesAdmin@ViewDepto');
+	    		Route::get('/Show/{departamento}','RestaurantesAdmin@Depto');
+	    		Route::get('/Edit/{departamento}/{id}','RestaurantesAdmin@Edit');
+	    		Route::post('/Update/Traduccion/{id}','RestaurantesAdmin@Update');
+	    		Route::post('/Update/General/{id}','RestaurantesAdmin@UpdateGeneral');
+	    		Route::post('/traduccion/add/{idioma}/{id}','RestaurantesAdmin@Traduccion');
+	    		Route::get('/Del/{id}','RestaurantesAdmin@RestDel');
+	    		Route::get('/Add','RestaurantesAdmin@Add');
+	    		Route::post('/Add','RestaurantesAdmin@RestNew');
+
+	    	});
+
+	    	Route::group(array('prefix'=>'Hoteles'), function(){
+
+	    		Route::get('/Show','HotelesAdmin@ViewDepto');
+	    		Route::get('/Show/{departamento}','HotelesAdmin@Depto');
+	    		Route::get('/Edit/{departamento}/{id}','HotelesAdmin@Edit');
+	    		Route::post('/Update/Traduccion/{id}','HotelesAdmin@Update');
+	    		Route::post('/Update/General/{id}','HotelesAdmin@UpdateGeneral');
+	    		Route::post('/traduccion/add/{idioma}/{id}','HotelesAdmin@Traduccion');
+	    		Route::get('/Del/{id}','HotelesAdmin@HotelDel');
+	    		Route::get('/Add','HotelesAdmin@Add');
+	    		Route::post('/Add','HotelesAdmin@HotelsNew');
 
 	    	});
 

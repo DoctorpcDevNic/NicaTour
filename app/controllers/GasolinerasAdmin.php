@@ -42,5 +42,21 @@ class GasolinerasAdmin extends \BaseController {
 		return View::make('Administrador.Gasolineras.departamento', array('Gasolineras'=>$Gasolineras, 'depto'=>$depto));
 	}
 
+	public function GasDpto($departamento)
+	{
+
+	}
+
+	public function GasDel($id)
+	{
+		$Gas=gasolineras::find($id);
+
+		if($Gas->delete())
+		{
+			Session::flash('message', 'Estación eliminada');
+			return Redirect::back();
+		}
+	}
+
 
 }

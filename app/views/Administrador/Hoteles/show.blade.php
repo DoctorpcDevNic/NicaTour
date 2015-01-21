@@ -2,15 +2,15 @@
 @section('contenido')
 
 	<div class="container-fluid">
-		<h2 class="titul">{{$local}}</h2>
+		<h2 class="titul">Hoteles</h2>
 		<div class="row">
-		@if(!count($Info)==0)		
+		@if(!count($Hotels)==0)		
 			@foreach($depto as $value)
-				@foreach($Info as $key)
+				@foreach($Hotels as $key)
 					@if($key->id_depto==$value->id)
 						<?php $value->id+=17; ?>
-						<div class="col-md-4">						
-							<a href="{{ URL::to('/administrador/Locales/Show/'.$local.'/'.$value->nombre.'') }}"><h2 class="titul">{{$value->nombre}}</h2></a>
+						<div class="col-md-4 col-sm-6">						
+							<a href="{{ URL::to('/administrador/Hoteles/Show/'.$value->nombre.'') }}"><h2 class="titul">{{$value->nombre}}</h2></a>
 						</div>																		
 					@endif
 				@endforeach

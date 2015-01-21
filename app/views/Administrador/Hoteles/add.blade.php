@@ -2,9 +2,8 @@
 @section('contenido')
 
 	<div class="container-fluid">
-		<h2 class="titul">Agregar Local</h2>
-		{{ Form::open(array('url' => 'administrador/Locales/Add', 'files' => 'true', 'class' => 'form-horizontal')) }}
-			
+		<h2 class="titul">Agregar Hotel</h2>
+		{{ Form::open(array('url' => 'administrador/Hoteles/Add', 'class' => 'form-horizontal')) }}
 			<div class="form-group">
 				{{ Form::label('lbldepartamento', 'Seleccionar Departamento', array('class' => 'col-sm-2 control-label')) }}
 				<div class="col-sm-7">
@@ -15,21 +14,16 @@
 					</select>
 				</div>				
 			</div>
-
 			<div class="form-group">
-				{{ Form::label('lblTipo', 'Seleccionar Tipo', array('class' => 'col-sm-2 control-label')) }}
+				{{ Form::label('Titulo', 'Municipio', array('class' => 'col-sm-2 control-label')) }}
 				<div class="col-sm-7">
-					<select class="form-control" id="tipo" name="tipo">
-					  	<option value="5">Restaurantes</option>
-					  	<option value="6">Hoteles</option>
-					</select>
-				</div>				
+					{{ Form::text('municipio', Input::old('municipio') ? Input::old():'', array('class' => 'form-control', 'placeholder'=> 'Municipio')) }}
+				</div>
 			</div>
-
 			<div class="form-group">
 				{{ Form::label('Titulo', 'Nombre', array('class' => 'col-sm-2 control-label')) }}
 				<div class="col-sm-7">
-					{{ Form::text('nombre', Input::old('titulo') ? Input::old():'', array('class' => 'form-control', 'placeholder'=> 'Nombre del local')) }}
+					{{ Form::text('nombre', Input::old('nombre') ? Input::old():'', array('class' => 'form-control', 'placeholder'=> 'Nombre del local')) }}
 				</div>
 			</div>
 			<div class="form-group">

@@ -116,16 +116,24 @@
                              </ul>
                         </li>
                         <li>
-                            <a href=""><i class="fa fa-cutlery fa-fw"></i> Locales <span class="fa arrow"></span></a>
+                            <a href=""><i class="fa fa-cutlery fa-fw"></i> Restaurantes <span class="fa arrow"></span></a>
                              <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="{{ URL::to('administrador/Locales/Show/Restaurantes') }}">Restaurantes</a>
+                                    <a href="{{ URL::to('administrador/Restaurantes/Show') }}">Ver por departamentos</a>
                                 </li>
                                  <li>
-                                    <a href="{{ URL::to('administrador/Locales/Show/Hoteles') }}">Hoteles</a>
+                                    <a href="{{ URL::to('administrador/Restaurantes/Add') }}">Agregar</a>
+                                </li>
+                             </ul>
+                        </li>
+                        <li>
+                            <a href=""><i class="fa fa-home fa-fw"></i> Hoteles <span class="fa arrow"></span></a>
+                             <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="{{ URL::to('administrador/Hoteles/Show') }}">Ver por departamentos</a>
                                 </li>
                                  <li>
-                                    <a href="{{ URL::to('administrador/Locales/Add') }}">Agregar</a>
+                                    <a href="{{ URL::to('administrador/Hoteles/Add') }}">Agregar</a>
                                 </li>
                              </ul>
                         </li>

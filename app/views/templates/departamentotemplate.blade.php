@@ -66,26 +66,26 @@
             <ul class="dropdown-menu deptos row" role="menu">
               <li>
                 <ul class="col-sm-6">
-                <li><a href="{{ URL::to('es/departamentos/Boaco') }}">Boaco</a></li>
-                <li><a href="{{ URL::to('es/departamentos/Carazo') }}">Carazo</a></li>
-                <li><a href="{{ URL::to('es/departamentos/Chinandega') }}">Chinandega</a></li>
-                <li><a href="{{ URL::to('es/departamentos/Chontales') }}">Chontales</a></li>
-                <li><a href="{{ URL::to('es/departamentos/Esteli') }}">Estelí</a></li>
-                <li><a href="{{ URL::to('es/departamentos/Granada') }}">Granada</a></li>
-                <li><a href="{{ URL::to('es/departamentos/Jinotega') }}">Jinotega</a></li>
-                <li><a href="{{ URL::to('es/departamentos/Leon') }}">Leon</a></li>
-                <li><a href="{{ URL::to('es/departamentos/Madriz') }}">Madriz</a></li>
-              </ul>
-              <ul class="col-sm-6">
-                <li><a href="{{ URL::to('es/departamentos/Managua') }}">Managua</a></li>
-                <li><a href="{{ URL::to('es/departamentos/Masaya') }}">Masaya</a></li>                        
-                <li><a href="{{ URL::to('es/departamentos/Matagalpa') }}">Matagalpa</a></li>
-                <li><a href="{{ URL::to('es/departamentos/Nueva Segovia') }}">Nueva Segovia</a></li>
-                <li><a href="{{ URL::to('es/departamentos/Rivas') }}">Rivas</a></li>
-                <li><a href="{{ URL::to('es/departamentos/Rio San Juan') }}">Rio San Juan</a></li>
-                <li><a href="{{ URL::to('es/departamentos/RAAN') }}">RAAN</a></li>
-                <li><a href="{{ URL::to('es/departamentos/RAAS') }}">RAAS</a></li>
-              </ul>
+                  <li><a href="{{ URL::to('es/departamentos/Boaco') }}">Boaco</a></li>
+                  <li><a href="{{ URL::to('es/departamentos/Carazo') }}">Carazo</a></li>
+                  <li><a href="{{ URL::to('es/departamentos/Chinandega') }}">Chinandega</a></li>
+                  <li><a href="{{ URL::to('es/departamentos/Chontales') }}">Chontales</a></li>
+                  <li><a href="{{ URL::to('es/departamentos/Esteli') }}">Estelí</a></li>
+                  <li><a href="{{ URL::to('es/departamentos/Granada') }}">Granada</a></li>
+                  <li><a href="{{ URL::to('es/departamentos/Jinotega') }}">Jinotega</a></li>
+                  <li><a href="{{ URL::to('es/departamentos/Leon') }}">Leon</a></li>
+                  <li><a href="{{ URL::to('es/departamentos/Madriz') }}">Madriz</a></li>
+                </ul>
+                <ul class="col-sm-6">
+                  <li><a href="{{ URL::to('es/departamentos/Managua') }}">Managua</a></li>
+                  <li><a href="{{ URL::to('es/departamentos/Masaya') }}">Masaya</a></li>                        
+                  <li><a href="{{ URL::to('es/departamentos/Matagalpa') }}">Matagalpa</a></li>
+                  <li><a href="{{ URL::to('es/departamentos/Nueva Segovia') }}">Nueva Segovia</a></li>
+                  <li><a href="{{ URL::to('es/departamentos/Rivas') }}">Rivas</a></li>
+                  <li><a href="{{ URL::to('es/departamentos/Rio San Juan') }}">Rio San Juan</a></li>
+                  <li><a href="{{ URL::to('es/departamentos/RAAN') }}">RAAN</a></li>
+                  <li><a href="{{ URL::to('es/departamentos/RAAS') }}">RAAS</a></li>
+                </ul>
               </li>
             </ul>            
             </li>

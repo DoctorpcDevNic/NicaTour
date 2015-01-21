@@ -133,6 +133,20 @@ Route::get('/', function()
 	    		Route::post('/traduccion/{idioma}/{id}','AdminController@InfoTraduccion');
 	    		Route::get('/Del/{opcion}/{departamento}/{info}','AdminController@InfoDel');
 
+	    	});
+
+	    	Route::group(array('prefix'=>'Calendario'), function(){
+
+	    		Route::get('/Show','CalendarioAdmin@ViewDepto');
+	    		Route::get('/Show/{departamento}','CalendarioAdmin@Depto');
+	    		Route::get('/Edit/{departamento}/{id}','CalendarioAdmin@Edit');
+	    		Route::post('/Update/Traduccion/{id}','CalendarioAdmin@Update');
+	    		Route::post('/Update/General/{id}','CalendarioAdmin@UpdateGeneral');
+	    		Route::post('/traduccion/add/{idioma}/{id}','CalendarioAdmin@Traduccion');
+	    		Route::get('/Del/{id}','CalendarioAdmin@EventoDel');
+	    		Route::get('/Add','CalendarioAdmin@Add');
+	    		Route::post('/Add','CalendarioAdmin@EventoNew');
+
 	    	});    	
 	    	
 	    	Route::group(array('prefix'=>'Restaurantes'), function(){

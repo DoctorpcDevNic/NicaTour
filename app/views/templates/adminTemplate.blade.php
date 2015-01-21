@@ -116,6 +116,17 @@
                              </ul>
                         </li>
                         <li>
+                            <a href=""><i class="fa fa-calendar fa-fw"></i> Calendario Turistico <span class="fa arrow"></span></a>
+                             <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="{{ URL::to('administrador/Calendario/Show') }}">Ver por departamentos</a>
+                                </li>
+                                 <li>
+                                    <a href="{{ URL::to('administrador/Calendario/Add') }}">Agregar</a>
+                                </li>
+                             </ul>
+                        </li>
+                        <li>
                             <a href=""><i class="fa fa-cutlery fa-fw"></i> Restaurantes <span class="fa arrow"></span></a>
                              <ul class="nav nav-second-level">
                                 <li>

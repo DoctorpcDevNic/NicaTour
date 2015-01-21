@@ -132,7 +132,7 @@ Nicaragua Tour - Conoce {{$depto->nombre}}
 		</div>
 		<div class="col-md-4 col-xs-4" style="padding:0 0 0 5px">
 			<div class="hotel">
-				<a href="{{ URL::to('es/departamentos/'.$depto->nombre.'/locales/Hoteles') }}">
+				<a href="{{ URL::to('es/departamentos/'.$depto->nombre.'/Hoteles') }}">
 					<img src="{{ asset('img/hotel.png') }}">
 					<h3>Hoteles</h3>
 				</a>

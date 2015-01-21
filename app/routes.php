@@ -39,7 +39,7 @@ Route::get('/', function()
 
 			Route::get('{dpto}/Cultura/{opcion}', 'DepartamentosController@dptoinfo');
 
-			Route::get('{dpto}/locales/{localdpto}', 'DepartamentosController@dptlocal');
+			Route::get('{dpto}/Hoteles', 'DepartamentosController@DeptoHoteles');
 
 			Route::get('{dpto}','DepartamentosController@view');
 

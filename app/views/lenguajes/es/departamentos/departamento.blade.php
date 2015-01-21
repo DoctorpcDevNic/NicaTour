@@ -124,7 +124,7 @@ Nicaragua Tour - Conoce {{$depto->nombre}}
 	<div class="row">
 		<div class="col-md-4 col-xs-4" style="padding:0 0 0 10px">
 			<div class="restaurante">
-				<a href="{{ URL::to('es/departamentos/'.$depto->nombre.'/locales/Restaurantes') }}">
+				<a href="{{ URL::to('es/departamentos/'.$depto->nombre.'/Restaurantes') }}">
 					<img src="{{ asset('img/restaurante.png') }}" alt="">
 					<h3>Restaurantes</h3>
 				</a>
@@ -140,7 +140,7 @@ Nicaragua Tour - Conoce {{$depto->nombre}}
 		</div>
 		<div class="col-md-4 col-xs-4" style="padding:0 5px 0 5px">
 			<div class="transporte">
-				<a href="{{ URL::to('es/departamentos/'.$depto->nombre.'/locales/Traslado') }}">
+				<a href="{{ URL::to('es/departamentos/'.$depto->nombre) }}">
 					<img src="{{ asset('img/transporte.png') }}">
 					<h3 class="hidden-xs">Traslado</h3>
 				</a>

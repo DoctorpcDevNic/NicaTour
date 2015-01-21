@@ -41,6 +41,8 @@ Route::get('/', function()
 
 			Route::get('{dpto}/Hoteles', 'DepartamentosController@DeptoHoteles');
 
+			Route::get('{dpto}/Restaurantes', 'DepartamentosController@DeptoRest');
+
 			Route::get('{dpto}','DepartamentosController@view');
 
 			Route::get('Gasolineras/{depto}','DepartamentosController@Gasview');

@@ -91,6 +91,25 @@ class DepartamentosController extends BaseController {
        return View::make('lenguajes.es.departamentos.hoteles', array('Hoteles'=>$Hoteles,'depto'=>$depto, 'SliderDpto'=>$SliderDpto));
     }
 
+     public function DeptoRest($departamento)
+    {
+    	$depto = DB::table('deptos')
+			->where('nombre',$departamento)
+			->first();
+		//Obtengo el departamento con todos los idiomas disponibles
+
+		$SliderDpto=DB::table('detalleslider')
+			->where('id_dpto',$depto->id)
+			->get();
+
+
+		$Rest=DB::table('restaurantes')
+			->where('id_depto',$depto->id)
+			->paginate(12);
+		
+       return View::make('lenguajes.es.departamentos.restaurantes', array('Rest'=>$Rest,'depto'=>$depto, 'SliderDpto'=>$SliderDpto));
+    }
+
     public function Gasview($depto){
 
     	$departamento = DB::table('deptos')

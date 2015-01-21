@@ -1,7 +1,7 @@
 @extends('templates.departamentotemplate')
 
 @section('titulo')
-Nicaragua Tour - {{$localdpto}} en {{$dpto}}
+Restaurantes en {{$depto->nombre}} - Nicaragua Tour
 @stop
 
 @section('SliderDpto')
@@ -19,24 +19,21 @@ Nicaragua Tour - {{$localdpto}} en {{$dpto}}
 @stop
 
 @section('contenido')
-	@if(!count($DetalleInfo)==0)
-		@foreach($DetalleInfo as $value)		
-				@foreach($Descripcion as $key)
-					@if($key->id_infodetalle==$value->id)
-						<div class="row">
-							<div class="col-md-9 col-xs-7">
-								<h3>{{ $key->nombre }}</h3>
-								<p>{{ $key->telefono }}</p>
-								<p>{{ $key->direccion }}</p>		
-							</div>
-						</div>
-					@endif
-				@endforeach		
-		@endforeach
+	@if(!count($Rest)==0)
+		<div class="row">
+			@foreach($Rest as $key)
+				<div class="col-md-6 col-xs-6 hoteles">
+					<h3>{{ $key->nombre }}</h3>
+					<p>{{ $key->telefono }}</p>
+					<p>{{$depto->nombre}}, {{ $key->municipio }}</p>
+					<p>{{ $key->direccion }}</p>		
+				</div>
+			@endforeach
+		</div>	
 	@else
 		<div class="row">
-			<h2 class="titul">No hay {{$localdpto}} disponibles</h2>
+			<h2 class="titul">No hay hoteles disponibles para mostrar</h2>
 		</div>
 	@endif
-	<div>{{$DetalleInfo->links()}}</div>
+	<div>{{$Rest->links()}}</div>
 @stop

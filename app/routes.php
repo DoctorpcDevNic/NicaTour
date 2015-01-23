@@ -17,6 +17,21 @@ Route::get('/', function()
 	return Redirect::to('/es');
 });
 
+Route::get('sitemap', function(){
+	// create sitemap
+    $sitemap = App::make("sitemap");
+
+    // set cache
+    $sitemap->setCache('laravel.sitemap-index', 3600);
+
+    // add sitemaps (loc, lastmod (optional))
+    $sitemap->addSitemap(URL::to('sitemap-posts'));
+    $sitemap->addSitemap(URL::to('sitemap-tags'));
+
+    // show sitemap
+    return $sitemap->render('sitemapindex');
+});
+
 
 	/* ESPAÑOL  */
     Route::group(array('prefix' => 'es'), function () {

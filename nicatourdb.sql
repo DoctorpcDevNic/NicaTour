@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 21-01-2015 a las 21:05:00
+-- Tiempo de generación: 23-01-2015 a las 18:38:01
 -- Versión del servidor: 5.6.21
 -- Versión de PHP: 5.6.3
 
@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS `calendario` (
   `direccion` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -53,7 +53,7 @@ CREATE TABLE IF NOT EXISTS `deptos` (
   `youtube` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
   `keywords` varchar(200) COLLATE utf8_spanish_ci NOT NULL,
   `descripcion` varchar(200) COLLATE utf8_spanish_ci NOT NULL,
-  `create_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
 ) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
@@ -61,7 +61,7 @@ CREATE TABLE IF NOT EXISTS `deptos` (
 -- Volcado de datos para la tabla `deptos`
 --
 
-INSERT INTO `deptos` (`id`, `nombre`, `latitud`, `longitud`, `zoom`, `dolar`, `youtube`, `keywords`, `descripcion`, `create_at`, `updated_at`) VALUES
+INSERT INTO `deptos` (`id`, `nombre`, `latitud`, `longitud`, `zoom`, `dolar`, `youtube`, `keywords`, `descripcion`, `created_at`, `updated_at`) VALUES
 (1, 'Boaco', '12.470478201748175', '-85.65898419999996', 14, '26.63', 'PIh2xe4jnpk', 'Boaco, Ciudad de dos pisos, Nicaragua, Region Norte', 'Boaco, Ciudad de la region norte de Nicaragua, conocida como la ciudad de dos pisos', '2015-01-13 04:44:17', '2015-01-12 23:13:42'),
 (2, 'Carazo', '11.847114728782314', '-86.195426', 13, '26.63', 'XvlHisKH1hg', 'Carazo, Playas del pacifico, La Boquita', 'Carazo, su ciudad principal es Jinotepe', '2015-01-13 04:50:16', '2015-01-13 10:50:16'),
 (3, 'Chinandega', '12.623776128614631', '-87.12080960000003', 12, '26.63', 'fLJxdZDm72A', '', '', '2015-01-10 16:33:35', '0000-00-00 00:00:00'),
@@ -71,7 +71,7 @@ INSERT INTO `deptos` (`id`, `nombre`, `latitud`, `longitud`, `zoom`, `dolar`, `y
 (7, 'Jinotega', '13.089838125023427', '-85.99930305000004', 13, '26.63', 'YgY86pXW7IE', '', '', '2015-01-10 16:40:33', '0000-00-00 00:00:00'),
 (8, 'Leon', '12.433997349553284', '-86.88207885000003', 12, '26.63', 'upTQ8e0KzDQ', '', '', '2015-01-10 16:43:56', '0000-00-00 00:00:00'),
 (9, 'Madriz', '13.481491162505499', '-86.58084865000001', 14, '26.63', 'YgY86pXW7IE', '', '', '2015-01-10 16:40:38', '0000-00-00 00:00:00'),
-(10, 'Managua', '12.096214921751834', '-86.25846060000003', 11, '26.63', '6HSoVVf17WM', '', '', '2015-01-10 17:13:07', '0000-00-00 00:00:00'),
+(10, 'Managua', '12.096214921751834', '-86.25846060000003', 11, '26.63', 'OxxggwHFj7M', '', '', '2015-01-22 16:18:21', '2015-01-22 22:18:21'),
 (11, 'Masaya', '11.97501259421353', '-86.09272480000004', 12, '26.63', '0QP4Nc0QVCM', '', '', '2015-01-10 16:36:09', '0000-00-00 00:00:00'),
 (12, 'Matagalpa', '12.92961447177432', '-85.92150800000002', 12, '26.63', 'YgY86pXW7IE', '', '', '2015-01-10 16:40:42', '0000-00-00 00:00:00'),
 (13, 'Nueva Segovia', '13.629611915823169', '-86.47501950000003', 13, '26.63', 'YgY86pXW7IE', '', '', '2015-01-10 16:40:45', '0000-00-00 00:00:00'),
@@ -286,7 +286,7 @@ CREATE TABLE IF NOT EXISTS `hoteles` (
   `direccion` text COLLATE utf8_unicode_ci NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
-) ENGINE=InnoDB AUTO_INCREMENT=2048 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1285 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `hoteles`
@@ -1683,7 +1683,7 @@ CREATE TABLE IF NOT EXISTS `restaurantes` (
   `direccion` text COLLATE utf8_unicode_ci NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
-) ENGINE=InnoDB AUTO_INCREMENT=2047 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1753 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `restaurantes`
@@ -3198,7 +3198,7 @@ CREATE TABLE IF NOT EXISTS `traduccioneventos` (
   `direccion` text COLLATE utf8_unicode_ci NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -3217,7 +3217,7 @@ CREATE TABLE IF NOT EXISTS `traduccionhoteles` (
   `direccion` text COLLATE utf8_unicode_ci NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -3255,7 +3255,7 @@ CREATE TABLE IF NOT EXISTS `traduccionrestaurantes` (
   `direccion` text COLLATE utf8_unicode_ci NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -3395,7 +3395,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `calendario`
 --
 ALTER TABLE `calendario`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `deptos`
 --
@@ -3430,7 +3430,7 @@ MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
 -- AUTO_INCREMENT de la tabla `hoteles`
 --
 ALTER TABLE `hoteles`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2048;
+MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=1285;
 --
 -- AUTO_INCREMENT de la tabla `idioma`
 --
@@ -3445,7 +3445,7 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=18;
 -- AUTO_INCREMENT de la tabla `restaurantes`
 --
 ALTER TABLE `restaurantes`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2047;
+MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=1753;
 --
 -- AUTO_INCREMENT de la tabla `tipoinfo`
 --
@@ -3455,12 +3455,12 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
 -- AUTO_INCREMENT de la tabla `traduccioneventos`
 --
 ALTER TABLE `traduccioneventos`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `traduccionhoteles`
 --
 ALTER TABLE `traduccionhoteles`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `traduccionlocales`
 --
@@ -3470,7 +3470,7 @@ MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT;
 -- AUTO_INCREMENT de la tabla `traduccionrestaurantes`
 --
 ALTER TABLE `traduccionrestaurantes`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --

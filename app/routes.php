@@ -18,18 +18,64 @@ Route::get('/', function()
 });
 
 Route::get('sitemap', function(){
-	// create sitemap
-    $sitemap = App::make("sitemap");
+	// create new sitemap object 
+	$sitemap = App::make("sitemap"); 
+	// add items to the sitemap (url, date, priority, freq) 
+	
+	$sitemap->add(URL::to('/es'), '2012-08-26T12:30:00+02:00', '0.9', 'monthly'); 
+	$sitemap->add(URL::to('/contacto'), '2012-08-26T12:30:00+02:00', '0.9', 'monthly'); 
+	$sitemap->add(URL::to('/nosotros/mision'), '2012-08-26T12:30:00+02:00', '0.9', 'monthly'); 
+	// get all posts from db 
+	$departamentos = DB::table('deptos')->orderBy('created_at', 'desc')->get(); 
+	// add every post to the sitemap 
+	foreach ($departamentos as $key)
+		{ 
+			$sitemap->add(
+				URL::to('/es/departamentos/'.$key->nombre),
+				$key->updated_at,
+				'0.9',
+				'daily');
+			$sitemap->add(
+				URL::to('/es/departamentos/'.$key->nombre.'/Hoteles'),
+				$key->updated_at,
+				'0.9',
+				'daily');
+			$sitemap->add(
+				URL::to('/es/departamentos/'.$key->nombre.'/Restaurantes'),
+				$key->updated_at,
+				'0.9',
+				'daily');
+			$sitemap->add(
+				URL::to('/es/departamentos/Gasolineras'.$key->nombre),
+				$key->updated_at,
+				'0.9',
+				'daily');
+			$sitemap->add(
+				URL::to('/es/departamentos/'.$key->nombre.'/Cultura/Gastronomia'),
+				$key->updated_at,
+				'0.9',
+				'daily');
+			$sitemap->add(
+				URL::to('/es/departamentos/'.$key->nombre.'/Cultura/Tesoros Coloniales'),
+				$key->updated_at,
+				'0.9',
+				'daily');
+			$sitemap->add(
+				URL::to('/es/departamentos/'.$key->nombre.'/Cultura/Danza'),
+				$key->updated_at,
+				'0.9',
+				'daily');
+			$sitemap->add(
+				URL::to('/es/departamentos/'.$key->nombre.'/Cultura/Artsania'),
+				$key->updated_at,
+				'0.9',
+				'daily');
+		} 
+	// generate your sitemap (format, filename)
+	$sitemap->store('xml', 'sitemap');
+	return $sitemap->render('xml');
+	// this will generate file mysitemap.xml to your public folder - See more at: http://www.tutorialworld.net/sitemap-generator-laravel-4/#sthash.Lkb83IR0.dpuf
 
-    // set cache
-    $sitemap->setCache('laravel.sitemap-index', 3600);
-
-    // add sitemaps (loc, lastmod (optional))
-    $sitemap->addSitemap(URL::to('sitemap-posts'));
-    $sitemap->addSitemap(URL::to('sitemap-tags'));
-
-    // show sitemap
-    return $sitemap->render('sitemapindex');
 });
 
 

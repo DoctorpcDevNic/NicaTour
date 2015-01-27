@@ -3,6 +3,13 @@
 
 	<div class="container-fluid">
 		<h2 class="titul">Slider Principal - Agregar Imagen</h2>
+			@if( $errors->has('archivo'))
+				<div class="row">
+					<div class="col-sm-7 col-sm-offset-2">
+						<p class="alert alert-danger">{{ $errors->first('archivo') }}</p>
+					</div>
+				</div>
+			@endif
 		{{ Form::open(array('url' => 'administrador/Slider/Add', 'files' => 'true', 'class' => 'form-horizontal')) }}
 			
 			<div class="form-group">

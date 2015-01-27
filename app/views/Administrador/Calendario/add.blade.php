@@ -3,6 +3,28 @@
 
 	<div class="container-fluid">
 		<h2 class="titul">Agregar Evento</h2>
+		<div class="row">
+			@if( $errors->has('municipio'))
+				<div class="col-sm-5 col-sm-offset-3">
+					<p class="alert alert-danger">{{ $errors->first('municipio') }}</p>
+				</div>
+			@endif
+			@if( $errors->has('fecha'))
+				<div class="col-sm-5 col-sm-offset-3">
+					<p class="alert alert-danger">{{ $errors->first('fecha') }}</p>
+				</div>
+			@endif
+			@if( $errors->has('nombre'))
+				<div class="col-sm-5 col-sm-offset-3">
+					<p class="alert alert-danger">{{ $errors->first('nombre') }}</p>
+				</div>
+			@endif
+			@if( $errors->has('direccion'))
+				<div class="col-sm-5 col-sm-offset-3">
+					<p class="alert alert-danger">{{ $errors->first('direccion') }}</p>
+				</div>
+			@endif
+		</div>
 		{{ Form::open(array('url' => 'administrador/Calendario/Add', 'class' => 'form-horizontal')) }}
 			<div class="form-group">
 				{{ Form::label('lbldepartamento', 'Seleccionar Departamento', array('class' => 'col-sm-2 control-label')) }}

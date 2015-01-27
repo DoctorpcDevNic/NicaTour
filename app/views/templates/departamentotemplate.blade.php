@@ -10,6 +10,7 @@
     <!-- Bootstrap -->
     {{ HTML::style('css/departamento.css') }}
     {{ HTML::style('css/bootstrap.min.css') }}
+    {{ HTML::style('font-awesome-4.1.0/css/font-awesome.min.css') }}
 
     <!--Other Slider -->
     {{ HTML::style('css/slick.css') }}

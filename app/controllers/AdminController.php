@@ -40,28 +40,46 @@ class AdminController extends \BaseController {
 
 	public function SliderDptoNew()
 	{		
-		//Añadde  una imagen al Slider principal departamental
+		$reglas= array(
+				'archivo'=> 'required|image|max:350',
+			);
+		$alertas = array(
+            'archivo.required' => 'La imagen no puede estar vacia.',
+            'archivo.image' => 'El archivo seleccionado no es correcto, asegurese de seleccionar un formato de archivo de imagen compatible (jpeg,bmp,png)',
+            'archivo.max' => 'La imagen es demasiado pesada, asegurese de no sobrepasar los 350kb',
+        );
+        $validador = Validator::make(Input::all(), $reglas, $alertas);
+
+		if($validador->fails()){
+			return Redirect::back()
+							->withErrors($validador)
+			                ->withInput();
+		}
+
+		else{
+
 			$file="no_img.png";
 
-			$Slider = new detalleslider();
+				$Slider = new detalleslider();
 
-			$Slider->id_dpto = Input::get('departamento');
+				$Slider->id_dpto = Input::get('departamento');
 
-			$depto=DB::table('deptos')			
-				->where('id',$Slider->id_dpto)
-				->first();
+				$depto=DB::table('deptos')			
+					->where('id',$Slider->id_dpto)
+					->first();
 
-			if(Input::hasFile('archivo')) {
-		       	Input::file('archivo')->move('img/'.$depto->nombre.'', Input::file("archivo")->getClientOriginalName());
-		       	$file = $depto->nombre.'/'.Input::file("archivo")->getClientOriginalName();
-	     	}
+				if(Input::hasFile('archivo')) {
+			       	Input::file('archivo')->move('img/'.$depto->nombre.'','Slider-'.$depto->nombre.'-'.date('j-n-y').'-'.Input::file("archivo")->getClientOriginalName());
+			       	$file = $depto->nombre.'/'.'Slider-'.$depto->nombre.'-'.date('j-n-y').'-'.Input::file("archivo")->getClientOriginalName();
+		     	}
 
-	     	$Slider->img = $file;
+		     	$Slider->img = $file;
 
-	     	if($Slider->save()){	     			
-				Session::flash('message', 'Imagen Agregada Correctamente');
-				return Redirect::to('administrador/Slider/Show/'.$depto->nombre.'');
-			}
+		     	if($Slider->save()){	     			
+					Session::flash('message', 'Imagen Agregada Correctamente');
+					return Redirect::to('administrador/Slider/Show/'.$depto->nombre.'');
+				}
+		}
 	}
 
 	public function SliderDptoDel($departamento, $id)
@@ -167,9 +185,34 @@ class AdminController extends \BaseController {
 	}
 
 	public function InfoNew()
-	{		
-		//Agrega una imagen de una opcion y departamento y luego redirije para editar su descripcion
-			$file="no_img.png";
+	{	
+		$reglas= array(
+				'archivo'=> 'required|image|max:350',
+				'titulo' => 'required|min:8|max:50',
+				'texto'=> 'required|min:25|max:255'
+			);
+		$alertas = array(
+            'archivo.required' => 'La imagen no puede estar vacia.',
+            'archivo.image' => 'El archivo seleccionado no es correcto, asegurese de seleccionar un formato de archivo de imagen compatible (jpeg,bmp,png)',
+            'archivo.max' => 'La imagen es demasiado pesada, asegurese de no sobrepasar los 350kb',
+            'titulo.required' => 'El titulo de la imagen no puede estar vacio',
+			'titulo.min' => 'El titulo de la imagen, debe tener como minimo :min caracteres',
+			'titulo.max' => 'El titulo de la imagen, no debe tener mas de :max caracteres',
+			'texto.required' => 'La descripcion de la imagen no puede estar vacia',
+			'texto.min' => 'La descripcion de la imagen, debe tener como minimo :min caracteres',
+			'texto.max' => 'La descripcion de la imagen, no debe tener mas de :max caracteres',
+        );
+        $validador = Validator::make(Input::all(), $reglas, $alertas);
+
+		if($validador->fails()){
+			return Redirect::back()
+							->withErrors($validador)
+			                ->withInput();
+		}
+
+		else{
+
+			//Agrega una imagen de una opcion y departamento y luego redirije para editar su descripcion			
 
 			$Info = new fotocultura();
 
@@ -186,17 +229,27 @@ class AdminController extends \BaseController {
 				->first();
 
 			if(Input::hasFile('archivo')) {
-		       	Input::file('archivo')->move('img/'.$depto->nombre, Input::file("archivo")->getClientOriginalName());
-		       	$file = $depto->nombre.'/'.Input::file("archivo")->getClientOriginalName();
+		       	Input::file('archivo')->move('img/'.$depto->nombre, $opcion->tipo.'-'.$depto->nombre.'-'.date('j-n-y').'-'.Input::file("archivo")->getClientOriginalName());
+		       	$file = $depto->nombre.'/'.$opcion->tipo.'-'.$depto->nombre.'-'.date('j-n-y').'-'.Input::file("archivo")->getClientOriginalName();
 	     	} 
 	     	
 	     	$Info->foto = $file;
 
-	     	if($Info->save()){	     			
-				Session::flash('message', 'Imagen Agregada Correctamente');
-				
-				return Redirect::to('administrador/Info/Edit/'.$opcion->tipo.'/'.$depto->nombre.'/'.$Info->id);
+	     	if($Info->save()){
+	     		$Descripcion= new descripcioncultura();
+	     		$Descripcion->id_depto=$Info->id_depto;
+				$Descripcion->id_tipo=$Info->id_tipo;
+				$Descripcion->id_foto=$Info->id;
+				$Descripcion->id_idioma=1;
+				$Descripcion->titulo=Input::get('titulo');
+				$Descripcion->texto=Input::get('texto');
+
+				if($Descripcion->save()){	     			
+						Session::flash('message', 'Informacion Cultura sobre '.$opcion->tipo.' de '.$depto->nombre. ' agregado correctamente');
+						return Redirect::to('administrador/Info/Edit/'.$opcion->tipo.'/'.$depto->nombre.'/'.$Info->id);
+					}
 			}
+		}
 	}
 
 	public function InfoDel($opcion, $departamento, $info)

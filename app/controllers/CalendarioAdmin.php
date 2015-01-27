@@ -41,7 +41,30 @@ public function ViewDepto()
 
 	public function EventoNew()
 	{
-		//Agrega una imagen de una opcion y departamento y luego redirije para editar su descripcion
+		$reglas= array(
+				'municipio'=> 'required',
+				'fecha' => 'required|date',
+				'nombre' => 'required|min:5',
+				'direccion' => 'required|min:15|max:255'
+			);
+		$alertas = array(
+            'required' => 'El campo :attribute es obligatorio.',
+            'min' => 'El campo :attribute no puede tener menos de :min carácteres.',
+            'max' => 'El campo :attribute no puede tener más de :max carácteres.',
+        );
+
+		$validador = Validator::make(Input::all(), $reglas, $alertas);
+
+		if($validador->fails()){
+
+			return Redirect::back()
+							->withErrors($validador)
+			                ->withInput();
+		}
+
+		else{
+
+			//Agrega una imagen de una opcion y departamento y luego redirije para editar su descripcion
 			$Evento = new calendario();
 
 			$Evento->id_depto = Input::get('departamento');
@@ -65,6 +88,7 @@ public function ViewDepto()
 				
 				return Redirect::to('administrador/Calendario/Edit/'.$depto->nombre.'/'.$Evento->id);
 			}
+		}
 	}
 
 	public function Edit($departamento, $id)
@@ -91,68 +115,143 @@ public function ViewDepto()
 
 	public function UpdateGeneral($id)
 	{
-		//Actualiza la informacion general (departamento y tipo) de la imagen
-		$General=calendario::find($id);
-		$General->id_depto=Input::get('departamento');
-		$General->municipio=Input::get('municipio');
-		$General->fecha=Input::get('fecha');
-		$General->nombre=Input::get('nombre');
-		$General->direccion=Input::get('direccion');
+		$reglas= array(
+				'municipio'=> 'required',
+				'fecha' => 'required|date',
+				'nombre' => 'required|min:5',
+				'direccion' => 'required|min:15|max:255'
+			);
+		$alertas = array(
+            'required' => 'El campo :attribute no puede estar vacio.',
+            'min' => 'El campo :attribute no puede tener menos de :min carácteres.',
+            'max' => 'El campo :attribute no puede tener más de :max carácteres.',
+        );
 
-		$traducciones=DB::table('traduccioneventos')
-			->where('id_evento',$id)
-			->get();
+        $validador = Validator::make(Input::all(), $reglas, $alertas);
 
-		if(!count($traducciones)==0){
-			foreach ($traducciones as $key) {
-				$actualizar=traduccioneventos::find($key->id);
-				$actualizar->municipio=Input::get('municipio');
-				$actualizar->id_depto=Input::get('departamento');
-				$actualizar->fecha=Input::get('fecha');
-				$actualizar->save();
+        if($validador->fails()){
+
+			return Redirect::back()
+							->withErrors($validador)
+			                ->withInput();
+		}
+
+		else{
+
+				//Actualiza la informacion general (departamento y tipo) de la imagen
+			$General=calendario::find($id);
+			$General->id_depto=Input::get('departamento');
+			$General->municipio=Input::get('municipio');
+			$General->fecha=Input::get('fecha');
+			$General->nombre=Input::get('nombre');
+			$General->direccion=Input::get('direccion');
+
+			$traducciones=DB::table('traduccioneventos')
+				->where('id_evento',$id)
+				->get();
+
+			if(!count($traducciones)==0){
+				foreach ($traducciones as $key) {
+					$actualizar=traduccioneventos::find($key->id);
+					$actualizar->municipio=Input::get('municipio');
+					$actualizar->id_depto=Input::get('departamento');
+					$actualizar->fecha=Input::get('fecha');
+					$actualizar->save();
+				}
 			}
-		}
 
-		if($General->save()){
-			Session::flash('message','Informacion general actualizada');
-			return Redirect::back();
+			if($General->save()){
+				Session::flash('message','Informacion general actualizada');
+				return Redirect::back();
+			}
+
 		}
+		
 	}
 
 	public function Traduccion($idioma, $id)
 	{
-		//Añade una descripcion o traduccion
-		$General=calendario::find($id);
+		$lang=DB::table('idioma')->where('id',$idioma)->first();
 
-		$Descripcion= new traduccioneventos();
-		$Descripcion->id_evento=$id;
-		$Descripcion->id_idioma=$idioma;
-		$Descripcion->id_depto=$General->id_depto;
-		$Descripcion->municipio=$General->municipio;
-		$Descripcion->fecha=$General->fecha;
-		$Descripcion->nombre=Input::get('nombre');
-		$Descripcion->direccion=Input::get('direccion');
+		$reglas= array(				
+				'nombre'.$idioma => 'required|min:5',
+				'direccion'.$idioma => 'required|min:15|max:255'
+			);
+		$alertas = array(
+            'nombre'.$idioma.'.required' => 'La traduccion en '. $lang->nombre.' del nombre del evento, no puede estar vacio.',
+            'direccion'.$idioma.'.required' => 'La traduccion en '. $lang->nombre.' de la direccion del evento, no puede estar vacio.',
+            'nombre'.$idioma.'.min' => 'El nombre del evento debe tener al menos :min carácteres',
+            'direccion'.$idioma.'.max' => 'La direccion del evento no debe tener más de :max carácteres.',
+            'direccion'.$idioma.'.min' => 'La direccion del evento debe tener más de :min carácteres.',
+        );
 
-		if($Descripcion->save()){	     			
-				Session::flash('message', 'Traduccion Agregada');
-				return Redirect::back();
-			}
+        $validador = Validator::make(Input::all(), $reglas, $alertas);
+
+        if($validador->fails()){
+        	Session::flash('newtrad', 'No se ha podido agregar la traduccion en '.$lang->nombre.' , confirmar los datos');
+			return Redirect::back()
+							->withErrors($validador)
+			                ->withInput();
+		}
+
+		else{
+			//Añade una descripcion o traduccion
+			$General=calendario::find($id);
+
+			$Descripcion= new traduccioneventos();
+			$Descripcion->id_evento=$id;
+			$Descripcion->id_idioma=$idioma;
+			$Descripcion->id_depto=$General->id_depto;
+			$Descripcion->municipio=$General->municipio;
+			$Descripcion->fecha=$General->fecha;
+			$Descripcion->nombre=Input::get('nombre'.$idioma);
+			$Descripcion->direccion=Input::get('direccion'.$idioma);
+
+			if($Descripcion->save()){	     			
+					Session::flash('message', 'Traduccion en '.$lang->nombre.' agregada correctamente');
+					return Redirect::back();
+				}
+		}
 	}
 
 	public function Update($id)
 	{
-		//Actualiza la descripcion de una foto
-
 		$TraducRest = traduccioneventos::find($id);
 
-		$TraducRest->nombre=Input::get('nombre');
+		$lang=DB::table('idioma')->where('id',$TraducRest->id_idioma)->first();
 
-		$TraducRest->direccion=Input::get('direccion');
+		$reglas= array(				
+				'nombre'.$id => 'required|min:5',
+				'direccion'.$id => 'required|min:15|max:255'
+			);
+		$alertas = array(
+            'nombre'.$id.'.required' => 'La traduccion en '. $lang->nombre.' del nombre del evento, no puede estar vacio.',
+            'direccion'.$id.'.required' => 'La traduccion en '. $lang->nombre.' de la direccion del evento, no puede estar vacio.',
+            'nombre'.$id.'.min' => 'El nombre del evento debe tener al menos :min carácteres',
+            'direccion'.$id.'.max' => 'La direccion del evento no debe tener más de :max carácteres.',
+            'direccion'.$id.'.min' => 'La direccion del evento debe tener más de :min carácteres.',
+        );
 
-		if($TraducRest->save()){	     			
-				Session::flash('message', 'Traduccion Actualizada');
-				return Redirect::back();
-			}
+        $validador = Validator::make(Input::all(), $reglas, $alertas);
+
+        if($validador->fails()){
+        	Session::flash('updatetrad', 'No se puede actualizar la traduccion en '.$lang->nombre.' , confirmar los datos');
+			return Redirect::back()
+							->withErrors($validador)
+			                ->withInput();
+		}
+		//Actualiza la descripcion
+		else{
+
+			$TraducRest->nombre=Input::get('nombre'.$id);
+
+			$TraducRest->direccion=Input::get('direccion'.$id);
+
+			if($TraducRest->save()){	     			
+					Session::flash('message', 'Traduccion en '.$lang->nombre.' actualizada correctamente');
+					return Redirect::back();
+				}
+		}
 	}
 
 	public function EventoDel($id)

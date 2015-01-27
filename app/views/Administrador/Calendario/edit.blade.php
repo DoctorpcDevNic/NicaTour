@@ -19,6 +19,32 @@
 							@if(Session::has('message'))
 								<div class="alert alert-info">{{ Session::get('message') }}</div>
 							@endif
+							@if(Session::has('updatetrad'))
+								<div class="alert alert-danger">{{ Session::get('updatetrad') }}</div>
+							@endif
+							@if(Session::has('newtrad'))
+								<div class="alert alert-danger">{{ Session::get('newtrad') }}</div>
+							@endif
+							@if( $errors->has('municipio'))
+								<div class="col-sm-5 col-sm-offset-3">
+									<p class="alert alert-danger">{{ $errors->first('municipio') }}</p>
+								</div>
+							@endif
+							@if( $errors->has('fecha'))
+								<div class="col-sm-5 col-sm-offset-3">
+									<p class="alert alert-danger">{{ $errors->first('fecha') }}</p>
+								</div>
+							@endif
+							@if( $errors->has('nombre'))
+								<div class="col-sm-5 col-sm-offset-3">
+									<p class="alert alert-danger">{{ $errors->first('nombre') }}</p>
+								</div>
+							@endif
+							@if( $errors->has('direccion'))
+								<div class="col-sm-5 col-sm-offset-3">
+									<p class="alert alert-danger">{{ $errors->first('direccion') }}</p>
+								</div>
+							@endif
 						</div>
 
 			{{--Editar Informacion General--}}
@@ -52,7 +78,7 @@
 						<div class="form-group">
 							{{ Form::label('Nombre', 'Nombre', array('class' => 'col-sm-2 control-label')) }}
 							<div class="col-sm-7">
-								{{ Form::text('nombre', Input::old('nombre') ? Input::old():$Eventos->nombre, array('class' => 'form-control', 'placeholder'=> 'Nombre del local')) }}
+								{{ Form::text('nombre', Input::old('nombre') ? Input::old():$Eventos->nombre, array('class' => 'form-control', 'placeholder'=> 'Nombre del evento')) }}
 							</div>
 						</div>
 						<div class="form-group">
@@ -64,7 +90,7 @@
 						<div class="form-group">
 							{{ Form::label('direccion', 'Direccion', array('class' => 'col-sm-2 control-label')) }}
 							<div class="col-sm-7">
-								{{ Form::textarea('direccion', Input::old('direccion') ? Input::old():$Eventos->direccion, array('class' => 'form-control', 'placeholder'=> 'Direccion del local', 'size' => '30x5')) }}
+								{{ Form::textarea('direccion', Input::old('direccion') ? Input::old():$Eventos->direccion, array('class' => 'form-control', 'placeholder'=> 'Direccion del evento', 'size' => '30x5')) }}
 							</div>
 						</div>
 						<div class="form-group">
@@ -89,17 +115,27 @@
 											{{Form::open(array('url'=>'administrador/Calendario/Update/Traduccion/'.$valor->id, 'class' => 'form-horizontal'))}}
 												<div class="form-group">
 													{{ Form::label('Idioma', $key->nombre, array('class' => 'col-sm-6 control-label')) }}
+													@if( $errors->has('nombre'.$valor->id))
+																<div class="col-sm-7 col-sm-offset-2">
+																	<p class="alert alert-danger">{{ $errors->first('nombre'.$valor->id) }}</p>
+																</div>
+															@endif
+															@if( $errors->has('direccion'.$valor->id))
+																<div class="col-sm-7 col-sm-offset-2">
+																	<p class="alert alert-danger">{{ $errors->first('direccion'.$valor->id) }}</p>
+																</div>
+															@endif
 												</div>
 												<div class="form-group">
 													{{ Form::label('Titulo', 'Nombre', array('class' => 'col-sm-2 control-label')) }}
 													<div class="col-sm-7">
-														{{ Form::text('nombre', Input::old('titulo') ? Input::old(): $valor->nombre, array('class' => 'form-control', 'placeholder'=> 'Nombre del local')) }}
+														{{ Form::text('nombre'.$valor->id, Input::old('titulo') ? Input::old(): $valor->nombre, array('class' => 'form-control', 'placeholder'=> 'Nombre del evento')) }}
 													</div>
 												</div>
 												<div class="form-group">
 													{{ Form::label('direccion', 'Direccion', array('class' => 'col-sm-2 control-label')) }}
 													<div class="col-sm-7">
-														{{ Form::textarea('direccion', Input::old('direccion') ? Input::old(): $valor->direccion, array('class' => 'form-control', 'placeholder'=> 'Direccion del local', 'size' => '30x5')) }}
+														{{ Form::textarea('direccion'.$valor->id, Input::old('direccion') ? Input::old(): $valor->direccion, array('class' => 'form-control', 'placeholder'=> 'Direccion del evento', 'size' => '30x5')) }}
 													</div>
 												</div>
 												<div class="form-group">
@@ -116,17 +152,27 @@
 													{{Form::open(array('url'=>'administrador/Calendario/traduccion/add/'.$key->id.'/'.$Eventos->id, 'class' => 'form-horizontal'))}}
 														<div class="form-group">
 															{{ Form::label('Idioma', $key->nombre, array('class' => 'col-sm-6 control-label')) }}
+															@if( $errors->has('nombre'.$key->id))
+																<div class="col-sm-7 col-sm-offset-2">
+																	<p class="alert alert-danger">{{ $errors->first('nombre'.$key->id) }}</p>
+																</div>
+															@endif
+															@if( $errors->has('direccion'.$key->id))
+																<div class="col-sm-7 col-sm-offset-2">
+																	<p class="alert alert-danger">{{ $errors->first('direccion'.$key->id) }}</p>
+																</div>
+															@endif
 														</div>
 														<div class="form-group">
 															{{ Form::label('nombre', 'Nombre', array('class' => 'col-sm-2 control-label')) }}
 															<div class="col-sm-7">
-																{{ Form::text('nombre', Input::old('nombre') ? Input::old():'' , array('class' => 'form-control', 'placeholder'=> 'Nombre del local')) }}
+																{{ Form::text('nombre'.$key->id, Input::old('nombre') ? Input::old():'' , array('class' => 'form-control', 'placeholder'=> 'Nombre del evento')) }}
 															</div>
 														</div>
 														<div class="form-group">
 															{{ Form::label('direccion', 'Direccion', array('class' => 'col-sm-2 control-label')) }}
 															<div class="col-sm-7">
-																{{ Form::textarea('direccion', Input::old('direccion') ? Input::old():'', array('class' => 'form-control', 'placeholder'=> 'Direccion del local', 'size' => '30x5')) }}
+																{{ Form::textarea('direccion'.$key->id, Input::old('direccion') ? Input::old():'', array('class' => 'form-control', 'placeholder'=> 'Direccion del evento', 'size' => '30x5')) }}
 															</div>
 														</div>
 														<div class="form-group">
@@ -152,17 +198,27 @@
 											{{Form::open(array('url'=>'administrador/Calendario/traduccion/add/'.$variable->id.'/'.$Eventos->id, 'class' => 'form-horizontal'))}}
 												<div class="form-group">
 													{{ Form::label('Idioma', $variable->nombre, array('class' => 'col-sm-6 control-label')) }}
+													@if( $errors->has('nombre'.$variable->id))
+														<div class="col-sm-5 col-sm-offset-3">
+															<p class="alert alert-danger">{{ $errors->first('nombre'.$variable->id) }}</p>
+														</div>
+													@endif
+													@if( $errors->has('direccion'.$variable->id))
+														<div class="col-sm-5 col-sm-offset-3">
+															<p class="alert alert-danger">{{ $errors->first('direccion'.$variable->id) }}</p>
+														</div>
+													@endif
 												</div>
 												<div class="form-group">
 													{{ Form::label('nombre', 'Nombre', array('class' => 'col-sm-2 control-label')) }}
 													<div class="col-sm-7">
-														{{ Form::text('nombre', Input::old('nombre') ? Input::old():'' , array('class' => 'form-control', 'placeholder'=> 'Nombre del local')) }}
+														{{ Form::text('nombre'.$variable->id, Input::old('nombre') ? Input::old():'' , array('class' => 'form-control', 'placeholder'=> 'Nombre del evento')) }}
 													</div>
 												</div>
 												<div class="form-group">
 													{{ Form::label('direccion', 'Direccion', array('class' => 'col-sm-2 control-label')) }}
 													<div class="col-sm-7">
-														{{ Form::textarea('direccion', Input::old('direccion') ? Input::old():'', array('class' => 'form-control', 'placeholder'=> 'Direccion del local', 'size' => '30x5')) }}
+														{{ Form::textarea('direccion'.$variable->id, Input::old('direccion') ? Input::old():'', array('class' => 'form-control', 'placeholder'=> 'Direccion del evento', 'size' => '30x5')) }}
 													</div>
 												</div>
 												<div class="form-group">

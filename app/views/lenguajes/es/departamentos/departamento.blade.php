@@ -30,25 +30,25 @@ Nicaragua Tour - Conoce {{$depto->nombre}}
 	<div class="row">
       <div class="col-md-3 col-xs-3">
         <div class="cuadro gastronomia">
-          <a href="{{ URL::to('es/departamentos/'.$depto->nombre.'/Gastronomia#descripcion') }}"><img src="{{ asset('img/comedor.png') }}">
+          <a href="{{ URL::to('es/departamentos/'.$depto->nombre.'/Cultura/Gastronomia#descripcion') }}"><img src="{{ asset('img/comedor.png') }}">
           <h3>Gastronomia</h3></a>
         </div>
       </div>
       <div class="col-md-3 col-xs-3"> 
         <div class="cuadro tesoros">
-         <a href="{{ URL::to('es/departamentos/'.$depto->nombre.'/Tesoros Coloniales#descripcion') }}">
+         <a href="{{ URL::to('es/departamentos/'.$depto->nombre.'/Cultura/Tesoros Coloniales#descripcion') }}">
           <img src="{{ asset('img/tesoros.png') }}">
           <h3>Tesoros</h3></a>
         </div></div>
       <div class="col-md-3 col-xs-3"> 
         <div class="cuadro danza">
-         <a href="{{ URL::to('es/departamentos/'.$depto->nombre.'/Danza#descripcion') }}">
+         <a href="{{ URL::to('es/departamentos/'.$depto->nombre.'/Cultura/Danza#descripcion') }}">
           <img src="{{ asset('img/bailes.png') }}">
           <h3>Danza</h3></a>
         </div></div>
       <div class="col-md-3 col-xs-3"> 
         <div class="cuadro artesania">
-         <a href="{{ URL::to('es/departamentos/'.$depto->nombre.'/Artesania#descripcion') }}">
+         <a href="{{ URL::to('es/departamentos/'.$depto->nombre.'/Cultura/Artesania#descripcion') }}">
           <img src="{{ asset('img/artesania.png') }}">
           <h3>Artesania</h3>
           </a>

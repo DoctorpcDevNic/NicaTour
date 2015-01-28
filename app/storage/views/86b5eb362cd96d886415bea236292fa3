@@ -1,0 +1,83 @@
+<?php $__env->startSection('contenido'); ?>
+
+	<div class="container-fluid">
+		<h2 class="titul">Agregar Evento</h2>
+		<div class="row">
+			<?php if( $errors->has('municipio')): ?>
+				<div class="col-sm-5 col-sm-offset-3">
+					<p class="alert alert-danger"><?php echo $errors->first('municipio'); ?></p>
+				</div>
+			<?php endif; ?>
+			<?php if( $errors->has('fecha')): ?>
+				<div class="col-sm-5 col-sm-offset-3">
+					<p class="alert alert-danger"><?php echo $errors->first('fecha'); ?></p>
+				</div>
+			<?php endif; ?>
+			<?php if( $errors->has('nombre')): ?>
+				<div class="col-sm-5 col-sm-offset-3">
+					<p class="alert alert-danger"><?php echo $errors->first('nombre'); ?></p>
+				</div>
+			<?php endif; ?>
+			<?php if( $errors->has('direccion')): ?>
+				<div class="col-sm-5 col-sm-offset-3">
+					<p class="alert alert-danger"><?php echo $errors->first('direccion'); ?></p>
+				</div>
+			<?php endif; ?>
+		</div>
+		<?php echo Form::open(array('url' => 'administrador/Calendario/Add', 'class' => 'form-horizontal')); ?>
+
+			<div class="form-group">
+				<?php echo Form::label('lbldepartamento', 'Seleccionar Departamento', array('class' => 'col-sm-2 control-label')); ?>
+
+				<div class="col-sm-7">
+					<select class="form-control" id="departamento" name="departamento">
+						<?php foreach($depto as $value): ?>
+					  		<option value="<?php echo $value->id; ?>"><?php echo $value->nombre; ?></option>
+					  	<?php endforeach; ?>					  
+					</select>
+				</div>				
+			</div>
+			<div class="form-group">
+				<?php echo Form::label('Municipio', 'Municipio', array('class' => 'col-sm-2 control-label')); ?>
+
+				<div class="col-sm-7">
+					<?php echo Form::text('municipio', Input::old('municipio') ? Input::old():'', array('class' => 'form-control', 'placeholder'=> 'Municipio')); ?>
+
+				</div>
+			</div>
+			<div class="form-group">
+				<?php echo Form::label('Fecha', 'Fecha', array('class' => 'col-sm-2 control-label')); ?>
+
+				<div class="col-sm-7">
+					<?php echo Form::input('date', 'fecha', null, ['class' => 'form-control', 'placeholder' => 'Fecha del evento']);; ?>
+
+				</div>
+			</div>
+
+			<div class="form-group">
+				<?php echo Form::label('Titulo', 'Nombre', array('class' => 'col-sm-2 control-label')); ?>
+
+				<div class="col-sm-7">
+					<?php echo Form::text('nombre', Input::old('nombre') ? Input::old():'', array('class' => 'form-control', 'placeholder'=> 'Nombre del evento')); ?>
+
+				</div>
+			</div>
+			<div class="form-group">
+				<?php echo Form::label('direccion', 'Direccion', array('class' => 'col-sm-2 control-label')); ?>
+
+				<div class="col-sm-7">
+					<?php echo Form::textarea('direccion', Input::old('direccion') ? Input::old():'', array('class' => 'form-control', 'placeholder'=> 'Direccion del evento', 'size' => '30x5')); ?>
+
+				</div>
+			</div>
+			<div class="form-group">				
+				<div class="col-sm-offset-2 col-sm-10">
+					<?php echo Form::submit('Agregar' , array('class'=> 'btn btn-primary')); ?>
+
+				</div>	
+			</div>
+		<?php echo Form::close(); ?>
+
+	</div>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('templates.adminTemplate', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

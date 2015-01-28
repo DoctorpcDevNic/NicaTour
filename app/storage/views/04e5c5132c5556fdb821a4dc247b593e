@@ -1,0 +1,38 @@
+<?php $__env->startSection('contenido'); ?>
+
+	<div class="container-fluid">
+		<h2 class="titul">Restaurantes en <?php echo $depto->nombre; ?></h2>
+		<div class="form-group">
+		<br>
+			<?php if(Session::has('message')): ?>
+				<div class="alert alert-info"><?php echo Session::get('message'); ?></div>
+			<?php endif; ?>
+		</div>
+		<?php if(!count($Rest)==0): ?>			
+				<?php foreach($Rest as $key): ?>					
+					<div class="row">
+						<div class="col-md-4">
+							<img class="img-responsive" src="<?php echo asset( 'img/restaurante.png'); ?>" alt="" style="background:red;">
+						</div>
+						<div class="col-md-8">									
+							<h2 class="titul"><?php echo $key->nombre; ?></h2>
+							<p><?php echo $key->municipio; ?></p>
+							<p><?php echo $key->telefono; ?></p>
+							<p><?php echo $key->direccion; ?></p>
+							<a href="<?php echo URL::to('/administrador/Restaurantes/Edit/'.$depto->nombre.'/'.$key->id.''); ?>">
+								<h2 class="btn btn-primary">Editar</h2>
+							</a>
+							<a href="<?php echo URL::to('/administrador/Restaurantes/Del/'.$key->id.''); ?>">
+								<h2 class="btn btn-danger">Eliminar</h2>
+							</a>										
+						</div>									
+					</div>
+					<br>
+				<?php endforeach; ?>
+		<?php else: ?>
+			<h2 class="titul">No se ha encontrado ninguna informacion</h2>
+		<?php endif; ?>
+		<div><?php echo $Rest->links(); ?></div>
+	</div>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('templates.adminTemplate', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

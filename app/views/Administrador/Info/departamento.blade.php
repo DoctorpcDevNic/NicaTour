@@ -23,7 +23,7 @@
 										</div>
 										<div class="col-md-7">									
 											<h2 class="titul">{{$value->titulo}}</h2>										
-											<p>{{$value->texto}}</p>
+											<p>{{substr($value->texto,0,150)}}...</p>
 											<a href="{{ URL::to('/administrador/Info/Edit/'.$opcion.'/'.$depto->nombre.'/'.$key->id.'') }}">
 												<h2 class="btn btn-primary">Editar</h2>
 											</a>

@@ -27,7 +27,7 @@ Hoteles en {{$depto->nombre}} - Nicaragua Tour
 	@if(!count($Hoteles)==0)
 		<div class="row">
 			@foreach($Hoteles as $key)
-				<div class="col-sm-6 col-xs-6 hotel">
+				<div class="col-sm-6 col-xs-12 hotel">
 					<div class="col-xs-12 hoteles">
 						<h3>{{ $key->nombre }} <i class="fa fa-hotel fa-fw pull-right"></i></h3>
 					</div>

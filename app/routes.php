@@ -185,7 +185,7 @@ Route::get('sitemap', function(){
 	    		Route::get('/Edit/{opcion}/{departamento}/{id}','AdminController@InfoEdit');
 	    		Route::get('/Add','AdminController@InfoAdd');
 	    		Route::post('/Add','AdminController@InfoNew');
-	    		Route::post('/Update/{opcion}/{departamento}/{id}','AdminController@InfoUpdate');
+	    		Route::post('/Update/Traduccion/{idioma}/{id}','AdminController@InfoUpdate');
 	    		Route::post('/Update/General/{id}','AdminController@InfoUpdateGeneral');
 	    		Route::post('/traduccion/{idioma}/{id}','AdminController@InfoTraduccion');
 	    		Route::get('/Del/{opcion}/{departamento}/{info}','AdminController@InfoDel');

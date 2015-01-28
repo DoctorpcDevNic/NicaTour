@@ -1,0 +1,322 @@
+<?php $__env->startSection('contenido'); ?>
+
+	<div class="container-fluid">
+		<h2 class="titul"><?php echo $opcion; ?> de <?php echo $depto->nombre; ?></h2>
+		<?php /*Verificar si existe la informacion*/ ?>		
+			<?php if(!count($Info)==0): ?>					
+				<div class="row">
+					<div class="col-md-4">
+						<img class="img-responsive" src="<?php echo asset( 'img/'.$Info->foto.''); ?>" alt="">
+					</div>
+					<?php /*Imprime el nombre de la imagen*/ ?>
+						<?php if(!count($Descripcion)==0): ?>
+							<?php foreach($Descripcion as $value): ?>
+								<?php if($value->id_idioma==1): ?>
+								<div class="col-md-8">
+									<div class="col-md-12">
+										<h2 class="titul"><?php echo $value->titulo; ?></h2>
+									</div>
+									<div class="col-md-8">
+										<p><?php echo substr($value->texto,0,150); ?></p>
+									</div>
+								</div>
+								<?php endif; ?>
+							<?php endforeach; ?>
+						<?php else: ?>
+							<div class="col-md-8">
+								<h2 class="titul">Imagen sin titulo</h2>
+							</div>
+						<?php endif; ?>
+					<?php /*Fin nombre imagen*/ ?>
+				</div>
+
+				<div class="row">
+					<div class="divider">
+
+							<?php if(Session::has('message')): ?>
+								<br>
+								<div class="form-group">
+									<div class="col-sm-7 col-sm-offset-2">
+										<p class="alert alert-success"><?php echo Session::get('message'); ?></p>
+									</div>
+								</div>
+							<?php endif; ?>
+							<?php if(Session::has('alerta')): ?>
+								<br>
+								<div class="form-group">
+									<div class="col-sm-7 col-sm-offset-2">
+										<p class="alert alert-danger"><?php echo Session::get('alerta'); ?></p>
+									</div>
+								</div>
+							<?php endif; ?>
+							<?php if( $errors->has('titulo')): ?>
+								<br>
+								<div class="form-group">
+									<div class="col-sm-7 col-sm-offset-2">
+										<p class="alert alert-danger"><?php echo $errors->first('titulo'); ?></p>
+									</div>
+								</div>
+							<?php endif; ?>
+							<?php if( $errors->has('texto')): ?>
+								<div class="form-group">
+									<div class="col-sm-7 col-sm-offset-2">
+										<p class="alert alert-danger"><?php echo $errors->first('texto'); ?></p>
+									</div>
+								</div>
+							<?php endif; ?>
+
+					<?php /*Formulario de informacion general*/ ?>
+						<?php echo Form::open(array('url'=>'administrador/Info/Update/General/'.$Info->id, 'class' => 'form-horizontal')); ?>
+
+							<div class="form-group">
+								<div class="col-sm-6 control-label">
+									<h3>Informacion General</h3>
+								</div>
+							</div>
+							<div class="form-group">
+								<?php echo Form::label('lbldepartamento', 'Seleccionar departamento', array('class' => 'col-sm-2 control-label')); ?>
+
+								<div class="col-sm-7">
+									<select class="form-control" id="departamento" name="departamento">
+										<?php foreach($DptosAll as $value): ?>
+											<?php if($value->id==$depto->id): ?>
+									  			<option value="<?php echo $value->id; ?>" selected=""><?php echo $value->nombre; ?></option>
+									  		<?php else: ?>
+									  			<option value="<?php echo $value->id; ?>"><?php echo $value->nombre; ?></option>
+									  		<?php endif; ?>
+									  	<?php endforeach; ?>					  
+									</select>
+								</div>				
+							</div>
+							<div class="form-group">
+								<?php echo Form::label('lbllocal', 'Tipo Informacion', array('class' => 'col-sm-2 control-label')); ?>
+
+								<div class="col-sm-7">
+									<select class="form-control" id="tipo" name="tipo">
+										<?php foreach($TipoCultura as $value): ?>
+											<?php if($value->id < 5 ): ?>
+												<?php if($value->id == $Info->id_tipo): ?>
+										  			<option value="<?php echo $value->id; ?>" selected=""><?php echo $value->tipo; ?></option>
+										  		<?php else: ?>
+										  			<option value="<?php echo $value->id; ?>"><?php echo $value->tipo; ?></option>
+										  		<?php endif; ?>
+										  	<?php endif; ?>
+									  	<?php endforeach; ?>					  
+									</select>
+								</div>				
+							</div>
+							<?php foreach($Descripcion as $valor): ?>
+								<?php if($valor->id_idioma == 1): ?>
+									<div class="form-group">
+										<?php echo Form::label('Titulo', 'Titulo Imagen', array('class' => 'col-sm-2 control-label')); ?>
+
+										<div class="col-sm-7">
+											<?php echo Form::text('titulo', Input::old('titulo') ? Input::old(): $valor->titulo, array('class' => 'form-control', 'placeholder'=> 'Titulo de la Imagen')); ?>
+
+										</div>
+									</div>
+									<div class="form-group">
+										<?php echo Form::label('descripcion', 'Descripcion de la imagen', array('class' => 'col-sm-2 control-label')); ?>
+
+										<div class="col-sm-7">
+											<?php echo Form::textarea('texto', Input::old('texto') ? Input::old(): $valor->texto, array('class' => 'form-control', 'placeholder'=> 'Descripcion de la Imagen')); ?>
+
+										</div>
+									</div>
+								<?php endif; ?>
+							<?php endforeach; ?>
+							<div class="form-group">
+								<div class="col-sm-offset-2 col-sm-10">
+									<?php echo Form::submit('Actualizar' , array('class'=> 'btn btn-primary')); ?>
+
+								</div>	
+							</div>
+						<?php echo Form::close(); ?>
+
+						<?php /* Fin formulario informacion general */ ?>
+					</div>	
+				</div>
+				<?php /*Agregar Traducciones*/ ?>
+				<div class="row">
+					<div class="divider">
+						<?php /*Comprobar si no hay traducciones disponibles*/ ?>
+						<?php if(count($Descripcion)>1): ?>
+							<?php foreach($idioma as $lang): ?>
+								<?php $conteo=0; ?>
+								<?php foreach($Descripcion as $traduccion): ?>
+									<?php if($lang->id!=1): ?>
+										<?php if($traduccion->id_idioma!=1): ?>
+												
+											<?php /*Verifica cada traduccion, y si no es espanol imprime su contenio*/ ?>
+											<?php if($lang->id==$traduccion->id_idioma): ?>
+												
+												<?php if( $errors->has('titulo'.$traduccion->id)): ?>
+													<br>
+													<div class="form-group">
+														<div class="col-sm-7 col-sm-offset-2">
+															<p class="alert alert-danger"><?php echo $errors->first('titulo'.$traduccion->id); ?></p>
+														</div>
+													</div>
+												<?php endif; ?>
+												<?php if( $errors->has('texto'.$traduccion->id)): ?>
+													<div class="form-group">
+														<div class="col-sm-7 col-sm-offset-2">
+															<p class="alert alert-danger"><?php echo $errors->first('texto'.$traduccion->id); ?></p>
+														</div>
+													</div>
+												<?php endif; ?>
+												<?php echo Form::open(array('url'=>'administrador/Info/Update/Traduccion/'.$lang->nombre.'/'.$traduccion->id, 'class' => 'form-horizontal')); ?>
+
+													<div class="form-group">
+														<?php echo Form::label('Idioma', $lang->nombre, array('class' => 'col-sm-6 control-label')); ?>
+
+													</div>
+													<div class="form-group">
+														<?php echo Form::label('Titulo', 'Titulo Imagen', array('class' => 'col-sm-2 control-label')); ?>
+
+														<div class="col-sm-7">
+															<?php echo Form::text('titulo'.$traduccion->id, Input::old('titulo') ? Input::old(): $traduccion->titulo, array('class' => 'form-control', 'placeholder'=> 'Titulo de la Imagen')); ?>
+
+														</div>
+													</div>
+													<div class="form-group">
+														<?php echo Form::label('descripcion', 'Descripcion de la imagen', array('class' => 'col-sm-2 control-label')); ?>
+
+														<div class="col-sm-7">
+															<?php echo Form::textarea('texto'.$traduccion->id, Input::old('texto') ? Input::old(): $traduccion->texto, array('class' => 'form-control', 'placeholder'=> 'Descripcion de la Imagen')); ?>
+
+														</div>
+													</div>
+													<div class="form-group">
+														<div class="col-sm-offset-2 col-sm-10">
+															<?php echo Form::submit('Actualizar traduccion en '.$lang->nombre , array('class'=> 'btn btn-primary')); ?>
+
+														</div>	
+													</div>
+												<?php echo Form::close(); ?>
+
+											<?php /*Segunda comprobacion*/ ?>	
+											<?php else: ?>
+												<?php $conteo++; ?>
+												<?php if($conteo==(count($Descripcion)-1)): ?>
+													<?php if( $errors->has('titulo'.$lang->id)): ?>
+														<br>
+														<div class="form-group">
+															<div class="col-sm-7 col-sm-offset-2">
+																<p class="alert alert-danger"><?php echo $errors->first('titulo'.$lang->id); ?></p>
+															</div>
+														</div>
+													<?php endif; ?>
+													<?php if($errors->has('texto'.$lang->id)): ?>
+														<div class="form-group">
+															<div class="col-sm-7 col-sm-offset-2">
+																<p class="alert alert-danger"><?php echo $errors->first('texto'.$lang->id); ?></p>
+															</div>
+														</div>
+													<?php endif; ?>
+
+													<?php echo Form::open(array('url'=>'administrador/Info/traduccion/'.$lang->id.'/'.$Info->id, 'class' => 'form-horizontal')); ?>
+
+														<div class="form-group">
+															<?php echo Form::label('Idioma', $lang->nombre, array('class' => 'col-sm-6 control-label')); ?>
+
+														</div>
+														<div class="form-group">
+															<?php echo Form::label('Titulo', 'Titulo Imagen', array('class' => 'col-sm-2 control-label')); ?>
+
+															<div class="col-sm-7">
+																<?php echo Form::text('titulo'.$lang->id, Input::old('titulo'), array('class' => 'form-control', 'placeholder'=> 'Titulo de la Imagen')); ?>
+
+															</div>
+														</div>
+														<div class="form-group">
+															<?php echo Form::label('descripcion', 'Descripcion de la imagen', array('class' => 'col-sm-2 control-label')); ?>
+
+															<div class="col-sm-7">
+																<?php echo Form::textarea('texto'.$lang->id, Input::old('texto'), array('class' => 'form-control', 'placeholder'=> 'Descripcion de la Imagen')); ?>
+
+															</div>
+														</div>
+														<div class="form-group">
+															<div class="col-sm-offset-2 col-sm-10">
+																<?php echo Form::submit('Agregar traduccion en '.$lang->nombre , array('class'=> 'btn btn-primary')); ?>
+
+															</div>	
+														</div>
+													<?php echo Form::close(); ?>
+
+												<?php endif; ?>
+											<?php endif; ?>
+										<?php endif; ?>
+									<?php endif; ?>
+								<?php endforeach; ?>
+							<?php endforeach; ?>
+
+						<?php else: ?>
+							<div class="form-group">
+								<div class="col-sm-4 col-sm-offset-4 control-label">
+									<h3>Agregar Traducciones</h3>
+								</div>
+							</div>
+							<?php /*Si la cantidad de descripciones es menor o igual a 1, muestra los formularios para agregar traducciones*/ ?>
+							<?php foreach($idioma as $lang): ?>
+								<?php if($lang->id!=1): ?>
+									<?php if( $errors->has('titulo'.$lang->id)): ?>
+										<br>
+										<div class="form-group">
+											<div class="col-sm-7 col-sm-offset-2">
+												<p class="alert alert-danger"><?php echo $errors->first('titulo'.$lang->id); ?></p>
+											</div>
+										</div>
+									<?php endif; ?>
+									<?php if( $errors->has('texto'.$lang->id)): ?>
+										<div class="form-group">
+											<div class="col-sm-7 col-sm-offset-2">
+												<p class="alert alert-danger"><?php echo $errors->first('texto'.$lang->id); ?></p>
+											</div>
+										</div>
+									<?php endif; ?>
+									<?php echo Form::open(array('url'=>'administrador/Info/traduccion/'.$lang->id.'/'.$Info->id, 'class' => 'form-horizontal')); ?>
+
+										<div class="form-group">
+										<h1 class="titul">Cagada3</h1>
+											<?php echo Form::label('Idioma', $lang->nombre, array('class' => 'col-sm-6 control-label')); ?>
+
+										</div>
+										<div class="form-group">
+											<?php echo Form::label('Titulo', 'Titulo Imagen', array('class' => 'col-sm-2 control-label')); ?>
+
+											<div class="col-sm-7">
+												<?php echo Form::text('titulo'.$lang->id, Input::old('titulo'), array('class' => 'form-control', 'placeholder'=> 'Titulo de la Imagen')); ?>
+
+											</div>
+										</div>
+										<div class="form-group">
+											<?php echo Form::label('descripcion', 'Descripcion de la imagen', array('class' => 'col-sm-2 control-label')); ?>
+
+											<div class="col-sm-7">
+												<?php echo Form::textarea('texto'.$lang->id, Input::old('texto'), array('class' => 'form-control', 'placeholder'=> 'Descripcion de la Imagen')); ?>
+
+											</div>
+										</div>
+										<div class="form-group">
+											<div class="col-sm-offset-2 col-sm-10">
+												<?php echo Form::submit('Agregar traduccion en '.$lang->nombre , array('class'=> 'btn btn-primary')); ?>
+
+											</div>	
+										</div>
+									<?php echo Form::close(); ?>
+
+								<?php endif; ?>
+							<?php endforeach; ?>
+
+						<?php endif; ?>
+					</div>
+				</div>
+			<?php else: ?>
+			<div class="row">
+				<h2 class="titul">Informacion no disponible</h2>
+			</div>
+			<?php endif; ?>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('templates.adminTemplate', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

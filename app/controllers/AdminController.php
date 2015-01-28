@@ -189,7 +189,7 @@ class AdminController extends \BaseController {
 		$reglas= array(
 				'archivo'=> 'required|image|max:350',
 				'titulo' => 'required|min:8|max:50',
-				'texto'=> 'required|min:25|max:255'
+				'texto'=> 'required|min:25|max:650'
 			);
 		$alertas = array(
             'archivo.required' => 'La imagen no puede estar vacia.',
@@ -273,71 +273,157 @@ class AdminController extends \BaseController {
 		return Redirect::back();
 	}
 
-	public function InfoUpdate($opcion, $departamento, $id)
+	public function InfoUpdate($idioma, $id)
 	{
-		//Actualiza la descripcion de una foto		
+		$reglas= array(
+				'titulo'.$id => 'required|min:8|max:50',
+				'texto'.$id => 'required|min:25|max:650'
+			);
+		$alertas = array(
+            'titulo'.$id.'.required' => 'El titulo de la imagen no puede estar vacio',
+			'titulo'.$id.'.min' => 'El titulo de la imagen, debe tener como minimo :min caracteres',
+			'titulo'.$id.'.max' => 'El titulo de la imagen, no debe tener mas de :max caracteres',
+			'texto'.$id.'.required' => 'La descripcion de la imagen no puede estar vacia',
+			'texto'.$id.'.min' => 'La descripcion de la imagen, debe tener como minimo :min caracteres',
+			'texto'.$id.'.max' => 'La descripcion de la imagen, no debe tener mas de :max caracteres',
+        );
+        $validador = Validator::make(Input::all(), $reglas, $alertas);
 
-		$Descripcion = descripcioncultura::find($id);		
+		if($validador->fails()){
+			Session::flash('alerta', 'No se ha podido actualizar la traduccion en '.$idioma);
+			return Redirect::back()
+							->withErrors($validador)
+			                ->withInput();
+		}
 
-		$Descripcion->titulo=Input::get('titulo');
+		else{
+			//Actualiza la descripcion de una foto		
 
-		$Descripcion->texto=Input::get('texto');
+			$Descripcion = descripcioncultura::find($id);		
 
-		if($Descripcion->save()){	     			
-				Session::flash('message', 'Descripcion Actualizada');
-				return Redirect::back();
-			}
+			$Descripcion->titulo=Input::get('titulo'.$id);
+
+			$Descripcion->texto=Input::get('texto'.$id);
+
+			if($Descripcion->save()){	     			
+					Session::flash('message', 'Traduccion en '.$idioma.' actualizada correctamente');
+					return Redirect::back();
+				}
+		}
 
 	}
 
 	public function InfoUpdateGeneral($id)
 	{
 		//Actualiza la informacion general (departamento y tipo) de la imagen
-		$General=fotocultura::find($id);
-		$General->id_tipo=Input::get('tipo');
-		$General->id_depto=Input::get('departamento');
-		$Descripciones=DB::table('descripcioncultura')
-			->where('id_foto',$id)
-			->get();
 
-		if(!count($Descripciones)==0){
-			foreach ($Descripciones as $key) {
-				$traduccion=descripcioncultura::find($key->id);
-				$traduccion->id_depto=Input::get('departamento');
-				$traduccion->id_tipo=Input::get('tipo');
-				$traduccion->save();
+		$reglas= array(
+				'titulo' => 'required|min:8|max:50',
+				'texto'=> 'required|min:25|max:650'
+			);
+		$alertas = array(
+            'titulo.required' => 'El titulo de la imagen no puede estar vacio',
+			'titulo.min' => 'El titulo de la imagen, debe tener como minimo :min caracteres',
+			'titulo.max' => 'El titulo de la imagen, no debe tener mas de :max caracteres',
+			'texto.required' => 'La descripcion de la imagen no puede estar vacia',
+			'texto.min' => 'La descripcion de la imagen, debe tener como minimo :min caracteres',
+			'texto.max' => 'La descripcion de la imagen, no debe tener mas de :max caracteres',
+        );
+        $validador = Validator::make(Input::all(), $reglas, $alertas);
+
+		if($validador->fails()){
+			return Redirect::back()
+							->withErrors($validador)
+			                ->withInput();
+		}
+
+		else{
+
+			$General=fotocultura::find($id);
+			$General->id_tipo=Input::get('tipo');
+			$General->id_depto=Input::get('departamento');
+			$Descripciones=DB::table('descripcioncultura')
+				->where('id_foto',$id)
+				->get();
+
+			if(!count($Descripciones)==0){
+				foreach ($Descripciones as $key) {
+					if($key->id_idioma==1){
+						$traduccion=descripcioncultura::find($key->id);
+						$traduccion->id_depto=Input::get('departamento');
+						$traduccion->id_tipo=Input::get('tipo');
+						$traduccion->titulo=Input::get('titulo');
+						$traduccion->texto=Input::get('texto');
+						$traduccion->save();
+					}
+					else{
+						$traduccion=descripcioncultura::find($key->id);
+						$traduccion->id_depto=Input::get('departamento');
+						$traduccion->id_tipo=Input::get('tipo');
+						$traduccion->save();
+					}
+				}
 			}
-		}
-		$info=DB::table('tipoinfo')
-			->where('id',$General->id_tipo)
-			->first();
+			$info=DB::table('tipoinfo')
+				->where('id',$General->id_tipo)
+				->first();
 
-		$depto=DB::table('deptos')
-			->where('id',$General->id_depto)
-			->first();
+			$depto=DB::table('deptos')
+				->where('id',$General->id_depto)
+				->first();
 
-		if($General->save()){
-			Session::flash('message','Informacion general actualizada');
-			return Redirect::to('administrador/Info/Edit/'.$info->tipo.'/'.$depto->nombre.'/'.$id);
+			if($General->save()){
+				Session::flash('message','Informacion general actualizada correctamente');
+				return Redirect::to('administrador/Info/Edit/'.$info->tipo.'/'.$depto->nombre.'/'.$id);
+			}
+
 		}
+
 	}
 
 	public function InfoTraduccion($idioma, $id)
 	{
-		//Añade una descripcion o traduccion
-		$foto= fotocultura::find($id);
-		$Descripcion= new descripcioncultura();
-		$Descripcion->id_foto=$id;
-		$Descripcion->id_idioma=$idioma;
-		$Descripcion->id_depto=$foto->id_depto;
-		$Descripcion->id_tipo=$foto->id_tipo;
-		$Descripcion->titulo=Input::get('titulo');
-		$Descripcion->texto=Input::get('texto');
+		$lenguaje=DB::table('idioma')
+					->where('id',$idioma)
+					->first();
 
-		if($Descripcion->save()){	     			
-				Session::flash('message', 'Traduccion Agregada');
-				return Redirect::back();
-			}
+		$reglas= array(
+				'titulo'.$idioma => 'required|min:8|max:50',
+				'texto'.$idioma => 'required|min:25|max:650'
+			);
+		$alertas = array(
+            'titulo'.$idioma.'.required' => 'El titulo de la imagen no puede estar vacio',
+			'titulo'.$idioma.'.min' => 'El titulo de la imagen, debe tener como minimo :min caracteres',
+			'titulo'.$idioma.'.max' => 'El titulo de la imagen, no debe tener mas de :max caracteres',
+			'texto'.$idioma.'.required' => 'La descripcion de la imagen no puede estar vacia',
+			'texto'.$idioma.'.min' => 'La descripcion de la imagen, debe tener como minimo :min caracteres',
+			'texto'.$idioma.'.max' => 'La descripcion de la imagen, no debe tener mas de :max caracteres',
+        );
+        $validador = Validator::make(Input::all(), $reglas, $alertas);
+
+		if($validador->fails()){
+			Session::flash('alerta', 'No se ha podido agregar la traduccion en '.$lenguaje->nombre);
+			return Redirect::back()
+							->withErrors($validador)
+			                ->withInput();
+		}
+		
+		else{
+			//Añade una descripcion o traduccion
+			$foto= fotocultura::find($id);
+			$Descripcion= new descripcioncultura();
+			$Descripcion->id_foto=$id;
+			$Descripcion->id_idioma=$idioma;
+			$Descripcion->id_depto=$foto->id_depto;
+			$Descripcion->id_tipo=$foto->id_tipo;
+			$Descripcion->titulo=Input::get('titulo'.$idioma);
+			$Descripcion->texto=Input::get('texto'.$idioma);
+
+			if($Descripcion->save()){	     			
+					Session::flash('message', 'Traduccion en '.$lenguaje->nombre.' agregada correctamente');
+					return Redirect::back();
+				}
+		}
 	}
 	//Fin funciones de gastronomia, artesanias, etc
 

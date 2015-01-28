@@ -1,0 +1,277 @@
+<?php $__env->startSection('contenido'); ?>
+
+	<div class="container-fluid">
+		<h2 class="titul">Evento de <?php echo $depto->nombre; ?></h2>		
+				<?php if(!count($Eventos)==0): ?>					
+					<div class="row">
+						<div class="col-md-4">
+							
+						</div>
+						<div class="col-md-8">
+							<h2 class="titul"><?php echo $Eventos->nombre; ?></h2>
+						</div>
+					</div>				
+			<div class="row">
+					<div class="divider">
+						<div class="form-group">
+						<br>
+							<?php if(Session::has('message')): ?>
+								<div class="alert alert-info"><?php echo Session::get('message'); ?></div>
+							<?php endif; ?>
+							<?php if(Session::has('updatetrad')): ?>
+								<div class="alert alert-danger"><?php echo Session::get('updatetrad'); ?></div>
+							<?php endif; ?>
+							<?php if(Session::has('newtrad')): ?>
+								<div class="alert alert-danger"><?php echo Session::get('newtrad'); ?></div>
+							<?php endif; ?>
+							<?php if( $errors->has('municipio')): ?>
+								<div class="col-sm-5 col-sm-offset-3">
+									<p class="alert alert-danger"><?php echo $errors->first('municipio'); ?></p>
+								</div>
+							<?php endif; ?>
+							<?php if( $errors->has('fecha')): ?>
+								<div class="col-sm-5 col-sm-offset-3">
+									<p class="alert alert-danger"><?php echo $errors->first('fecha'); ?></p>
+								</div>
+							<?php endif; ?>
+							<?php if( $errors->has('nombre')): ?>
+								<div class="col-sm-5 col-sm-offset-3">
+									<p class="alert alert-danger"><?php echo $errors->first('nombre'); ?></p>
+								</div>
+							<?php endif; ?>
+							<?php if( $errors->has('direccion')): ?>
+								<div class="col-sm-5 col-sm-offset-3">
+									<p class="alert alert-danger"><?php echo $errors->first('direccion'); ?></p>
+								</div>
+							<?php endif; ?>
+						</div>
+
+			<?php /*Editar Informacion General*/ ?>
+
+						<?php echo Form::open(array('url'=>'administrador/Calendario/Update/General/'.$Eventos->id, 'class' => 'form-horizontal')); ?>
+
+						<div class="form-group">
+							<div class="col-sm-6 control-label">
+								<h3>Informacion General</h3>
+							</div>
+						</div>
+						<div class="form-group">
+							<?php echo Form::label('lbldepartamento', 'Seleccionar departamento', array('class' => 'col-sm-2 control-label')); ?>
+
+							<div class="col-sm-7">
+								<select class="form-control" id="departamento" name="departamento">
+									<?php foreach($DptosAll as $value): ?>
+										<?php if($value->id==$Eventos->id_depto): ?>
+								  			<option value="<?php echo $value->id; ?>" selected=""><?php echo $value->nombre; ?></option>
+								  		<?php else: ?>
+								  			<option value="<?php echo $value->id; ?>"><?php echo $value->nombre; ?></option>
+								  		<?php endif; ?>
+								  	<?php endforeach; ?>					  
+								</select>
+							</div>				
+						</div>
+						<div class="form-group">
+							<?php echo Form::label('Municipio', 'Municipio', array('class' => 'col-sm-2 control-label')); ?>
+
+							<div class="col-sm-7">
+								<?php echo Form::text('municipio', Input::old('municipio') ? Input::old():$Eventos->municipio, array('class' => 'form-control', 'placeholder'=> 'Municipio')); ?>
+
+							</div>
+						</div>
+						<div class="form-group">
+							<?php echo Form::label('Nombre', 'Nombre', array('class' => 'col-sm-2 control-label')); ?>
+
+							<div class="col-sm-7">
+								<?php echo Form::text('nombre', Input::old('nombre') ? Input::old():$Eventos->nombre, array('class' => 'form-control', 'placeholder'=> 'Nombre del evento')); ?>
+
+							</div>
+						</div>
+						<div class="form-group">
+							<?php echo Form::label('fecha', 'Fecha', array('class' => 'col-sm-2 control-label')); ?>
+
+							<div class="col-sm-7">
+								<?php echo Form::input('date', 'fecha', Input::old('fecha') ? Input::old():$Eventos->fecha, ['class' => 'form-control', 'placeholder' => 'Fecha del evento']);; ?>
+
+							</div>
+						</div>
+						<div class="form-group">
+							<?php echo Form::label('direccion', 'Direccion', array('class' => 'col-sm-2 control-label')); ?>
+
+							<div class="col-sm-7">
+								<?php echo Form::textarea('direccion', Input::old('direccion') ? Input::old():$Eventos->direccion, array('class' => 'form-control', 'placeholder'=> 'Direccion del evento', 'size' => '30x5')); ?>
+
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-sm-offset-2 col-sm-10">
+								<?php echo Form::submit('Actualizar' , array('class'=> 'btn btn-primary')); ?>
+
+							</div>	
+						</div>
+						<?php echo Form::close(); ?>
+
+						
+						<br>
+			<?php /*Fin Editar Informacion General*/ ?>
+
+
+			<?php /*Revisa si existen traducciones*/ ?>
+						<?php if(!count($Descripcion)==0): ?>
+							<?php foreach($idioma as $key): ?>
+								<?php foreach($Descripcion as $valor): ?>
+
+								<?php /*Recorre todas las descripciones y compara si pertenece al mismo idioma para editarlo*/ ?>
+									<?php if($key->id!=1): ?>
+										<?php if($valor->id_idioma==$key->id): ?>
+											<?php echo Form::open(array('url'=>'administrador/Calendario/Update/Traduccion/'.$valor->id, 'class' => 'form-horizontal')); ?>
+
+												<div class="form-group">
+													<?php echo Form::label('Idioma', $key->nombre, array('class' => 'col-sm-6 control-label')); ?>
+
+													<?php if( $errors->has('nombre'.$valor->id)): ?>
+																<div class="col-sm-7 col-sm-offset-2">
+																	<p class="alert alert-danger"><?php echo $errors->first('nombre'.$valor->id); ?></p>
+																</div>
+															<?php endif; ?>
+															<?php if( $errors->has('direccion'.$valor->id)): ?>
+																<div class="col-sm-7 col-sm-offset-2">
+																	<p class="alert alert-danger"><?php echo $errors->first('direccion'.$valor->id); ?></p>
+																</div>
+															<?php endif; ?>
+												</div>
+												<div class="form-group">
+													<?php echo Form::label('Titulo', 'Nombre', array('class' => 'col-sm-2 control-label')); ?>
+
+													<div class="col-sm-7">
+														<?php echo Form::text('nombre'.$valor->id, Input::old('titulo') ? Input::old(): $valor->nombre, array('class' => 'form-control', 'placeholder'=> 'Nombre del evento')); ?>
+
+													</div>
+												</div>
+												<div class="form-group">
+													<?php echo Form::label('direccion', 'Direccion', array('class' => 'col-sm-2 control-label')); ?>
+
+													<div class="col-sm-7">
+														<?php echo Form::textarea('direccion'.$valor->id, Input::old('direccion') ? Input::old(): $valor->direccion, array('class' => 'form-control', 'placeholder'=> 'Direccion del evento', 'size' => '30x5')); ?>
+
+													</div>
+												</div>
+												<div class="form-group">
+													<div class="col-sm-offset-2 col-sm-10">
+														<?php echo Form::submit('Actualizar' , array('class'=> 'btn btn-primary')); ?>
+
+													</div>	
+												</div>
+											<?php echo Form::close(); ?>
+
+											<br>
+										<?php else: ?>
+										<?php /*Se muestran los idiomas que no tienen taduccion*/ ?>
+											<?php if((count($idioma)-1)>count($Descripcion)): ?>
+												<div class="divider">
+													<?php echo Form::open(array('url'=>'administrador/Calendario/traduccion/add/'.$key->id.'/'.$Eventos->id, 'class' => 'form-horizontal')); ?>
+
+														<div class="form-group">
+															<?php echo Form::label('Idioma', $key->nombre, array('class' => 'col-sm-6 control-label')); ?>
+
+															<?php if( $errors->has('nombre'.$key->id)): ?>
+																<div class="col-sm-7 col-sm-offset-2">
+																	<p class="alert alert-danger"><?php echo $errors->first('nombre'.$key->id); ?></p>
+																</div>
+															<?php endif; ?>
+															<?php if( $errors->has('direccion'.$key->id)): ?>
+																<div class="col-sm-7 col-sm-offset-2">
+																	<p class="alert alert-danger"><?php echo $errors->first('direccion'.$key->id); ?></p>
+																</div>
+															<?php endif; ?>
+														</div>
+														<div class="form-group">
+															<?php echo Form::label('nombre', 'Nombre', array('class' => 'col-sm-2 control-label')); ?>
+
+															<div class="col-sm-7">
+																<?php echo Form::text('nombre'.$key->id, Input::old('nombre') ? Input::old():'' , array('class' => 'form-control', 'placeholder'=> 'Nombre del evento')); ?>
+
+															</div>
+														</div>
+														<div class="form-group">
+															<?php echo Form::label('direccion', 'Direccion', array('class' => 'col-sm-2 control-label')); ?>
+
+															<div class="col-sm-7">
+																<?php echo Form::textarea('direccion'.$key->id, Input::old('direccion') ? Input::old():'', array('class' => 'form-control', 'placeholder'=> 'Direccion del evento', 'size' => '30x5')); ?>
+
+															</div>
+														</div>
+														<div class="form-group">
+															<div class="col-sm-offset-2 col-sm-10">
+																<?php echo Form::submit('Agregar Traducción en '.$key->nombre , array('class'=> 'btn btn-primary')); ?>
+
+															</div>	
+														</div>
+													<?php echo Form::close(); ?>
+
+												</div>
+												<br>
+											<?php endif; ?>
+										<?php endif; ?>
+									<?php endif; ?>
+								<?php endforeach; ?>							
+							<?php endforeach; ?>
+
+
+				<?php /*Si no existe ninguna traduccion, permite agregar exceptuando el espanol*/ ?>
+							<?php else: ?>
+								<?php foreach($idioma as $variable): ?>
+									<?php if($variable->id!=1): ?>
+										<div class="divider">
+											<?php echo Form::open(array('url'=>'administrador/Calendario/traduccion/add/'.$variable->id.'/'.$Eventos->id, 'class' => 'form-horizontal')); ?>
+
+												<div class="form-group">
+													<?php echo Form::label('Idioma', $variable->nombre, array('class' => 'col-sm-6 control-label')); ?>
+
+													<?php if( $errors->has('nombre'.$variable->id)): ?>
+														<div class="col-sm-5 col-sm-offset-3">
+															<p class="alert alert-danger"><?php echo $errors->first('nombre'.$variable->id); ?></p>
+														</div>
+													<?php endif; ?>
+													<?php if( $errors->has('direccion'.$variable->id)): ?>
+														<div class="col-sm-5 col-sm-offset-3">
+															<p class="alert alert-danger"><?php echo $errors->first('direccion'.$variable->id); ?></p>
+														</div>
+													<?php endif; ?>
+												</div>
+												<div class="form-group">
+													<?php echo Form::label('nombre', 'Nombre', array('class' => 'col-sm-2 control-label')); ?>
+
+													<div class="col-sm-7">
+														<?php echo Form::text('nombre'.$variable->id, Input::old('nombre') ? Input::old():'' , array('class' => 'form-control', 'placeholder'=> 'Nombre del evento')); ?>
+
+													</div>
+												</div>
+												<div class="form-group">
+													<?php echo Form::label('direccion', 'Direccion', array('class' => 'col-sm-2 control-label')); ?>
+
+													<div class="col-sm-7">
+														<?php echo Form::textarea('direccion'.$variable->id, Input::old('direccion') ? Input::old():'', array('class' => 'form-control', 'placeholder'=> 'Direccion del evento', 'size' => '30x5')); ?>
+
+													</div>
+												</div>
+												<div class="form-group">
+													<div class="col-sm-offset-2 col-sm-10">
+														<?php echo Form::submit('Agregar Traducción en '.$variable->nombre , array('class'=> 'btn btn-primary')); ?>
+
+													</div>	
+												</div>
+											<?php echo Form::close(); ?>
+
+										</div>
+										<br>
+									<?php endif; ?>
+								<?php endforeach; ?>
+						<?php endif; ?>					
+					</div>
+				<?php else: ?>
+					<h2 class="titul">No se ha encontrado ninguna informacion</h2>
+				<?php endif; ?>	
+			</div>	
+	</div>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('templates.adminTemplate', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

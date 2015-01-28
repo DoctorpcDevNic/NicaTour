@@ -1,61 +1,61 @@
-@extends('templates.departamentotemplate')
-@section('titulo')
-Nicaragua Tour - Conoce {{$depto->nombre}}
-@stop
+<?php $__env->startSection('titulo'); ?>
+Nicaragua Tour - Conoce <?php echo $depto->nombre; ?>
 
-@section('anuncio')
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('anuncio'); ?>
 <div class="anuncio">
       <h2>Calendario Turistico</h2>
     </div>
-@stop
-@section('SliderDpto')
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('SliderDpto'); ?>
  <div class="fluid_container">              
     <div class="camera_wrap camera_azure_skin" id="camera_wrap_2">
-        @foreach($SliderImg as $value)
-        <div data-src="{{ asset( 'img/'.$value->img.'') }}">
+        <?php foreach($SliderImg as $value): ?>
+        <div data-src="<?php echo asset( 'img/'.$value->img.''); ?>">
             <div class="titulSlideimg">
                  <!--h2>Chinandega, Corinto</h2-->
             </div>
         </div>
-        @endforeach
+        <?php endforeach; ?>
     </div>
  </div>
-@stop
+<?php $__env->stopSection(); ?>
 
-@section('titulslider')
+<?php $__env->startSection('titulslider'); ?>
 	<!--h2>Granada, <span> La gran Sultana</span></h2-->
-@stop
+<?php $__env->stopSection(); ?>
 
-@section('infodpto')
+<?php $__env->startSection('infodpto'); ?>
 	<div class="row">
       <div class="col-md-3 col-xs-3">
         <div class="cuadro gastronomia">
-          <a href="{{ URL::to('es/departamentos/'.$depto->nombre.'/Cultura/Gastronomia#descripcion') }}"><img src="{{ asset('img/comedor.png') }}">
+          <a href="<?php echo URL::to('es/departamentos/'.$depto->nombre.'/Cultura/Gastronomia#descripcion'); ?>"><img src="<?php echo asset('img/comedor.png'); ?>">
           <h3>Gastronomia</h3></a>
         </div>
       </div>
       <div class="col-md-3 col-xs-3"> 
         <div class="cuadro tesoros">
-         <a href="{{ URL::to('es/departamentos/'.$depto->nombre.'/Cultura/Tesoros Coloniales#descripcion') }}">
-          <img src="{{ asset('img/tesoros.png') }}">
+         <a href="<?php echo URL::to('es/departamentos/'.$depto->nombre.'/Cultura/Tesoros Coloniales#descripcion'); ?>">
+          <img src="<?php echo asset('img/tesoros.png'); ?>">
           <h3>Tesoros</h3></a>
         </div></div>
       <div class="col-md-3 col-xs-3"> 
         <div class="cuadro danza">
-         <a href="{{ URL::to('es/departamentos/'.$depto->nombre.'/Cultura/Danza#descripcion') }}">
-          <img src="{{ asset('img/bailes.png') }}">
+         <a href="<?php echo URL::to('es/departamentos/'.$depto->nombre.'/Cultura/Danza#descripcion'); ?>">
+          <img src="<?php echo asset('img/bailes.png'); ?>">
           <h3>Danza</h3></a>
         </div></div>
       <div class="col-md-3 col-xs-3"> 
         <div class="cuadro artesania">
-         <a href="{{ URL::to('es/departamentos/'.$depto->nombre.'/Cultura/Artesania#descripcion') }}">
-          <img src="{{ asset('img/artesania.png') }}">
+         <a href="<?php echo URL::to('es/departamentos/'.$depto->nombre.'/Cultura/Artesania#descripcion'); ?>">
+          <img src="<?php echo asset('img/artesania.png'); ?>">
           <h3>Artesania</h3>
           </a>
         </div></div>
-@stop
+<?php $__env->stopSection(); ?>
 
-@section('contenido')
+<?php $__env->startSection('contenido'); ?>
 <div class="row"> 
 	<div class="col-md-8 infoiz">
 		<h3 class="titul2">27 de Agosto</h3>
@@ -79,11 +79,11 @@ Nicaragua Tour - Conoce {{$depto->nombre}}
 </div>
 
 <div class="sliderdpto">
-	<img src="{{ asset('img/item4.jpg') }}">
+	<img src="<?php echo asset('img/item4.jpg'); ?>">
 </div>
 
 <div class="evento">
-	<img src="{{ asset('img/item1.jpg') }}">
+	<img src="<?php echo asset('img/item1.jpg'); ?>">
 	<h3 class="titul2">27 de Agosto</h3>
 	<h2>Summer Fest, <span> en las maravillosas playas de san juan del sur</span></h2>
 </div>
@@ -94,7 +94,7 @@ Nicaragua Tour - Conoce {{$depto->nombre}}
 			<div class="row">
 				<div class="youtube">
 					<div class="videoWrapper">
-						<embed src="http://www.youtube.com/embed/{{$depto->youtube}}">
+						<embed src="http://www.youtube.com/embed/<?php echo $depto->youtube; ?>">
 					</div>			
 					<h3>NICATOUR You Tube</h3>
 				</div>
@@ -102,24 +102,24 @@ Nicaragua Tour - Conoce {{$depto->nombre}}
 			<div class="row">
 				<div class="col-md-4 col-xs-4" style="padding:0 0 0 10px">
 					<div class="restaurante">
-						<a href="{{ URL::to('es/departamentos/'.$depto->nombre.'/Restaurantes') }}">
-							<img src="{{ asset('img/restaurante.png') }}" alt="">
+						<a href="<?php echo URL::to('es/departamentos/'.$depto->nombre.'/Restaurantes'); ?>">
+							<img src="<?php echo asset('img/restaurante.png'); ?>" alt="">
 							<h3>Restaurantes</h3>
 						</a>
 					</div>
 				</div>
 				<div class="col-md-4 col-xs-4" style="padding:0 0 0 5px">
 					<div class="hotel">
-						<a href="{{ URL::to('es/departamentos/'.$depto->nombre.'/Hoteles') }}">
-							<img src="{{ asset('img/hotel.png') }}">
+						<a href="<?php echo URL::to('es/departamentos/'.$depto->nombre.'/Hoteles'); ?>">
+							<img src="<?php echo asset('img/hotel.png'); ?>">
 							<h3>Hoteles</h3>
 						</a>
 					</div>
 				</div>
 				<div class="col-md-4 col-xs-4" style="padding:0 5px 0 5px">
 					<div class="transporte">
-						<a href="{{ URL::to('es/departamentos/'.$depto->nombre) }}">
-							<img src="{{ asset('img/transporte.png') }}">
+						<a href="<?php echo URL::to('es/departamentos/'.$depto->nombre); ?>">
+							<img src="<?php echo asset('img/transporte.png'); ?>">
 							<h3 class="hidden-xs">Traslado</h3>
 						</a>
 					</div>
@@ -128,22 +128,22 @@ Nicaragua Tour - Conoce {{$depto->nombre}}
 		</div>
 		<div class="col-md-4 col-xs-4" style="padding:0 5px 0 5px">
 			<div class="operadora">
-				<a href="{{ URL::to('es/departamentos/'.$depto->nombre.'/locales/ToursOperadoras') }}">
-					<img src="{{ asset('img/operadora.png') }}">
+				<a href="<?php echo URL::to('es/departamentos/'.$depto->nombre.'/locales/ToursOperadoras'); ?>">
+					<img src="<?php echo asset('img/operadora.png'); ?>">
 					<h3 class="hidden-xs">Tours Operadora</h3>
 				</a>
 			</div>
 			<div class="row" style="padding: 3px 0">
 				<div class="col-md-6 col-xs-6 gasolina">
-					<a href="{{ URL::to('es/departamentos/Gasolineras/'.$depto->nombre) }}">
-						<img src="{{ asset('img/gasolina.png') }}">
+					<a href="<?php echo URL::to('es/departamentos/Gasolineras/'.$depto->nombre); ?>">
+						<img src="<?php echo asset('img/gasolina.png'); ?>">
 						<h3 class="hidden-xs">Gasolinera</h3>
 					</a>
 				</div>
 				<div class="col-md-6 col-xs-6" style="padding:0">
 					<div class="clima">
-						<h3>{{$clima->temperatura}} C°</h3>
-						<p>{{$clima->nombre}}</p>	
+						<h3><?php echo $clima->temperatura; ?> C°</h3>
+						<p><?php echo $clima->nombre; ?></p>	
 					</div>
 				</div>
 			</div>
@@ -153,7 +153,7 @@ Nicaragua Tour - Conoce {{$depto->nombre}}
 		
 	</div>
 </div>
-@stop
+<?php $__env->stopSection(); ?>
 
 
 
@@ -162,3 +162,5 @@ Nicaragua Tour - Conoce {{$depto->nombre}}
 
 
 
+
+<?php echo $__env->make('templates.departamentotemplate', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

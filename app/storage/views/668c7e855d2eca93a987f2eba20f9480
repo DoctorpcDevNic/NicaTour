@@ -1,31 +1,30 @@
-@extends('templates.maintemplate')
-@section('informacion')
+<?php $__env->startSection('informacion'); ?>
 
 <div class="container">
 
 	<div class="infomain">
 		<div class="canal">
 			<div class="videoWrapper">
-				<embed src="http://www.youtube.com/embed/{{$depto->youtube}}">
+				<embed src="http://www.youtube.com/embed/<?php echo $depto->youtube; ?>">
 			</div>
 			<h3>NICATOUR YouTube</h3>
 		</div>		
 		<div class="row">
 			<div class="col-md-4 col-xs-4 clima">
-				<h2> {{$clima->temperatura}} C°</h2>
-				<p>{{$clima->nombre}}</p>
+				<h2> <?php echo $clima->temperatura; ?> C°</h2>
+				<p><?php echo $clima->nombre; ?></p>
 			</div>
 			<div class="col-md-4 col-xs-4 cambio">
-				<h2><img src="{{ asset('img/cambio.png')  }}"></h2>
+				<h2><img src="<?php echo asset('img/cambio.png'); ?>"></h2>
 				<h4>
 					<p class="hidden-xs">Tipo de cambio:</p>
 					<p class="hidden-md">Cambio</p>
-					<p>C${{$depto->dolar}} por $1</p>
+					<p>C$<?php echo $depto->dolar; ?> por $1</p>
 				</h4>
 				<p class="bordercambio"></p>
 			</div>
 			<div class="col-md-4 col-xs-4 contact">
-				<img src="{{ asset('img/ntalogo.png') }}" class="img-responsive">
+				<img src="<?php echo asset('img/ntalogo.png'); ?>" class="img-responsive">
 				<p>Contactenos</p>
 			</div>
 		</div>
@@ -38,7 +37,7 @@
 
 	<div class="items">
 		<div class="item1">
-			<img src="{{ asset('img/item1.jpg') }}" class="img-responsive">
+			<img src="<?php echo asset('img/item1.jpg'); ?>" class="img-responsive">
 			<h2 class="titul1 wow bounceIn" >
 				<p>Este verano no te lo puedes perder</p>				
 			</h2>
@@ -47,7 +46,7 @@
 			</h2>
 		</div>
 		<div class="item2">
-			<img src="{{ asset('img/item2.jpg') }}" class="img-responsive">
+			<img src="<?php echo asset('img/item2.jpg'); ?>" class="img-responsive">
 			<h2 class="titul1 wow bounceInDown">
 				<span>15 de abril</span><br>
 				<p>El obispo de granada, Monseñor Jorge Solórzano</p>
@@ -57,7 +56,7 @@
 			</h2>
 		</div>
 		<div class="item3">
-			<img src="{{ asset('img/item3.jpg') }}" class="img-responsive">
+			<img src="<?php echo asset('img/item3.jpg'); ?>" class="img-responsive">
 			<h2 class="titul1 wow lightSpeedIn">
 				<span>Torneo Deportivo de Pesca,</span><br>
 				<p>si te gustan los retos </p>
@@ -67,7 +66,7 @@
 			</h2>
 		</div>
 		<div class="item4">
-			<img src="{{ asset('img/item4.jpg') }}" class="img-responsive">
+			<img src="<?php echo asset('img/item4.jpg'); ?>" class="img-responsive">
 			<h2 class="titul1">
 				<p>Toda la naturaleza es como un arte <br> desconocido del hombre</p>
 			</h2>
@@ -78,4 +77,5 @@
 		</div>
 	</div>
 </div>
-@stop
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('templates.maintemplate', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

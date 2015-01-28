@@ -1,0 +1,23 @@
+<?php $__env->startSection('contenido'); ?>
+
+	<div class="container-fluid">
+		<h2 class="titul">Restaurantes</h2>
+		<div class="row">
+		<?php if(!count($Rest)==0): ?>		
+			<?php foreach($depto as $value): ?>
+				<?php foreach($Rest as $key): ?>
+					<?php if($key->id_depto==$value->id): ?>
+						<?php $value->id+=17; ?>
+						<div class="col-md-4 col-sm-6">						
+							<a href="<?php echo URL::to('/administrador/Restaurantes/Show/'.$value->nombre.''); ?>"><h2 class="titul"><?php echo $value->nombre; ?></h2></a>
+						</div>																		
+					<?php endif; ?>
+				<?php endforeach; ?>
+			<?php endforeach; ?>
+		<?php else: ?>
+			<h2 class="titul">No se ha encontrado ninguna informacion</h2>
+		<?php endif; ?>
+		</div>
+	</div>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('templates.adminTemplate', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

@@ -12,8 +12,8 @@
 		</div>		
 		<div class="row">
 			<div class="col-md-4 col-xs-4 clima">
-				<h2> {{$depto->temperatura}} C°</h2>
-				<p>{{$depto->nombre}}</p>
+				<h2> {{$clima->temperatura}} C°</h2>
+				<p>{{$clima->nombre}}</p>
 			</div>
 			<div class="col-md-4 col-xs-4 cambio">
 				<h2><img src="{{ asset('img/cambio.png')  }}"></h2>

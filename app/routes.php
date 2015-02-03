@@ -79,8 +79,9 @@ Route::get('sitemap', function(){
     Route::group(array('prefix' => 'es'), function () {
 
     	Route::get('/', function()
-		{	$depto=deptos::find(10);
-			return View::make('inicio',array('depto'=>$depto));
+		{	$clima=Clima::find(10);
+			$depto=deptos::find(10);
+			return View::make('inicio',array('clima'=>$clima, 'depto'=>$depto));
 		});
 
 	     Route::get('contacto', function(){

@@ -120,7 +120,7 @@
                     <li><a href="{{ URL::to('es/departamentos/Rivas') }}">Rivas</a></li>
                     <li><a href="{{ URL::to('es/departamentos/Rio San Juan') }}">Rio San Juan</a></li>
                     <li><a href="{{ URL::to('es/departamentos/RAAN') }}">RAAN</a></li>
-                    <li><a href="{{ URL::to('es/departamentos/RAAS') }}">Norwin</a></li>
+                    <li><a href="{{ URL::to('es/departamentos/RAAS') }}">RAAS</a></li>
               </ul>
             </li>
             <li><a href="">Explorar</a></li>

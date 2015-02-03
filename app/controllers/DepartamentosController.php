@@ -10,10 +10,8 @@ class DepartamentosController extends BaseController {
 		
 
 		$SliderDpto=DB::table('detalleslider')->where('id_dpto',$departamento->id)->get();
-
-		$clima=Clima::find($departamento->id);
 		
-		return View::make('lenguajes.es.departamentos.departamento', array('SliderImg'=>$SliderDpto,'depto'=>$departamento,'clima'=>$clima));
+		return View::make('lenguajes.es.departamentos.departamento', array('SliderImg'=>$SliderDpto,'depto'=>$departamento));
 	}
 
 	public function dptoinfo ($dpto, $opcion){

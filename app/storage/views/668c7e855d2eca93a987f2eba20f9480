@@ -11,8 +11,8 @@
 		</div>		
 		<div class="row">
 			<div class="col-md-4 col-xs-4 clima">
-				<h2> <?php echo $clima->temperatura; ?> C°</h2>
-				<p><?php echo $clima->nombre; ?></p>
+				<h2> <?php echo $depto->temperatura; ?> C°</h2>
+				<p><?php echo $depto->nombre; ?></p>
 			</div>
 			<div class="col-md-4 col-xs-4 cambio">
 				<h2><img src="<?php echo asset('img/cambio.png'); ?>"></h2>

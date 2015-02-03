@@ -40,7 +40,46 @@
     <div class="slider">
      <?php echo $__env->yieldContent('SliderDpto'); ?>
     </div>
-
+<style>
+  #top li ul, #top ul li {width:300px;} /* Ancho del contenedor de las subpestañas */
+  #top ul li a {
+  text-align:left;
+  padding: 6px 15px;
+  font-size:13px;
+  font-weight:normal;
+  text-transform:none;
+  font-family:Arial, sans-serif;
+  border:none;
+  }
+  #top li ul {
+  z-index:100;
+  position: absolute;
+  display: none;
+  background-color:#1a3352; /* Color de fondo del contenedor de las subpestañas */
+  margin-left:-80px;
+  padding:10px 0;
+  border-radius: 0px 0px 6px 6px;
+  box-shadow:0 2px 2px rgba(0,0,0,0.6);
+  filter:alpha(opacity=87);
+  opacity:.87;
+  }
+  #top li ul li {
+  width:150px; /* Ancho de cada subpestaña */
+  float:left;
+  margin:0;
+  padding:0;
+  }
+  #top li:hover ul, #top li.hvr ul {display: block;}
+  #top li:hover ul a, #top li.hvr ul a {
+  color:#ddd; /* Color del texto de los submenús */
+  background-color:transparent;
+  text-decoration:none;
+  }
+  #top ul a:hover {
+  text-decoration:underline!important;
+  color:#c5fa6f !important; /* Color del texto de los submenús al pasar el cursor */
+  }
+</style>
     <!--menu -->
     <nav class="menudepto navbar navbar-default" role="navigation">
       <div class="container-fluid">
@@ -54,10 +93,10 @@
         </button>           
       </div>
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-          <ul class="nav navbar-nav navbar-right">
+          <ul class="nav navbar-nav navbar-right" id="top">
             <li><a href="">Nicaragua</a></li>
             <li><a href="" class="dropdown-toggle" data-toggle="dropdown">Departamentos</a>
-              <ul class="dropdown-menu deptos row" >
+              <ul class="dropdown-menu" role="menu">
                     <li><a href="<?php echo URL::to('es/departamentos/Boaco'); ?>">Boaco</a></li>
                     <li><a href="<?php echo URL::to('es/departamentos/Carazo'); ?>">Carazo</a></li>
                     <li><a href="<?php echo URL::to('es/departamentos/Chinandega'); ?>">Chinandega</a></li>

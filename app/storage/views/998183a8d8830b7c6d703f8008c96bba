@@ -25,9 +25,10 @@ Restaurantes en <?php echo $depto->nombre; ?> - Nicaragua Tour
 	<?php if(!count($Rest)==0): ?>
 		<div class="row">
 			<?php foreach($Rest as $key): ?>
-				<div class="col-sm-6 col-xs-6 restaurant">
+				<div class="col-sm-6 col-xs-12 restaurant">
 					<div class="col-xs-12 resttitul">
-						<h3><?php echo $key->nombre; ?> <img class="pull-right" src="<?php echo asset('img/Restaurante-01.png'); ?>"></h3>
+						<h3><?php echo $key->nombre; ?></h3>
+						<img class="hidden-xs" src="<?php echo asset('img/Restaurante-01.png'); ?>">
 					</div>
 					<div class="col-xs-12 restdescripcion">
 						<p><i class="fa fa-phone fa-fw"></i><?php echo $key->telefono; ?></p>
@@ -42,6 +43,10 @@ Restaurantes en <?php echo $depto->nombre; ?> - Nicaragua Tour
 			<h2 class="titul">No hay restaurantes disponibles para mostrar</h2>
 		</div>
 	<?php endif; ?>
-	<div class="text-center"><?php echo $Rest->links(); ?></div>
+	<div class="row">
+		<div class="col-xs-12">
+			<div class="text-center"><?php echo $Rest->links(); ?></div>
+		</div>
+	</div>
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make('templates.departamentotemplate', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

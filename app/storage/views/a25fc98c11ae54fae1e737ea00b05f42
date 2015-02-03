@@ -25,9 +25,10 @@ Hoteles en <?php echo $depto->nombre; ?> - Nicaragua Tour
 	<?php if(!count($Hoteles)==0): ?>
 		<div class="row">
 			<?php foreach($Hoteles as $key): ?>
-				<div class="col-sm-6 col-xs-12 hotel">
-					<div class="col-xs-12 hoteles">
-						<h3><?php echo $key->nombre; ?> <i class="fa fa-hotel fa-fw pull-right"></i></h3>
+				<div class="col-sm-6 col-xs-12 hotels">
+					<div class="col-xs-12 hoteltitul">
+						<h3><?php echo $key->nombre; ?></h3>
+						<img src="<?php echo asset('img/hotel-01.png'); ?>" class="hidden-xs">
 					</div>
 					<div class="col-xs-12 hotdescripcion">
 						<p><i class="fa fa-phone fa-fw"></i><?php echo $key->telefono; ?></p>

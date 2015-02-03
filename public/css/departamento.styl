@@ -47,7 +47,19 @@ body
 		background white
 
 .navbar-fixed-top
-	z-index 9 !important			
+	z-index 9 !important
+.deptos
+	li
+		font-size 18px	
+		text-align center
+		list-style none
+		border 1px solid black
+		display block
+		color black !important
+		a
+			color black !important
+			&:hover
+				background black !important	
 .menudepto
 	position fixed !important
 	width 100%
@@ -74,29 +86,26 @@ body
 					background rojito !important
 					color white !important
 
-.deptos
-		li
-			padding 0px 25px
-			ul
-				padding 5px 25px
-				li
-					font-size 18px	
-					text-align center
-					list-style none
-					border 1px solid black
-					a
-						color black !important
 						
-.hotel
+.hotels
 	border 3px solid white
 	color white
 	font-family Lato
 	
-.hoteles
+.hoteltitul
 	background-color #a758b0
+	img
+		width 8%
+		display inline
+		float right
+	h3
+		display inline
+		float left
+		font-size 18px
 
 .hotdescripcion
 		background-color #9a42aa
+		padding 10px 0px
 		
 .restaurant
 	border 3px solid white
@@ -106,11 +115,17 @@ body
 .resttitul
 	background-color #eb5206
 	h3
-		img
-			width 8%
+		display inline
+		float left
+		font-size 18px
+	img
+		width 8%
+		display inline
+		float right
 
 .restdescripcion
-		background-color #fc7f12			
+		background-color #fc7f12
+		padding 10px 0px			
 
 						
 				
@@ -227,7 +242,8 @@ body
 				color #25467c
 				font-size 18px	
 	.anuncios
-		margin-top 3em
+
+		font-family Lato
 		.col-xs-8
 		.col-md-8
 			margin 0
@@ -235,10 +251,106 @@ body
 			
 		.row
 			margin 	0
-			padding 0 
+			padding 0
+			
+			.hotel
+				background #a859b3
+				border-bottom 10px solid #9b42ad
+				
+				img
+					width 40%
+					margin 6px 0px
+				h3
+					color white
+					font-size 18px
+					text-align center
+					text-decoration none
+					width 100%
+					display inline
+					margin-left 5px
+				a
+					text-decoration none
+			.restaurante
+				background #ff800a
+				border-bottom 10px solid #ed5300
+				img
+					width 30%
+					margin 13px 0px
+					margin-left -12px
+					margin-right 3px
+				h3
+					color white
+					font-size 17px
+					text-align center
+					text-decoration none
+					width 100%
+					display inline
+				a
+					text-decoration none
+			
+			.gasolina
+				background #7ebe42
+				border-bottom 10px solid #00af5c
+				display inline
+				padding 10px 0px
+				img
+					display inline
+					width 30%
+					margin 6px 0px
+					margin-left 10px
+				h3
+					color white
+					font-size 18px
+					text-align center
+					text-decoration none
+					width 100%
+					display inline
+					margin-left -3px
+				a
+					text-decoration none
+			.transporte
+				background #ffc300
+				border-bottom 10px solid #ff9b00
+				display inline
+				padding 10px 0px
+				img
+					display inline
+					width 30%
+					margin 6px 0px
+					margin-left 10px
+				h3
+					color white
+					font-size 18px
+					text-align center
+					text-decoration none
+					width 100%
+					display inline
+				a
+					text-decoration none
+			.operadora
+				background #7dccfc
+				border-bottom 10px solid #1586c9
+				position relative
+				text-decoration none
+				img
+					width 25%	
+					margin-bottom 6px
+					position relative
+					display inline
+				a
+					text-decoration none
+				h3
+					display inline
+					color white	
+					font-size 24px
+					margin 12px
+					text-align center
+					text-decoration none
+					width 100%
 			
 			.youtube
 				position relative
+				margin 2px 0px
 				img
 					width 100%
 				h3
@@ -252,83 +364,111 @@ body
 					text-align center
 					width 100%
 					text-decoration none
+					left -5px
 				a
 					text-decoration none
-			.operadora
-				background #7dccfc
-				border-bottom 5px solid #1586c9
+			.videoWrapper
 				position relative
-				text-decoration none
-				img
-					width 70%	
-					left 14%
-					position relative
-				a
-					text-decoration none				
-						
-			.gasolina
-				background #7ebe42
-				border-bottom 5px solid #00af5c
-				img
-					left -7px
-					position relative
-					width 190%	
-				h3
-					color white
-					font-size 18px
-					text-decoration none
-				a
-					text-decoration none
+				padding-bottom 60%
+				height 0
+				embed
+					position absolute
+					top 0
+					left -5px
+					width 100%
+					height 100%
+					
+			
 			.clima
-				background #23475f	
+				background black
+				border-bottom 10px solid #23475f
 				color white
-				padding 2px
+				padding-top 10px
+				padding-bottom 10px
 				text-align center
+				margin-left -5px
+				a
+					text-decoration none
+				img
+					margin-left -8px
+					width 45%
+					float left
+					filter invert(100%)
+					-webkit-filter invert(100%)
+					-moz-filter invert(100%)
+					-o-filter invert(100%)
+					-ms-filter invert(100%)
+				div
+					float right
+					padding-right 0px
+					padding-top 12px
 				h3
 					margin 0
 					font-size 17px
 					text-decoration none
 				p
 					margin 0
-					font-size 10px
+					font-size 12px
+			.policia
+				background #0999dc
+				border-bottom 10px solid #23475f
+				color white
+				padding-top 5px
+				padding-bottom 6px
+				text-align center
+				a
+					text-decoration none
+				img
+					width 45%
+					margin-top -5px
+					margin-bottom -5px
+				h3
+					margin 0
+					margin-top -10px
+					font-size 24px
+					text-decoration none
+					color white
+			.hospital
+				background #57dad3
+				border-bottom 10px solid #23475f
+				color white
+				padding-top 5px
+				padding-bottom 6px
+				text-align center
+				margin-left -5px
+				a
+					text-decoration none
+				img
+					width 45%
+					margin-top -5px
+					margin-bottom -5px
+				h3
+					margin 0
+					margin-top -10px
+					font-size 24px
+					text-decoration none
+					color white
+			.bombero
+				background #dd4a3a
+				border-bottom 10px solid #23475f
+				color white
+				padding-top 5px
+				padding-bottom 6px
+				text-align center
+				a
+					text-decoration none
+				img
+					width 45%
+					margin-top -5px
+					margin-bottom -5px
+				h3
+					margin 0
+					margin-top -10px
+					font-size 24px
+					text-decoration none
+					color white
 				
-			.restaurante
-				background #ff800a
-				border-bottom 4px solid #ed5300
-				img
-					width 100%
-				h3
-					color white
-					font-size 16px
-					margin 0	
-					text-align center
-					text-decoration none
-					width 100%
-				a
-					text-decoration none
-			.hotel
-				background #a859b3
-				border-bottom 4px solid #9b42ad
-				img
-					width 96%
-				h3
-					color white
-					font-size 16px
-					margin 0	
-					text-align center
-					width 100%	
-				a
-					text-decoration none
-			.transporte
-				background #ffc300
-				border-bottom 4px solid #ff9b00
-				img
-					width 74%	
-				h3
-					color white									
-					font-size 10px
-				a
-					text-decoration none
+			
 .descripcion
 	h3
 		text-align center
@@ -341,7 +481,7 @@ footer
 	color white
 	font-size 18px		
 	line-height 1	
-	margin-top 3em
+	margin-top 1em
 	padding 5px					
 	text-align center
 	p
@@ -384,16 +524,16 @@ footer
 			.row 
 				.gasolina 
 					img	
-						width 139%	
+						
 				.transporte 
 					img
-						width 63%	
+							
 				.clima
-					padding 5.5px	
+					
 					h3
-						font-size 30px	
+						
 					p
-						font-size 20px								
+													
 			
 
 @media (min-width:630px)
@@ -412,31 +552,17 @@ footer
 			h3
 				a
 					margin-left 5px		
-		
-		.anuncios 
-			.row 
-				.gasolina 
-					img	
-						width 135%	
-				.transporte 
-					img
-						width 62%	
-				.clima
-					padding 8px	
+				
 							
 
 @media (min-width:760px)	
-	.maincontainer 
-		.anuncios 
-			.row 
-				.gasolina 
-					img						
-						width 128%
-				.transporte 
-					img		
-						width 60%
-				.clima
-					padding 16.5px	
+	.maincontainer
+		.anuncios
+			.gasolina
+				img
+					width 30%
+				
+					
 					
 @media (min-width: 950px)	
 	.container-fluid
@@ -465,60 +591,12 @@ footer
 				
 		.anuncios 
 			.row 
-				.operadora	
-					border-bottom 10px solid #1586c9					
-					img
-						left 26%
-						top -7px	
-						width 47%
-					h3	
-						
-						color white
-						font-size 1.5em
-						margin 0					
-						text-align center
-				.gasolina
-					border-bottom 10px solid #00af5c
-					img
-						left 16%
-						width 90%	
-					h3
-						font-size 1.5em
-						text-align center
-								
-				.clima
-					padding 43.5px 41px
-								
-				.transporte 
-					border-bottom 10px solid #ff9b00
-					height 162px
-					img	
-						width 45%
-						float left
-						position relative
-						top 20%
-					h3
-						font-size 2em	
-						margin 0
-						padding 0
-						position relative
-						top 50%
+				
 				.youtube
 					h3		
 						font-size 2em
 						padding 10px
 						
-				.restaurante 
-					border-bottom 10px solid #ed5300
-					h3		
-						font-size 2em
-						
-				.hotel
-					border-bottom 10px solid #9b42ad
-					img
-						width 98%
-					h3		
-						font-size 2em
 						
 @media (min-width: 1000px)							
 	.tiulslider
@@ -538,16 +616,7 @@ footer
 			h3			
 				font-size 35px
 				
-	.maincontainer 
-		.anuncios 
-			.row 
-				.gasolina 
-					img			
-						width 94%
-				.clima	
-					padding 49.5px 41px	
-				.transporte
-					height 170px
+				
 
 @media (min-width: 1300px)	
 	.maincontainer  	
@@ -557,19 +626,73 @@ footer
 			width 1260px
 			margin 0 auto
 			
-			.row 
-				.operadora 
+			.row
+				.hotel
+					margin-bottom 5px
 					img
-						width 50%
-				.gasolina
-					padding 0
-					img
-						width 86%
-				.clima 
-					padding 57.5px 41px
-					p				
-						font-size 2em
+						width 20%
+						margin-top -12px
+						margin-bottom -2px
+						margin-left 5px
 					h3
-						font-size 3em	
+						font-size 32px
+						margin-left 54px
+				
+				.restaurante
+					margin-bottom 5px
+					img
+						width 15%
+						margin-top 4px
+						margin-bottom 6px
+						margin-left 5px
+					h3
+						font-size 32px
+						margin-left 66px
+				.gasolina
+					margin-bottom 5px
+					img
+						width 20%
+						margin-top -5px
+						margin-bottom -2px
+						margin-left 20px
+					h3
+						font-size 32px
+						margin-left 40px
 				.transporte
-					height 205px		
+					margin-bottom 5px
+					img
+						width 20%
+						margin-top -12px
+						margin-bottom -2px
+					h3
+						font-size 32px
+						margin-left 55px
+				.operadora
+					border-bottom 20px solid #1586c9
+					img
+						width 65%
+						margin-left 18%
+						margin-bottom -20px
+						margin-top -8px
+						
+					h3
+						display block
+						font-size 35px
+						
+				.clima
+					padding 0px
+					padding-top 8px
+					img
+						margin-left 6px
+						width 45%
+					div
+						padding-right 6px
+						padding-top 25px
+						
+					h3
+						font-size 20px
+					p
+						font-size 14px
+				.hospital
+					margin-left 0px
+						

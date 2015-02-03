@@ -18,21 +18,7 @@
     {{ HTML::style('css/styleSlidePost.css') }}
 
     {{ HTML::style('css/camera.css') }}
-    <style>
 
-      .videoWrapper {
-        position: relative;
-        padding-bottom: 47.8%; /* 16:9 */
-        height: 0;
-      }
-      .videoWrapper embed {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-      }
-    </style>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->

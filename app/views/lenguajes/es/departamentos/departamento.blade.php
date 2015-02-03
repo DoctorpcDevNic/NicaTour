@@ -90,7 +90,41 @@ Nicaragua Tour - Conoce {{$depto->nombre}}
 
 <div class="anuncios">
 	<div class="row">
-		<div class="col-md-8 col-xs-8">
+		<div class="col-md-4 col-xs-12">
+			<div class="row">
+				<div class="col-md-12 col-xs-6 hotel">
+					<a href="{{ URL::to('es/departamentos/'.$depto->nombre.'/Hoteles') }}">
+						<img src="{{ asset('img/hotel-01.png') }}">
+						<h3>Hoteles</h3>
+					</a>
+				</div>
+				<div class="col-md-12 col-xs-6 restaurante">
+					<a href="{{ URL::to('es/departamentos/'.$depto->nombre.'/Restaurantes') }}">
+						<img src="{{ asset('img/Restaurante-01.png') }}">
+						<h3>Restaurantes</h3>
+					</a>
+				</div>
+				<div class="col-md-12 col-xs-6 gasolina">
+					<a href="{{ URL::to('es/departamentos/Gasolineras/'.$depto->nombre) }}">
+						<img src="{{ asset('img/gasolina.png') }}">
+						<h3>Gasolinera</h3>
+					</a>
+				</div>
+				<div class="col-md-12 col-xs-6 transporte">
+					<a href="{{ URL::to('es/departamentos/'.$depto->nombre) }}">
+						<img src="{{ asset('img/transporte.png') }}">
+						<h3>Traslado</h3>
+					</a>
+				</div>
+			</div>
+			<div class="operadora">
+				<a href="{{ URL::to('es/departamentos/'.$depto->nombre) }}">
+					<img src="{{ asset('img/operadora.png') }}">
+					<h3>Tours Operadora</h3>
+				</a>
+			</div>
+		</div>
+		<div class="col-md-8 col-xs-12">
 			<div class="row">
 				<div class="youtube">
 					<div class="videoWrapper">
@@ -98,57 +132,36 @@ Nicaragua Tour - Conoce {{$depto->nombre}}
 					</div>			
 					<h3>NICATOUR You Tube</h3>
 				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-4 col-xs-4" style="padding:0 0 0 10px">
-					<div class="restaurante">
-						<a href="{{ URL::to('es/departamentos/'.$depto->nombre.'/Restaurantes') }}">
-							<img src="{{ asset('img/restaurante.png') }}" alt="">
-							<h3>Restaurantes</h3>
+				<div class="row" >
+					<div class="col-md-3 col-xs-6 clima">
+						<img src="{{ asset('img/clima/'.$depto->icono.'.png') }}" alt="">
+						<div>
+							<h3>{{$depto->temperatura}}° c</h3>
+							<p>{{$depto->nombre}}</p>
+	 					</div>
+	 				</div>
+	 				<div class="col-md-3 col-xs-6 policia">
+						<a href="{{ URL::to('es/departamentos/'.$depto->nombre.'/Policia') }}">
+							<img src="{{ asset('img/policia-01.png') }}">
+							<h3>Policia</h3>
 						</a>
-					</div>
-				</div>
-				<div class="col-md-4 col-xs-4" style="padding:0 0 0 5px">
-					<div class="hotel">
-						<a href="{{ URL::to('es/departamentos/'.$depto->nombre.'/Hoteles') }}">
-							<img src="{{ asset('img/hotel.png') }}">
-							<h3>Hoteles</h3>
+ 					</div>
+ 					<div class="col-md-3 col-xs-6 hospital">
+						<a href="{{ URL::to('es/departamentos/'.$depto->nombre.'/Hospital') }}">
+							<img src="{{ asset('img/HOSPITAL-01.png') }}">
+							<h3>Hospital</h3>
+	 					</a>
+ 					</div>
+ 					<div class="col-md-3 col-xs-6 bombero">
+						<a href="{{ URL::to('es/departamentos/'.$depto->nombre.'/Bomberos') }}">
+							<img src="{{ asset('img/BOMBERO-01.png') }}">
+							<h3>Bomberos</h3>
 						</a>
-					</div>
-				</div>
-				<div class="col-md-4 col-xs-4" style="padding:0 5px 0 5px">
-					<div class="transporte">
-						<a href="{{ URL::to('es/departamentos/'.$depto->nombre) }}">
-							<img src="{{ asset('img/transporte.png') }}">
-							<h3 class="hidden-xs">Traslado</h3>
-						</a>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="col-md-4 col-xs-4" style="padding:0 5px 0 5px">
-			<div class="operadora">
-				<a href="{{ URL::to('es/departamentos/'.$depto->nombre.'/locales/ToursOperadoras') }}">
-					<img src="{{ asset('img/operadora.png') }}">
-					<h3 class="hidden-xs">Tours Operadora</h3>
-				</a>
-			</div>
-			<div class="row" style="padding: 3px 0">
-				<div class="col-md-6 col-xs-6 gasolina">
-					<a href="{{ URL::to('es/departamentos/Gasolineras/'.$depto->nombre) }}">
-						<img src="{{ asset('img/gasolina.png') }}">
-						<h3 class="hidden-xs">Gasolinera</h3>
-					</a>
-				</div>
-				<div class="col-md-6 col-xs-6" style="padding:0">
-					<div class="clima">
-						<h3>{{$depto->temperatura}} C°</h3>
-						<p>{{$depto->nombre}}</p>	
-					</div>
-				</div>
+ 				</div>
 			</div>
 		</div>
 	</div>
+</div>
 	<div class="row">
 		
 	</div>

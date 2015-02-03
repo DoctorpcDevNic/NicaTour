@@ -29,7 +29,8 @@ Restaurantes en {{$depto->nombre}} - Nicaragua Tour
 			@foreach($Rest as $key)
 				<div class="col-sm-6 col-xs-6 restaurant">
 					<div class="col-xs-12 resttitul">
-						<h3>{{ $key->nombre }} <img class="pull-right" src="{{ asset('img/Restaurante-01.png') }}"></h3>
+						<h3>{{ $key->nombre }}</h3>
+						<img class="hidden-xs" src="{{ asset('img/Restaurante-01.png') }}">
 					</div>
 					<div class="col-xs-12 restdescripcion">
 						<p><i class="fa fa-phone fa-fw"></i>{{ $key->telefono }}</p>

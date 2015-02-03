@@ -142,8 +142,8 @@ Nicaragua Tour - Conoce <?php echo $depto->nombre; ?>
 				</div>
 				<div class="col-md-6 col-xs-6" style="padding:0">
 					<div class="clima">
-						<h3><?php echo $clima->temperatura; ?> C°</h3>
-						<p><?php echo $clima->nombre; ?></p>	
+						<h3><?php echo $depto->temperatura; ?> C°</h3>
+						<p><?php echo $depto->nombre; ?></p>	
 					</div>
 				</div>
 			</div>

@@ -121,14 +121,14 @@
                     <li><a href="<?php echo URL::to('es/departamentos/Leon'); ?>">Leon</a></li>
                     <li><a href="<?php echo URL::to('es/departamentos/Madriz'); ?>">Madriz</a></li>
                     <li><a href="<?php echo URL::to('es/departamentos/Managua'); ?>">Managua</a></li>
-                    <li><a href="<?php echo URL::to('es/departamentos/Masaya'); ?>">Masaya</a></li>
+                    <li><a href="<?php echo URL::to('es/departamentos/Masaya'); ?>">Masaya</a></li>                        
                     <li><a href="<?php echo URL::to('es/departamentos/Matagalpa'); ?>">Matagalpa</a></li>
                     <li><a href="<?php echo URL::to('es/departamentos/Nueva Segovia'); ?>">Nueva Segovia</a></li>
                     <li><a href="<?php echo URL::to('es/departamentos/Rivas'); ?>">Rivas</a></li>
                     <li><a href="<?php echo URL::to('es/departamentos/Rio San Juan'); ?>">Rio San Juan</a></li>
                     <li><a href="<?php echo URL::to('es/departamentos/RAAN'); ?>">RAAN</a></li>
-                    <li><a href="<?php echo URL::to('es/departamentos/RAAS'); ?>">RAAS</a></li>
-              </ul> 
+                    <li><a href="<?php echo URL::to('es/departamentos/RAAS'); ?>">Norwin</a></li>
+              </ul>
             </li>
             <li><a href="">Explorar</a></li>
             <li><a href="">Idioma</a></li>

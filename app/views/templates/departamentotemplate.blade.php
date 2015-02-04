@@ -33,46 +33,6 @@
     <div class="slider">
      @yield('SliderDpto')
     </div>
-<style>
-  #top li ul, #top ul li {width:300px;} /* Ancho del contenedor de las subpestañas */
-  #top ul li a {
-  text-align:left;
-  padding: 6px 15px;
-  font-size:13px;
-  font-weight:normal;
-  text-transform:none;
-  font-family:Arial, sans-serif;
-  border:none;
-  }
-  #top li ul {
-  z-index:100;
-  position: absolute;
-  display: none;
-  background-color:#1a3352; /* Color de fondo del contenedor de las subpestañas */
-  margin-left:-80px;
-  padding:10px 0;
-  border-radius: 0px 0px 6px 6px;
-  box-shadow:0 2px 2px rgba(0,0,0,0.6);
-  filter:alpha(opacity=87);
-  opacity:.87;
-  }
-  #top li ul li {
-  width:150px; /* Ancho de cada subpestaña */
-  float:left;
-  margin:0;
-  padding:0;
-  }
-  #top li:hover ul, #top li.hvr ul {display: block;}
-  #top li:hover ul a, #top li.hvr ul a {
-  color:#ddd; /* Color del texto de los submenús */
-  background-color:transparent;
-  text-decoration:none;
-  }
-  #top ul a:hover {
-  text-decoration:underline!important;
-  color:#c5fa6f !important; /* Color del texto de los submenús al pasar el cursor */
-  }
-</style>
     <!--menu -->
     <nav class="menudepto navbar navbar-default" role="navigation">
       <div class="container-fluid">
@@ -88,25 +48,30 @@
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav navbar-right" id="top">
             <li><a href="">Nicaragua</a></li>
-            <li><a href="" class="dropdown-toggle" data-toggle="dropdown">Departamentos</a>
-              <ul class="dropdown-menu" role="menu">
-                    <li><a href="{{ URL::to('es/departamentos/Boaco') }}">Boaco</a></li>
-                    <li><a href="{{ URL::to('es/departamentos/Carazo') }}">Carazo</a></li>
-                    <li><a href="{{ URL::to('es/departamentos/Chinandega') }}">Chinandega</a></li>
-                    <li><a href="{{ URL::to('es/departamentos/Chontales') }}">Chontales</a></li>
-                    <li><a href="{{ URL::to('es/departamentos/Esteli') }}">Estelí</a></li>
-                    <li><a href="{{ URL::to('es/departamentos/Granada') }}">Granada</a></li>
-                    <li><a href="{{ URL::to('es/departamentos/Jinotega') }}">Jinotega</a></li>
-                    <li><a href="{{ URL::to('es/departamentos/Leon') }}">Leon</a></li>
-                    <li><a href="{{ URL::to('es/departamentos/Madriz') }}">Madriz</a></li>
-                    <li><a href="{{ URL::to('es/departamentos/Managua') }}">Managua</a></li>
-                    <li><a href="{{ URL::to('es/departamentos/Masaya') }}">Masaya</a></li>                        
-                    <li><a href="{{ URL::to('es/departamentos/Matagalpa') }}">Matagalpa</a></li>
-                    <li><a href="{{ URL::to('es/departamentos/Nueva Segovia') }}">Nueva Segovia</a></li>
-                    <li><a href="{{ URL::to('es/departamentos/Rivas') }}">Rivas</a></li>
-                    <li><a href="{{ URL::to('es/departamentos/Rio San Juan') }}">Rio San Juan</a></li>
-                    <li><a href="{{ URL::to('es/departamentos/RAAN') }}">RAAN</a></li>
-                    <li><a href="{{ URL::to('es/departamentos/RAAS') }}">RAAS</a></li>
+            <li><a href="" class="dropdown-toggle" data-toggle="dropdown">Departamentos<span class="caret"></span></a>
+              <ul class="dropdown-menu submenudpto" role="menu">
+                    <div>
+                      <li><a href="{{ URL::to('es/departamentos/Boaco') }}">Boaco</a></li>
+                      <li><a href="{{ URL::to('es/departamentos/Carazo') }}">Carazo</a></li>
+                      <li><a href="{{ URL::to('es/departamentos/Chinandega') }}">Chinandega</a></li>
+                      <li><a href="{{ URL::to('es/departamentos/Chontales') }}">Chontales</a></li>
+                      <li><a href="{{ URL::to('es/departamentos/Esteli') }}">Estelí</a></li>
+                      <li><a href="{{ URL::to('es/departamentos/Granada') }}">Granada</a></li>
+                      <li><a href="{{ URL::to('es/departamentos/Jinotega') }}">Jinotega</a></li>
+                      <li><a href="{{ URL::to('es/departamentos/Leon') }}">Leon</a></li>
+                      <li><a href="{{ URL::to('es/departamentos/Madriz') }}">Madriz</a></li>
+                    </div> 
+                    <div style="position:absolute">
+                      <li><a href="{{ URL::to('es/departamentos/Managua') }}">Managua</a></li>
+                      <li><a href="{{ URL::to('es/departamentos/Masaya') }}">Masaya</a></li>                        
+                      <li><a href="{{ URL::to('es/departamentos/Matagalpa') }}">Matagalpa</a></li>
+                      <li><a href="{{ URL::to('es/departamentos/Nueva Segovia') }}">Nueva Segovia</a></li>
+                      <li><a href="{{ URL::to('es/departamentos/Rivas') }}">Rivas</a></li>
+                      <li><a href="{{ URL::to('es/departamentos/Rio San Juan') }}">Rio San Juan</a></li>
+                      <li><a href="{{ URL::to('es/departamentos/RAAN') }}">RAAN</a></li>
+                      <li><a href="{{ URL::to('es/departamentos/RAAS') }}">RAAS</a></li>
+                    </div>
+                    
               </ul>
             </li>
             <li><a href="">Explorar</a></li>

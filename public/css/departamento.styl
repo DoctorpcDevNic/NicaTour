@@ -22,7 +22,6 @@ rojito = #791114
 }
 
 
-
 body
 	margin 0
 	padding 0
@@ -43,8 +42,7 @@ body
 		border-color transparent !important
 		&:hover
 			border-color transparent !important
-	.navbar-collapse
-		background white
+
 
 .navbar-fixed-top
 	z-index 9 !important			
@@ -57,6 +55,8 @@ body
 	.navbar-collapse
 		margin 0
 		padding 0
+		border 0
+		background-color rgba(white, .7)
 	ul
 		margin 0
 		padding 0
@@ -70,23 +70,14 @@ body
 				font-size 18px	
 				text-align center
 				text-decoration none !important
+				color black !important
 				&:hover
 					background rojito !important
 					color white !important
+	.deptos
+		border 0				
 
-.deptos
-		li
-			padding 0px 25px
-			ul
-				padding 5px 25px
-				
-				li
-					font-size 18px	
-					text-align center
-					list-style none
-					border 1px solid black
-					a
-						color black !important
+
 						
 .hotels
 	border 3px solid white
@@ -519,6 +510,23 @@ footer
 			
 
 @media (min-width:630px)
+	.navbar-default
+		background-color transparent !important
+		.navbar-nav>.open>a:hover
+			background-color transparent !important	
+	.nav 
+		.open>a
+			background-color transparent !important	
+	.navbar-right 
+		.dropdown-menu		
+			left 0 !important
+			border 0
+			
+	#top li:hover ul, #top li.hvr ul {display: block;}
+ 	#top li:hover ul a, #top li.hvr ul a {   
+    background-color:transparent;
+    text-decoration:none;
+  	}
 	.tiulslider
 		top 50%
 		
@@ -535,7 +543,25 @@ footer
 				a
 					margin-left 5px		
 		
-		
+	.menudepto
+		ul
+			li
+				padding-right 30px
+				
+				.submenudpto
+					background-color rojito
+					width 340px
+					div
+						display inline-block
+						li
+							padding-right 0
+							a
+								padding 8px 30px
+								margin 0 
+								display block
+								&:hover
+									background white !important
+									color black !important	
 							
 
 					

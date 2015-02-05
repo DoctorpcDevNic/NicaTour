@@ -8,18 +8,14 @@
 						<div class="alert alert-info">{{ Session::get('mensaje') }}</div>
 					@endif
 					@foreach($Slider as $key)
-						<div class="form-horizontal">
-							<div class="col-md-4 col-xs-6">						
-								<div class="form-group col-md-12">
-									<img class="img-responsive" src="{{ asset( 'img/'.$key->img.'') }}" alt="">
-								</div>							
-								<div class="form-group">
-									<div class="col-sm-offset-4 col-sm-4">
-										<a href="{{ URL::to('/administrador/Slider/Del/'.$depto->nombre.'/'.$key->id.'') }}" class="btn btn-danger">Eliminar</a>
-									</div>
+							<div class="col-sm-4 col-xs-6 SlideDel">						
+									<img class="img-responsive" src="{{ asset( 'img/'.$key->img.'') }}" alt="">							
+								<div>
+									<a href="{{ URL::to('/administrador/Slider/Del/'.$depto->nombre.'/'.$key->id.'') }}">
+										<h2 class="titul">Eliminar</h2>
+									</a>
 								</div>
 							</div>	
-						</div>
 					@endforeach
 				</div>					
 		{{$Slider->links()}}

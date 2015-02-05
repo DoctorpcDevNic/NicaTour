@@ -8,14 +8,16 @@
 				@foreach($Slider as $key)
 					@if($key->id_dpto==$value->id)						
 							<?php $value->id+=17;?>
-							<div class="col-md-4">
-							<div>
-								<img class="img-responsive" src="{{ asset( 'img/'.$key->img.'') }}" alt="">
+							<div class="col-sm-4 SlideDeptoAdmin">
+								<div>
+									<img class="img-responsive" src="{{ asset( 'img/'.$key->img.'') }}" alt="">
+									<div>
+										<a href="{{ URL::to('/administrador/Slider/Show/'.$value->nombre.'') }}">
+											<h2 class="titul">{{$value->nombre}}</h2>
+										</a>
+									</div>
+								</div>
 							</div>
-								<a href="{{ URL::to('/administrador/Slider/Show/'.$value->nombre.'') }}"><h2 class="titul">{{$value->nombre}}</h2></a>
-							</div>
-					@else
-
 					@endif
 				@endforeach
 			@endforeach

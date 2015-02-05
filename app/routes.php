@@ -216,6 +216,7 @@ Route::get('sitemap', function(){
 	    		Route::get('/Del/{id}','RestaurantesAdmin@RestDel');
 	    		Route::get('/Add','RestaurantesAdmin@Add');
 	    		Route::post('/Add','RestaurantesAdmin@RestNew');
+	    		Route::post('/Buscar','RestaurantesAdmin@Buscar');
 
 	    	});
 
@@ -230,6 +231,7 @@ Route::get('sitemap', function(){
 	    		Route::get('/Del/{id}','HotelesAdmin@HotelDel');
 	    		Route::get('/Add','HotelesAdmin@Add');
 	    		Route::post('/Add','HotelesAdmin@HotelsNew');
+	    		Route::post('/Buscar','HotelesAdmin@Buscar');
 
 	    	});
 

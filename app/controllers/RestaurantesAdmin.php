@@ -172,5 +172,26 @@ class RestaurantesAdmin extends \BaseController {
 		return Redirect::back();
 	}
 
+	public function Buscar(){
+
+		$resultado =Input::get('nombre');
+		$deptonombre=Input::get('deptonombre');
+		$editar= URL::to('/administrador/Hoteles/Edit');
+		$eliminar= URL::to('/administrador/Hoteles/Del');
+		$datos=DB::table('restaurantes')
+				->where('nombre','like','%'.$resultado.'%')
+				->where('id_depto',Input::get('depto'))
+				->get();
+	
+		return Response::json( array(
+			'resultado' => $resultado, 
+			'sms' => "Resultados para", 
+			'datos' => $datos,
+			'urleditar'=> $editar,
+			'urldel'=> $eliminar,
+			'deptonombre'=>$deptonombre,
+			));
+	}
+
 
 }

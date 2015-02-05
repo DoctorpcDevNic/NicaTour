@@ -26,3 +26,81 @@ textarea{ resize:none }
 .nombreusuario a{
 	float: left;
 }
+.buscar{
+	margin: 10px 0px;
+}
+#normal img{
+	padding: 15px 0px;
+	width: 50%;
+	margin-left: 23%;
+}
+#normal h2{
+	margin: 0;
+}
+#normal p{
+	padding: 0px 0px;
+	margin:  5px 0px;
+}
+/*Slider Departamental */
+.SliderDeptoAdmin div{
+	margin-top: 10px !important;
+}
+.SlideDeptoAdmin a{
+	text-decoration: none;
+}
+.SlideDeptoAdmin div div{
+	
+	background-color: rgba(0, 174, 239, 0.8);
+	border-radius: 15px;
+	margin-top: -18%;
+	margin-left: 8%;
+	position: absolute;
+	width: 75%;
+	z-index: 5;
+}
+.SlideDeptoAdmin div div:hover{
+	background-color: rgba(0, 164, 228, 0.8);
+}
+.SlideDeptoAdmin div h2{
+	color: white;
+	margin-top: 8px;
+	text-align: center;
+}
+.SlideDel div{
+	background-color: rgba(238, 51, 34, 0.8);
+	border-radius: 15px;
+	margin-top: -18%;
+	margin-left: 8%;
+	position: absolute;
+	width: 75%;
+	z-index: 5;
+}
+}
+.SlideDel div a{
+	text-decoration: none;
+}
+.SlideDel div a:hover{
+	text-decoration: none;
+}
+.SlideDel div:hover{
+	background-color: rgba(229, 25, 55, 0.8);
+}
+.SlideDel div h2{
+	text-decoration: none;
+	color: white;
+	margin-top: 8px;
+	text-align: center;
+}
+
+/* Restaurantes y Hoteles */
+.lista div div img{
+	width: 65%;
+	margin: 0px 35px;
+}
+.lista div div h2{
+	margin: 0px;
+	font-size:  20px;
+}
+.lista div div p{
+	margin: 8px 0px
+}

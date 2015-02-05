@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 23-01-2015 a las 18:38:01
+-- Tiempo de generación: 05-02-2015 a las 08:17:02
 -- Versión del servidor: 5.6.21
 -- Versión de PHP: 5.6.3
 
@@ -51,6 +51,11 @@ CREATE TABLE IF NOT EXISTS `deptos` (
   `zoom` int(11) NOT NULL,
   `dolar` varchar(8) COLLATE utf8_spanish_ci NOT NULL,
   `youtube` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
+  `urlclima` varchar(300) COLLATE utf8_spanish_ci NOT NULL,
+  `municipio` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
+  `temperatura` varchar(6) COLLATE utf8_spanish_ci NOT NULL,
+  `icono` varchar(350) COLLATE utf8_spanish_ci NOT NULL,
+  `humedad` varchar(7) COLLATE utf8_spanish_ci NOT NULL,
   `keywords` varchar(200) COLLATE utf8_spanish_ci NOT NULL,
   `descripcion` varchar(200) COLLATE utf8_spanish_ci NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
@@ -61,24 +66,24 @@ CREATE TABLE IF NOT EXISTS `deptos` (
 -- Volcado de datos para la tabla `deptos`
 --
 
-INSERT INTO `deptos` (`id`, `nombre`, `latitud`, `longitud`, `zoom`, `dolar`, `youtube`, `keywords`, `descripcion`, `created_at`, `updated_at`) VALUES
-(1, 'Boaco', '12.470478201748175', '-85.65898419999996', 14, '26.63', 'PIh2xe4jnpk', 'Boaco, Ciudad de dos pisos, Nicaragua, Region Norte', 'Boaco, Ciudad de la region norte de Nicaragua, conocida como la ciudad de dos pisos', '2015-01-13 04:44:17', '2015-01-12 23:13:42'),
-(2, 'Carazo', '11.847114728782314', '-86.195426', 13, '26.63', 'XvlHisKH1hg', 'Carazo, Playas del pacifico, La Boquita', 'Carazo, su ciudad principal es Jinotepe', '2015-01-13 04:50:16', '2015-01-13 10:50:16'),
-(3, 'Chinandega', '12.623776128614631', '-87.12080960000003', 12, '26.63', 'fLJxdZDm72A', '', '', '2015-01-10 16:33:35', '0000-00-00 00:00:00'),
-(4, 'Chontales', '12.101263293049545', '-85.36827564999999', 13, '26.63', 'nzziu-FvxJE', '', '', '2015-01-10 16:31:21', '0000-00-00 00:00:00'),
-(5, 'Estelí', '13.086516350653778', '-86.35850425000001', 12, '26.63', 'lB5HsBgTX2o', '', '', '2015-01-10 16:34:10', '0000-00-00 00:00:00'),
-(6, 'Granada', '11.928850069287687', '-85.95979939999995', 13, '26.63', 'JOisYHYbNM8', '', '', '2015-01-10 16:37:14', '0000-00-00 00:00:00'),
-(7, 'Jinotega', '13.089838125023427', '-85.99930305000004', 13, '26.63', 'YgY86pXW7IE', '', '', '2015-01-10 16:40:33', '0000-00-00 00:00:00'),
-(8, 'Leon', '12.433997349553284', '-86.88207885000003', 12, '26.63', 'upTQ8e0KzDQ', '', '', '2015-01-10 16:43:56', '0000-00-00 00:00:00'),
-(9, 'Madriz', '13.481491162505499', '-86.58084865000001', 14, '26.63', 'YgY86pXW7IE', '', '', '2015-01-10 16:40:38', '0000-00-00 00:00:00'),
-(10, 'Managua', '12.096214921751834', '-86.25846060000003', 11, '26.63', 'OxxggwHFj7M', '', '', '2015-01-22 16:18:21', '2015-01-22 22:18:21'),
-(11, 'Masaya', '11.97501259421353', '-86.09272480000004', 12, '26.63', '0QP4Nc0QVCM', '', '', '2015-01-10 16:36:09', '0000-00-00 00:00:00'),
-(12, 'Matagalpa', '12.92961447177432', '-85.92150800000002', 12, '26.63', 'YgY86pXW7IE', '', '', '2015-01-10 16:40:42', '0000-00-00 00:00:00'),
-(13, 'Nueva Segovia', '13.629611915823169', '-86.47501950000003', 13, '26.63', 'YgY86pXW7IE', '', '', '2015-01-10 16:40:45', '0000-00-00 00:00:00'),
-(14, 'Rivas', '11.438217119896732', '-85.82605354999998', 12, '26.63', 'lb5_HQ_rurg', '', '', '2015-01-10 16:35:18', '0000-00-00 00:00:00'),
-(15, 'Rio San Juan', '11.127238971367062', '-84.77700945000004', 14, '26.63', '92l-jkWkGsU', '', '', '2015-01-10 16:36:35', '0000-00-00 00:00:00'),
-(16, 'RAAN', '14.035261735939075', '-83.39194929999996', 14, '26.63', 'KYvnpjZjtfc', '', '', '2015-01-10 16:43:12', '0000-00-00 00:00:00'),
-(17, 'RAAS', '12.011376703641973', '-83.76993655000001', 13, '26.63', 'KYvnpjZjtfc', '', '', '2015-01-10 16:43:15', '0000-00-00 00:00:00');
+INSERT INTO `deptos` (`id`, `nombre`, `latitud`, `longitud`, `zoom`, `dolar`, `youtube`, `urlclima`, `municipio`, `temperatura`, `icono`, `humedad`, `keywords`, `descripcion`, `created_at`, `updated_at`) VALUES
+(1, 'Boaco', '12.470478201748175', '-85.65898419999996', 14, '26.71', 'PIh2xe4jnpk', 'http://api.wunderground.com/api/c0bc1e930c0a0f3c/conditions/q/NK/Boaco.json', 'Boaco', '26', 'partlycloudy', '74%', 'Boaco, Ciudad de dos pisos, Nicaragua, Region Norte', 'Boaco, Ciudad de la region norte de Nicaragua, conocida como la ciudad de dos pisos', '2015-02-05 07:10:47', '2015-01-12 23:13:42'),
+(2, 'Carazo', '11.847114728782314', '-86.195426', 13, '26.71', 'XvlHisKH1hg', 'http://api.wunderground.com/api/c0bc1e930c0a0f3c/conditions/q/NK/Jinotepe.json', 'Jinotepe', '26', 'partlycloudy', '74%', 'Carazo, Playas del pacifico, La Boquita', 'Carazo, su ciudad principal es Jinotepe', '2015-02-05 07:10:48', '2015-01-13 10:50:16'),
+(3, 'Chinandega', '12.623776128614631', '-87.12080960000003', 12, '26.71', 'fLJxdZDm72A', 'http://api.wunderground.com/api/c0bc1e930c0a0f3c/conditions/q/NI/Chinandega.json', 'Chinandega', '23', 'partlycloudy', '74%', '', '', '2015-02-05 07:12:08', '0000-00-00 00:00:00'),
+(4, 'Chontales', '12.101263293049545', '-85.36827564999999', 13, '26.71', 'nzziu-FvxJE', 'http://api.wunderground.com/api/c0bc1e930c0a0f3c/conditions/q/NI/Juigalpa.json', 'Juigalpa', '26', 'partlycloudy', '74%', '', '', '2015-02-05 07:10:50', '0000-00-00 00:00:00'),
+(5, 'Estelí', '13.086516350653778', '-86.35850425000001', 12, '26.71', 'lB5HsBgTX2o', 'http://api.wunderground.com/api/c0bc1e930c0a0f3c/conditions/q/NI/Esteli.json', 'Esteli', '17', 'clear', '93%', '', '', '2015-02-05 07:12:10', '0000-00-00 00:00:00'),
+(6, 'Granada', '11.928850069287687', '-85.95979939999995', 13, '26.71', 'JOisYHYbNM8', 'http://api.wunderground.com/api/c0bc1e930c0a0f3c/conditions/q/NI/Granada.json', 'Granada', '26', 'partlycloudy', '74%', '', '', '2015-02-05 07:10:51', '0000-00-00 00:00:00'),
+(7, 'Jinotega', '13.089838125023427', '-85.99930305000004', 13, '26.71', 'YgY86pXW7IE', 'http://api.wunderground.com/api/c0bc1e930c0a0f3c/conditions/q/NI/Jinotega.json', 'Jinotega', '17', 'clear', '93%', '', '', '2015-02-05 07:12:12', '0000-00-00 00:00:00'),
+(8, 'Leon', '12.433997349553284', '-86.88207885000003', 12, '26.71', 'upTQ8e0KzDQ', 'http://api.wunderground.com/api/c0bc1e930c0a0f3c/conditions/q/NI/Leon.json', 'Leon', '23', 'partlycloudy', '74%', '', '', '2015-02-05 07:12:13', '0000-00-00 00:00:00'),
+(9, 'Madriz', '13.481491162505499', '-86.58084865000001', 14, '26.71', 'YgY86pXW7IE', 'http://api.wunderground.com/api/c0bc1e930c0a0f3c/conditions/q/NI/Somoto.json', 'Somoto', '14', 'partlycloudy', '88%', '', '', '2015-02-05 07:14:45', '0000-00-00 00:00:00'),
+(10, 'Managua', '12.096214921751834', '-86.25846060000003', 11, '26.71', 'OxxggwHFj7M', 'http://api.wunderground.com/api/c0bc1e930c0a0f3c/conditions/q/NI/Managua.json', 'Managua', '26', 'partlycloudy', '74%', '', '', '2015-02-05 07:14:46', '2015-01-22 22:18:21'),
+(11, 'Masaya', '11.97501259421353', '-86.09272480000004', 12, '26.71', '0QP4Nc0QVCM', 'http://api.wunderground.com/api/c0bc1e930c0a0f3c/conditions/q/NI/Masaya.json', 'Masaya', '26', 'partlycloudy', '74%', '', '', '2015-02-05 07:14:47', '0000-00-00 00:00:00'),
+(12, 'Matagalpa', '12.92961447177432', '-85.92150800000002', 12, '26.71', 'YgY86pXW7IE', 'http://api.wunderground.com/api/c0bc1e930c0a0f3c/conditions/q/NI/Matagalpa.json', 'Matagalpa', '17', 'clear', '93%', '', '', '2015-02-05 07:14:47', '0000-00-00 00:00:00'),
+(13, 'Nueva Segovia', '13.629611915823169', '-86.47501950000003', 13, '26.71', 'YgY86pXW7IE', 'http://api.wunderground.com/api/c0bc1e930c0a0f3c/conditions/q/NI/Ocotal.json', 'Ocotal', '14', 'partlycloudy', '88%', '', '', '2015-02-05 07:14:48', '0000-00-00 00:00:00'),
+(14, 'Rivas', '11.438217119896732', '-85.82605354999998', 12, '26.71', 'lb5_HQ_rurg', 'http://api.wunderground.com/api/c0bc1e930c0a0f3c/conditions/q/NI/Rivas.json', 'Rivas', '26', 'partlycloudy', '74%', '', '', '2015-02-05 07:14:49', '0000-00-00 00:00:00'),
+(15, 'Rio San Juan', '11.127238971367062', '-84.77700945000004', 14, '26.71', '92l-jkWkGsU', 'http://api.wunderground.com/api/c0bc1e930c0a0f3c/conditions/q/NI/San%20Carlos.json', 'San Carlos', '23', 'rain', '92%', '', '', '2015-02-05 07:14:50', '0000-00-00 00:00:00'),
+(16, 'RAAN', '14.035261735939075', '-83.39194929999996', 14, '26.71', 'KYvnpjZjtfc', 'http://api.wunderground.com/api/c0bc1e930c0a0f3c/conditions/q/NI/Puerto%20Cabezas.json', 'Puerto Cabezas', '24', 'clear', '87%', '', '', '2015-02-05 07:14:50', '0000-00-00 00:00:00'),
+(17, 'RAAS', '12.011376703641973', '-83.76993655000001', 13, '26.71', 'KYvnpjZjtfc', 'http://api.wunderground.com/api/c0bc1e930c0a0f3c/conditions/q/NI/Bluefields.json', 'Bluefields', '24', 'clear', '87%', '', '', '2015-02-05 07:14:51', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -97,47 +102,6 @@ CREATE TABLE IF NOT EXISTS `descripcioncultura` (
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `detalleclima`
---
-
-CREATE TABLE IF NOT EXISTS `detalleclima` (
-`id` int(10) unsigned NOT NULL,
-  `id_depto` int(11) NOT NULL,
-  `nombre` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `temperatura` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `icono` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `altura` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `humedad` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Volcado de datos para la tabla `detalleclima`
---
-
-INSERT INTO `detalleclima` (`id`, `id_depto`, `nombre`, `temperatura`, `icono`, `altura`, `humedad`, `created_at`, `updated_at`) VALUES
-(1, 1, 'Boaco', '28', 'http://icons.wxug.com/i/c/k/nt_partlycloudy.gif', '184 ft', '66%', '2015-01-02 10:52:07', '2015-01-03 09:01:51'),
-(2, 2, 'Jinotepe', '28', 'http://icons.wxug.com/i/c/k/nt_partlycloudy.gif', '184 ft', '66%', '2015-01-02 10:52:08', '2015-01-03 09:01:51'),
-(3, 3, 'Chinandega', '27', 'http://icons.wxug.com/i/c/k/nt_partlycloudy.gif', '243 ft', '63%', '2015-01-02 10:52:11', '2015-01-03 09:01:52'),
-(4, 4, 'Juigalpa', '28', 'http://icons.wxug.com/i/c/k/nt_partlycloudy.gif', '184 ft', '66%', '2015-01-02 10:52:11', '2015-01-03 09:01:52'),
-(5, 5, 'Esteli', '18', 'http://icons.wxug.com/i/c/k/nt_rain.gif', '3569 ft', '92%', '2015-01-02 10:52:12', '2015-01-03 09:01:53'),
-(6, 6, 'Granada', '28', 'http://icons.wxug.com/i/c/k/nt_partlycloudy.gif', '184 ft', '66%', '2015-01-02 10:52:12', '2015-01-03 09:01:53'),
-(7, 7, 'Jinotega', '22', 'http://icons.wxug.com/i/c/k/nt_mostlycloudy.gif', '3228 ft', '73%', '2015-01-02 10:52:13', '2015-01-03 09:01:54'),
-(8, 8, 'Leon', '27', 'http://icons.wxug.com/i/c/k/nt_partlycloudy.gif', '243 ft', '63%', '2015-01-02 10:52:13', '2015-01-03 09:01:54'),
-(9, 9, 'Somoto', '21', 'http://icons.wxug.com/i/c/k/nt_partlycloudy.gif', '3261 ft', '78%', '2015-01-02 10:53:28', '2015-01-02 10:53:28'),
-(10, 10, 'Managua', '27', 'http://icons.wxug.com/i/c/k/nt_partlycloudy.gif', '184 ft', '65%', '2015-01-02 10:53:29', '2015-01-02 10:53:29'),
-(11, 11, 'Masaya', '27', 'http://icons.wxug.com/i/c/k/nt_partlycloudy.gif', '184 ft', '65%', '2015-01-02 10:53:29', '2015-01-02 10:53:29'),
-(12, 12, 'Matagalpa', '23', 'http://icons.wxug.com/i/c/k/nt_partlycloudy.gif', '3228 ft', '65%', '2015-01-02 10:53:30', '2015-01-02 10:53:30'),
-(13, 13, 'Ocotal', '21', 'http://icons.wxug.com/i/c/k/nt_partlycloudy.gif', '3261 ft', '78%', '2015-01-02 10:53:30', '2015-01-02 10:53:30'),
-(14, 14, 'Rivas', '27', 'http://icons.wxug.com/i/c/k/nt_partlycloudy.gif', '184 ft', '65%', '2015-01-02 10:53:31', '2015-01-02 10:53:31'),
-(15, 15, 'San Carlos', '22', 'http://icons.wxug.com/i/c/k/nt_rain.gif', ' ft', '92%', '2015-01-02 10:53:31', '2015-01-02 10:53:31'),
-(16, 16, 'Puerto Cabezas', '27', 'http://icons.wxug.com/i/c/k/nt_partlycloudy.gif', '66 ft', '89%', '2015-01-02 10:53:32', '2015-01-02 10:53:32'),
-(17, 17, 'Bluefields', '28', 'http://icons.wxug.com/i/c/k/nt_mostlycloudy.gif', '16 ft', '79%', '2015-01-02 10:53:32', '2015-01-02 10:53:32');
 
 -- --------------------------------------------------------
 
@@ -1601,41 +1565,6 @@ INSERT INTO `idioma` (`id`, `iniciales`, `nombre`) VALUES
 (1, 'es', 'Español'),
 (2, 'en', 'Ingles'),
 (3, 'de', 'Aleman');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `infoclima`
---
-
-CREATE TABLE IF NOT EXISTS `infoclima` (
-`id` int(11) NOT NULL,
-  `id_dpto` int(11) NOT NULL,
-  `url` varchar(300) COLLATE utf8_spanish_ci NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
-
---
--- Volcado de datos para la tabla `infoclima`
---
-
-INSERT INTO `infoclima` (`id`, `id_dpto`, `url`) VALUES
-(1, 1, 'http://api.wunderground.com/api/c0bc1e930c0a0f3c/conditions/q/NK/Boaco.json'),
-(2, 2, 'http://api.wunderground.com/api/c0bc1e930c0a0f3c/conditions/q/NK/Jinotepe.json'),
-(3, 3, 'http://api.wunderground.com/api/c0bc1e930c0a0f3c/conditions/q/NI/Chinandega.json'),
-(4, 4, 'http://api.wunderground.com/api/c0bc1e930c0a0f3c/conditions/q/NI/Juigalpa.json'),
-(5, 5, 'http://api.wunderground.com/api/c0bc1e930c0a0f3c/conditions/q/NI/Esteli.json'),
-(6, 6, 'http://api.wunderground.com/api/c0bc1e930c0a0f3c/conditions/q/NI/Granada.json'),
-(7, 7, 'http://api.wunderground.com/api/c0bc1e930c0a0f3c/conditions/q/NI/Jinotega.json'),
-(8, 8, 'http://api.wunderground.com/api/c0bc1e930c0a0f3c/conditions/q/NI/Leon.json'),
-(9, 9, 'http://api.wunderground.com/api/c0bc1e930c0a0f3c/conditions/q/NI/Somoto.json'),
-(10, 10, 'http://api.wunderground.com/api/c0bc1e930c0a0f3c/conditions/q/NI/Managua.json'),
-(11, 11, 'http://api.wunderground.com/api/c0bc1e930c0a0f3c/conditions/q/NI/Masaya.json'),
-(12, 12, 'http://api.wunderground.com/api/c0bc1e930c0a0f3c/conditions/q/NI/Matagalpa.json'),
-(13, 13, 'http://api.wunderground.com/api/c0bc1e930c0a0f3c/conditions/q/NI/Ocotal.json'),
-(14, 14, 'http://api.wunderground.com/api/c0bc1e930c0a0f3c/conditions/q/NI/Rivas.json'),
-(15, 15, 'http://api.wunderground.com/api/c0bc1e930c0a0f3c/conditions/q/NI/San%20Carlos.json'),
-(16, 16, 'http://api.wunderground.com/api/c0bc1e930c0a0f3c/conditions/q/NI/Puerto%20Cabezas.json'),
-(17, 17, 'http://api.wunderground.com/api/c0bc1e930c0a0f3c/conditions/q/NI/Bluefields.json');
 
 -- --------------------------------------------------------
 
@@ -3304,12 +3233,6 @@ ALTER TABLE `descripcioncultura`
  ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `detalleclima`
---
-ALTER TABLE `detalleclima`
- ADD PRIMARY KEY (`id`);
-
---
 -- Indices de la tabla `detalleslider`
 --
 ALTER TABLE `detalleslider`
@@ -3337,12 +3260,6 @@ ALTER TABLE `hoteles`
 -- Indices de la tabla `idioma`
 --
 ALTER TABLE `idioma`
- ADD PRIMARY KEY (`id`);
-
---
--- Indices de la tabla `infoclima`
---
-ALTER TABLE `infoclima`
  ADD PRIMARY KEY (`id`);
 
 --
@@ -3407,11 +3324,6 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=18;
 ALTER TABLE `descripcioncultura`
 MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT de la tabla `detalleclima`
---
-ALTER TABLE `detalleclima`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=18;
---
 -- AUTO_INCREMENT de la tabla `detalleslider`
 --
 ALTER TABLE `detalleslider`
@@ -3436,11 +3348,6 @@ MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=1285;
 --
 ALTER TABLE `idioma`
 MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
---
--- AUTO_INCREMENT de la tabla `infoclima`
---
-ALTER TABLE `infoclima`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=18;
 --
 -- AUTO_INCREMENT de la tabla `restaurantes`
 --

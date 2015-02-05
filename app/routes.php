@@ -102,6 +102,10 @@ Route::get('sitemap', function(){
 			Route::get('{dpto}','DepartamentosController@view');
 
 			Route::get('Gasolineras/{depto}','DepartamentosController@Gasview');
+
+			Route::post('Hoteles/Buscar','DepartamentosController@BuscarHotel');
+
+			Route::post('Restaurantes/Buscar','DepartamentosController@BuscarRestaurant');
 			
 		});
 

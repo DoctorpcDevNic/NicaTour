@@ -125,6 +125,38 @@ class DepartamentosController extends BaseController {
 		return View::make('lenguajes.es.departamentos.gasolineras', array('departamento'=>$departamento, 'SliderDpto'=>$SliderDpto, 'Gasolineras'=>$Gasolineras));
 
     }
+    public function BuscarHotel(){
+
+		$resultado =Input::get('nombre');
+		$deptonombre=Input::get('deptonombre');
+		$datos=DB::table('hoteles')
+				->where('nombre','like','%'.$resultado.'%')
+				->where('id_depto',Input::get('depto'))
+				->get();
+	
+		return Response::json( array(
+			'resultado' => $resultado, 
+			'sms' => "Resultados para", 
+			'datos' => $datos,
+			'deptonombre'=>$deptonombre,
+			));
+	}
+	public function BuscarRestaurant(){
+
+		$resultado =Input::get('nombre');
+		$deptonombre=Input::get('deptonombre');
+		$datos=DB::table('restaurantes')
+				->where('nombre','like','%'.$resultado.'%')
+				->where('id_depto',Input::get('depto'))
+				->get();
+	
+		return Response::json( array(
+			'resultado' => $resultado, 
+			'sms' => "Resultados para", 
+			'datos' => $datos,
+			'deptonombre'=>$deptonombre,
+			));
+	}
 
 }	
 ?>

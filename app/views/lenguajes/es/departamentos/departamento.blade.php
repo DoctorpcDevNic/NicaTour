@@ -14,7 +14,14 @@ Nicaragua Tour - Conoce {{$depto->nombre}}
         @foreach($SliderImg as $value)
         <div data-src="{{ asset( 'img/'.$value->img.'') }}">
             <div class="titulSlideimg">
-                 <!--h2>Chinandega, Corinto</h2-->
+	            <div class="tituloslide">
+	            	<h2>Chinandega, Corinto</h2>
+	            </div>
+	            <div class="descripcionslide">
+	            	 <h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum fuga necessitatibus fugit
+	                 nobis illo quam veniam voluptas at ipsum, in sunt cupiditate corporis sed sit distinctio, delectus
+	                 quis nisi dolor.</h3>
+	            </div>
             </div>
         </div>
         @endforeach

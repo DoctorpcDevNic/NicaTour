@@ -17,6 +17,81 @@ Route::get('/', function()
 	return Redirect::to('/es');
 });
 
+//Paginas de referencias para Estadisticas
+/*
+Route::get('/paginas', function()
+{
+	$IndexPrin=new paginas();
+	$IndexPrin->tipo="index";
+	$IndexPrin->departamento="index";
+	$contador=0;
+	if($IndexPrin->save()){
+		$contador++;
+	}
+	$departamentos = DB::table('deptos')->get();
+	foreach ($departamentos as $key){
+
+		$IndexDepto=new paginas();
+		$IndexDepto->tipo="index";
+		$IndexDepto->departamento=$key->nombre;
+		if($IndexDepto->save()){
+			$contador++;
+		}
+
+		$IndexGastronomia=new paginas();
+		$IndexGastronomia->tipo="Gastronomia";
+		$IndexGastronomia->departamento=$key->nombre;
+		if($IndexGastronomia->save()){
+			$contador++;
+		}
+
+		$IndexTesoros=new paginas();
+		$IndexTesoros->tipo="Tesoros Coloniales";
+		$IndexTesoros->departamento=$key->nombre;
+		if($IndexTesoros->save()){
+			$contador++;
+		}
+
+		$IndexDanza=new paginas();
+		$IndexDanza->tipo="Danza";
+		$IndexDanza->departamento=$key->nombre;
+		if($IndexDanza->save()){
+			$contador++;
+		}
+
+		$IndexArtesania=new paginas();
+		$IndexArtesania->tipo="Artesania";
+		$IndexArtesania->departamento=$key->nombre;
+		if($IndexArtesania->save()){
+			$contador++;
+		}
+
+		$IndexHoteles=new paginas();
+		$IndexHoteles->tipo="Hoteles";
+		$IndexHoteles->departamento=$key->nombre;
+		if($IndexHoteles->save()){
+			$contador++;
+		}
+
+		$IndexRestaurantes=new paginas();
+		$IndexRestaurantes->tipo="Restaurantes";
+		$IndexRestaurantes->departamento=$key->nombre;
+		if($IndexRestaurantes->save()){
+			$contador++;
+		}
+
+		$IndexGasolineras=new paginas();
+		$IndexGasolineras->tipo="Gasolineras";
+		$IndexGasolineras->departamento=$key->nombre;
+		if($IndexGasolineras->save()){
+			$contador++;
+		}
+	}
+	return $contador." Paginas agregadas correctamente";
+});
+
+*/
+
 Route::get('sitemap', function(){
 	$sitemap = App::make("sitemap"); 
 	// add items to the sitemap (url, date, priority, freq) 

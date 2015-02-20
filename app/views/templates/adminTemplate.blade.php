@@ -83,6 +83,17 @@
                                     <a href="{{ URL::to('administrador/usuarios/registrar') }}">Agregar</a>
                                 </li>
                              </ul>
+                        </li>
+                         <li>
+                            <a href=""><i class="fa fa-bar-chart fa-fw"></i>Estadisticas<span class="fa arrow"></span></a>
+                             <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="{{ URL::to('administrador/Estadisticas/Show') }}">Ver Todos</a>
+                                </li>
+                                 <li>
+                                    <a href="{{ URL::to('administrador/Estadisticas/registrar') }}">Agregar</a>
+                                </li>
+                             </ul>
                         </li> 
                         <li>
                             <a href=""><i class="fa fa-photo fa-fw"></i> Slider Principal <span class="fa arrow"></span></a>

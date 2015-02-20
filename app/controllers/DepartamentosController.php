@@ -11,6 +11,35 @@ class DepartamentosController extends BaseController {
 
 		$SliderDpto=DB::table('detalleslider')->where('id_dpto',$departamento->id)->get();
 		
+		/*$direccion=isset($_SERVER['HTTP_X_FORWARDED_FOR']) 
+				    ? $_SERVER['HTTP_X_FORWARDED_FOR'] 
+				    : $_SERVER['REMOTE_ADDR'];
+		$localizacion = unserialize(file_get_contents("http://www.geoplugin.net/php.gp?ip=".$direccion));
+
+		if(!isset($_COOKIE['PaginaVisitada'.$dpto])){
+
+			$mensaje="Aun no has visitado la pagina";
+			$pagina=DB::table('paginas')
+				->where('tipo','index')
+				->where('departamento',$dpto)
+				->first();
+
+			$visita=new contador();
+			$visita->id_pag=$pagina->id;
+			if(!empty($localizacion['geoplugin_countryName'])){
+				$visita->pais=$localizacion['geoplugin_countryName'];
+			}
+			else{
+				$visita->pais="IP Privada";
+			}
+			$visita->fecha=date('d/m/Y');
+			$visita->save();
+			$mensaje+=" ".$direccion.", Pais: ".$localizacion['geoplugin_countryName'].", Ciudad: ".$localizacion['geoplugin_countryName']." ".date('d/m/Y');
+
+		}
+		
+		setcookie("PaginaVisitada".$dpto,1, time() + 120);
+		*/
 		return View::make('lenguajes.es.departamentos.departamento', array('SliderImg'=>$SliderDpto,'depto'=>$departamento));
 	}
 

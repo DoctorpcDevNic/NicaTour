@@ -22,7 +22,18 @@
 					</select>
 				</div>				
 			</div>
-
+			<div class="form-group">
+				{{ Form::label('Titulo', 'Titulo Imagen', array('class' => 'col-sm-2 control-label')) }}
+				<div class="col-sm-7">
+					{{ Form::text('titulo', Input::old('titulo') ? Input::old(): '', array('class' => 'form-control', 'placeholder'=> 'Nombre de la Imagen')) }}
+				</div>
+			</div>
+			<div class="form-group">
+				{{ Form::label('descripcion', 'Descripcion de la imagen', array('class' => 'col-sm-2 control-label')) }}
+				<div class="col-sm-7">
+					{{ Form::textarea('texto', Input::old('texto') ? Input::old(): '', array('class' => 'form-control', 'placeholder'=> 'Descripcion de la Imagen')) }}
+				</div>
+			</div>
 			<div class="form-group">
 				{{ Form::label('imagen', 'Seleccionar Imagen', array('class' => 'col-sm-2 control-label')) }}
 				<div class="col-sm-7">

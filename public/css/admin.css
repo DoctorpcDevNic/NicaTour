@@ -42,8 +42,8 @@ textarea{ resize:none }
 	margin:  5px 0px;
 }
 /*Slider Departamental */
-.SliderDeptoAdmin div{
-	margin-top: 10px !important;
+.SlideDeptoAdmin div img{
+	margin-top: 12px !important;
 }
 .SlideDeptoAdmin a{
 	text-decoration: none;
@@ -66,30 +66,72 @@ textarea{ resize:none }
 	margin-top: 8px;
 	text-align: center;
 }
-.SlideDel div{
-	background-color: rgba(238, 51, 34, 0.8);
+
+.Slide img{
+	margin: 10px 0px;
+	border-radius: 20px;
+	-moz-border-radius: 20px;
+	-webkit-border-radius: 20px;
+	border: 5px solid #000;
+}
+
+.SlideEdit div{
+	background-color: rgba(15, 20, 225, 0.6);
 	border-radius: 15px;
-	margin-top: -18%;
+	display: inline;
+	margin-top: -20%;
 	margin-left: 8%;
 	position: absolute;
-	width: 75%;
+	width: 30%;
 	z-index: 5;
 }
 }
-.SlideDel div a{
+.SlideEdit a{
 	text-decoration: none;
 }
-.SlideDel div a:hover{
+.SlideEdit a:hover{
 	text-decoration: none;
 }
-.SlideDel div:hover{
-	background-color: rgba(229, 25, 55, 0.8);
+.SlideEdit div:hover{
+	text-decoration: none;
+	background-color: rgba(18, 20, 235, 0.8);
 }
-.SlideDel div h2{
+
+.SlideEdit h2{
 	text-decoration: none;
 	color: white;
 	margin-top: 8px;
 	text-align: center;
+	font-size: 22px;
+}
+
+.SlideDel div{
+	background-color: rgba(238, 51, 34, 0.8);
+	border-radius: 15px;
+	display: inline;
+	margin-top: -20%;
+	margin-left: 55%;
+	position: absolute;
+	width: 30%;
+	z-index: 5;
+}
+}
+.SlideDel a{
+	text-decoration: none;
+}
+.SlideDel div:hover{
+	text-decoration: none;
+	background-color: rgba(229, 25, 55, 0.8);
+}
+.SlideDel a:hover{
+	text-decoration: none;
+}
+.SlideDel h2{
+	text-decoration: none;
+	color: white;
+	margin-top: 8px;
+	text-align: center;
+	font-size: 22px;
 }
 
 /* Restaurantes y Hoteles */

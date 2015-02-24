@@ -42,6 +42,8 @@ class AdminController extends \BaseController {
 	{		
 		$reglas= array(
 				'archivo'=> 'required|image|max:350',
+				'titulo'=>'required|min:5|max:30',
+				'descripcion'=>'required|min:15|max:220',
 			);
 		$alertas = array(
             'archivo.required' => 'La imagen no puede estar vacia.',
@@ -90,9 +92,96 @@ class AdminController extends \BaseController {
 		$Slider->delete();
 
 		File::delete('img/'.$Slider->img);
+
+		$Traducciones=DB::table('traduccionslider')->where('id_slide',$id)->get();
+
+			if(count($Traducciones)>0){
+				foreach ($Traducciones as $key) {
+					$traduc=traduccionslider::find($key->id);
+					$traduc->delete();
+				}
+			}
 		Session::flash('mensaje','Imagen eliminada');
 
 		return Redirect::to('administrador/Slider/Show/'.$departamento.'');
+	}
+
+	public function SliderDptoEdit($departamento, $id){
+
+		//Muestra la vista para editar la informacion de la foto seleccionada
+		$depto=DB::table('deptos')
+			->where('nombre',$departamento)
+			->first();
+
+		$DptosAll=DB::table('deptos')
+			->get();
+
+		$Slide=detalleslider::find($id);
+
+		$Descripcion=DB::table('traduccionslider')
+			->where('id_slide',$id)
+			->get();
+
+		$idioma=DB::table('idioma')
+			->get();
+
+		return View::make('Administrador.SliderDpto.traducciones', array('depto'=>$depto, 'Slide'=>$Slide, 'Descripcion'=>$Descripcion, 'idioma'=>$idioma, 'id_info'=>$id, 'DptosAll'=>$DptosAll));
+
+	}
+
+	public function SliderDptoUpdate($id){
+
+		$Slide=detalleslider::find($id);
+		$Slide->titulo = Input::get('titulo');
+		$Slide->descripcion = Input::get('descripcion');
+
+		if($Slide->id_dpto!=Input::get('departamento')){
+
+			$Slide->id_dpto=Input::get('departamento');
+			$Traducciones=DB::table('traduccionslider')->where('id_slide',$id)->get();
+
+			if(count($Traducciones)>0){
+				foreach ($Traducciones as $key) {
+					$traduc=traduccionslider::find($key->id);
+					$traduc->id_depto=Input::get('departamento');
+					$traduc->save();
+				}
+			}
+		}
+
+		if($Slide->save()){
+			Session::flash('message', 'Informacion actualizada correctamente');
+			return Redirect::back();
+		}
+
+	}
+
+	public function SliderDptoAddTraduccion($idioma, $slide, $depto){
+
+		$traduccion = new traduccionslider();
+		$traduccion->id_slide=$slide;
+		$traduccion->id_idioma=$idioma;
+		$traduccion->id_depto=$depto;
+		$traduccion->titulo=Input::get('titulo');
+		$traduccion->descripcion=Input::get('descripcion');
+
+		$lenguaje=DB::table('idioma')->where('id',$idioma)->first();
+		if($traduccion->save()){
+			Session::flash('message', 'Traduccion en '.$lenguaje->nombre.' agregada correctamente');
+			return Redirect::back();
+		}
+	}
+
+	public function SliderUpdateTraduccion($id){
+		$traduccion = traduccionslider::find($id);
+		$traduccion->titulo=Input::get('titulo');
+		$traduccion->descripcion=Input::get('descripcion');
+
+		$lenguaje=DB::table('idioma')->where('id',$traduccion->id_idioma)->first();
+		if($traduccion->save()){
+			Session::flash('message', 'Traduccion en '.$lenguaje->nombre.' actualizada correctamente');
+			return Redirect::back();
+		}
 	}
 	//Fin Slider Departamental
 

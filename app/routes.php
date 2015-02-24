@@ -254,6 +254,14 @@ Route::get('sitemap', function(){
 	    		Route::post('/Add', 'AdminController@SliderDptoNew');
 
 	    		Route::get('/Del/{departamento}/{id}', 'AdminController@SliderDptoDel');
+
+	    		Route::get('/Update/{departamento}/{id}', 'AdminController@SliderDptoEdit'); //Muestra la vista para editar
+
+	    		Route::post('/Update/{id}', 'AdminController@SliderDptoUpdate');
+
+	    		Route::post('/Update/Traduccion/{id}', 'AdminController@SliderUpdateTraduccion');
+
+	    		Route::post('/Traduccion/Add/{idioma}/{slide}/{depto}', 'AdminController@SliderDptoAddTraduccion');
 	    	});
 
 	    	Route::group(array('prefix'=>'Info'), function(){

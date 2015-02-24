@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 20-02-2015 a las 18:44:31
+-- Tiempo de generación: 24-02-2015 a las 05:32:14
 -- Versión del servidor: 5.6.21
 -- Versión de PHP: 5.6.3
 
@@ -136,6 +136,8 @@ CREATE TABLE IF NOT EXISTS `detalleslider` (
 `id` int(11) NOT NULL,
   `id_dpto` int(11) NOT NULL,
   `img` varchar(300) COLLATE utf8_spanish_ci NOT NULL,
+  `titulo` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
+  `descripcion` varchar(220) COLLATE utf8_spanish_ci NOT NULL,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
 ) ENGINE=InnoDB AUTO_INCREMENT=77 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
@@ -144,77 +146,77 @@ CREATE TABLE IF NOT EXISTS `detalleslider` (
 -- Volcado de datos para la tabla `detalleslider`
 --
 
-INSERT INTO `detalleslider` (`id`, `id_dpto`, `img`, `updated_at`, `created_at`) VALUES
-(1, 6, 'Granada/Granada1.jpg', '2014-12-22 19:25:56', '0000-00-00 00:00:00'),
-(2, 6, 'Granada/Granada2.jpg', '2014-12-22 19:25:56', '0000-00-00 00:00:00'),
-(3, 6, 'Granada/Granada3.jpg', '2014-12-22 19:25:56', '0000-00-00 00:00:00'),
-(4, 3, 'Chinandega/Chinandega1.jpg', '2014-12-22 19:25:56', '0000-00-00 00:00:00'),
-(5, 3, 'Chinandega/Chinandega2.jpg', '2014-12-22 19:25:56', '0000-00-00 00:00:00'),
-(6, 3, 'Chinandega/Corinto.jpg', '2014-12-22 19:25:56', '0000-00-00 00:00:00'),
-(7, 3, 'Chinandega/Puerto-Corinto.jpg', '2014-12-22 19:25:56', '0000-00-00 00:00:00'),
-(8, 5, 'Esteli/Esteli1.jpg', '2014-12-22 19:25:56', '0000-00-00 00:00:00'),
-(9, 5, 'Esteli/Esteli2.jpg', '2014-12-22 19:25:56', '0000-00-00 00:00:00'),
-(10, 5, 'Esteli/Esteli3.jpg', '2014-12-22 19:25:56', '0000-00-00 00:00:00'),
-(11, 5, 'Esteli/Esteli4.jpg', '2014-12-22 19:25:56', '0000-00-00 00:00:00'),
-(12, 5, 'Esteli/Esteli5.jpg', '2014-12-22 19:25:56', '0000-00-00 00:00:00'),
-(13, 5, 'Esteli/Esteli6.jpg', '2014-12-22 19:25:56', '0000-00-00 00:00:00'),
-(14, 5, 'Esteli/Esteli7.jpg', '2014-12-22 19:25:56', '0000-00-00 00:00:00'),
-(16, 5, 'Esteli/Esteli9.jpg', '2014-12-22 19:25:56', '0000-00-00 00:00:00'),
-(17, 5, 'Esteli/Esteli10.jpg', '2014-12-22 19:25:56', '0000-00-00 00:00:00'),
-(18, 6, 'Granada/Granada4.jpg', '2014-12-22 19:25:56', '0000-00-00 00:00:00'),
-(19, 6, 'Granada/Gueguense1.jpg', '2014-12-22 19:25:56', '0000-00-00 00:00:00'),
-(20, 6, 'Granada/Mombacho1.jpg', '2014-12-22 19:25:56', '0000-00-00 00:00:00'),
-(22, 8, 'Leon/Cerro-Negro.jpg', '2014-12-22 19:25:56', '0000-00-00 00:00:00'),
-(23, 8, 'Leon/Leon1.jpg', '2014-12-22 19:25:56', '0000-00-00 00:00:00'),
-(24, 8, 'Leon/Leon3.jpg', '2014-12-22 19:25:56', '0000-00-00 00:00:00'),
-(25, 8, 'Leon/Leon6.jpg', '2014-12-22 19:25:56', '0000-00-00 00:00:00'),
-(26, 8, 'Leon/Leon5.jpg', '2014-12-22 19:25:56', '0000-00-00 00:00:00'),
-(27, 9, 'Madriz/somoto1.jpg', '2014-12-22 19:25:56', '0000-00-00 00:00:00'),
-(28, 9, 'Madriz/somoto2.jpg', '2014-12-22 19:25:56', '0000-00-00 00:00:00'),
-(29, 9, 'Madriz/somoto3.jpg', '2014-12-22 19:25:56', '0000-00-00 00:00:00'),
-(30, 9, 'Madriz/somoto4.jpg', '2014-12-22 19:25:56', '0000-00-00 00:00:00'),
-(31, 10, 'Managua/Managua2.jpg', '2014-12-22 19:25:56', '0000-00-00 00:00:00'),
-(32, 10, 'Managua/Managua1.jpg', '2014-12-22 19:25:56', '0000-00-00 00:00:00'),
-(33, 10, 'Managua/Salvador-Allende1.jpg', '2014-12-22 19:25:56', '0000-00-00 00:00:00'),
-(34, 10, 'Managua/Managua3.jpg', '2014-12-22 19:25:56', '0000-00-00 00:00:00'),
-(35, 10, 'Managua/Salvador-Allende3.jpg', '2014-12-22 19:25:56', '0000-00-00 00:00:00'),
-(36, 10, 'Managua/Salvador-Allende4.jpg', '2014-12-22 19:25:56', '0000-00-00 00:00:00'),
-(37, 10, 'Managua/Salvador-Allende7.jpg', '2014-12-22 19:25:56', '0000-00-00 00:00:00'),
-(38, 10, 'Managua/Salvador-Allende5.jpg', '2014-12-22 19:25:56', '0000-00-00 00:00:00'),
-(39, 11, 'Masaya/Masaya1.jpg', '2014-12-22 19:25:56', '0000-00-00 00:00:00'),
-(40, 11, 'Masaya/Masaya2.jpg', '2014-12-22 19:25:56', '0000-00-00 00:00:00'),
-(41, 12, 'Matagalpa/Matagalpa.jpg', '2014-12-22 19:25:56', '0000-00-00 00:00:00'),
-(42, 12, 'Matagalpa/Selva-Negra1.jpg', '2014-12-22 19:25:56', '0000-00-00 00:00:00'),
-(43, 12, 'Matagalpa/Selva-Negra2.jpg', '2014-12-22 19:25:56', '0000-00-00 00:00:00'),
-(44, 12, 'Matagalpa/Selva-Negra3.jpg', '2014-12-22 19:25:56', '0000-00-00 00:00:00'),
-(45, 12, 'Matagalpa/Selva-Negra4.jpg', '2014-12-22 19:25:56', '0000-00-00 00:00:00'),
-(46, 13, 'Nueva Segovia/Nueva-Segovia1.jpg', '2014-12-22 19:25:56', '0000-00-00 00:00:00'),
-(47, 13, 'Nueva Segovia/Nueva-Segovia2.jpg', '2014-12-22 19:25:56', '0000-00-00 00:00:00'),
-(48, 13, 'Nueva Segovia/Nueva-Segovia3.jpg', '2014-12-22 19:25:56', '0000-00-00 00:00:00'),
-(49, 13, 'Nueva Segovia/Nueva-Segovia4.jpg', '2014-12-22 19:25:56', '0000-00-00 00:00:00'),
-(50, 13, 'Nueva Segovia/Nueva-Segovia5.jpg', '2014-12-22 19:25:56', '0000-00-00 00:00:00'),
-(51, 17, 'RAAS/Bluefields2.jpg', '2014-12-22 19:25:56', '0000-00-00 00:00:00'),
-(52, 17, 'RAAS/Bluefields3.jpg', '2014-12-22 19:25:56', '0000-00-00 00:00:00'),
-(53, 17, 'RAAS/Corn-Island1.jpg', '2014-12-22 19:25:56', '0000-00-00 00:00:00'),
-(54, 17, 'RAAS/Corn-Island4.jpg', '2014-12-22 19:25:56', '0000-00-00 00:00:00'),
-(55, 17, 'RAAS/RAAS1.jpg', '2014-12-22 19:25:56', '0000-00-00 00:00:00'),
-(56, 17, 'RAAS/RAAS2.jpg', '2014-12-22 19:25:56', '0000-00-00 00:00:00'),
-(57, 17, 'RAAS/RAAS3.jpg', '2014-12-22 19:25:56', '0000-00-00 00:00:00'),
-(58, 17, 'RAAS/RAAS4.jpg', '2014-12-22 19:25:56', '0000-00-00 00:00:00'),
-(59, 15, 'Rio San Juan/Rio-san-juan9.jpg', '2014-12-22 19:25:56', '0000-00-00 00:00:00'),
-(60, 15, 'Rio San Juan/Rio-san-juan4.jpg', '2014-12-22 19:25:56', '0000-00-00 00:00:00'),
-(61, 15, 'Rio San Juan/Rio-san-juan1.jpg', '2014-12-22 19:25:56', '0000-00-00 00:00:00'),
-(62, 15, 'Rio San Juan/Rio-san-juan7.jpg', '2014-12-22 19:25:56', '0000-00-00 00:00:00'),
-(63, 15, 'Rio San Juan/Rio-san-juan12.jpg', '2014-12-22 19:25:56', '0000-00-00 00:00:00'),
-(64, 15, 'Rio San Juan/Rio-san-juan6.jpg', '2014-12-22 19:25:56', '0000-00-00 00:00:00'),
-(65, 14, 'Rivas/Rivas2.jpg', '2014-12-22 19:25:56', '0000-00-00 00:00:00'),
-(66, 14, 'Rivas/San-juan-del-sur11.jpg', '2014-12-22 19:25:56', '0000-00-00 00:00:00'),
-(67, 14, 'Rivas/San-juan-del-sur16.jpg', '2014-12-22 19:25:56', '0000-00-00 00:00:00'),
-(68, 14, 'Rivas/San-juan-del-sur18.jpg', '2014-12-22 19:25:56', '0000-00-00 00:00:00'),
-(69, 14, 'Rivas/Ometepe1.jpg', '2014-12-22 19:25:56', '0000-00-00 00:00:00'),
-(70, 14, 'Rivas/Ometepe5.jpg', '2014-12-22 19:25:56', '0000-00-00 00:00:00'),
-(71, 14, 'Rivas/Ometepe4.jpg', '2014-12-22 19:25:56', '0000-00-00 00:00:00'),
-(76, 6, 'Granada/Mombacho3.jpg', '2014-12-24 11:53:25', '2014-12-24 11:53:25');
+INSERT INTO `detalleslider` (`id`, `id_dpto`, `img`, `titulo`, `descripcion`, `updated_at`, `created_at`) VALUES
+(1, 6, 'Granada/Granada1.jpg', 'Catedral de Granada', 'La catedral es de estilo neoclásico con dos torres, con campanario y con cúpulas y linternas. Las fachadas laterales de la catedral están compuestas por dos cuerpos divididos por una doble comisa.', '2015-02-24 09:58:42', '0000-00-00 00:00:00'),
+(2, 6, 'Granada/Granada2.jpg', '', '', '2014-12-22 19:25:56', '0000-00-00 00:00:00'),
+(3, 6, 'Granada/Granada3.jpg', '', '', '2014-12-22 19:25:56', '0000-00-00 00:00:00'),
+(4, 3, 'Chinandega/Chinandega1.jpg', '', '', '2014-12-22 19:25:56', '0000-00-00 00:00:00'),
+(5, 3, 'Chinandega/Chinandega2.jpg', '', '', '2014-12-22 19:25:56', '0000-00-00 00:00:00'),
+(6, 3, 'Chinandega/Corinto.jpg', '', '', '2014-12-22 19:25:56', '0000-00-00 00:00:00'),
+(7, 3, 'Chinandega/Puerto-Corinto.jpg', '', '', '2014-12-22 19:25:56', '0000-00-00 00:00:00'),
+(8, 5, 'Esteli/Esteli1.jpg', '', '', '2014-12-22 19:25:56', '0000-00-00 00:00:00'),
+(9, 5, 'Esteli/Esteli2.jpg', '', '', '2014-12-22 19:25:56', '0000-00-00 00:00:00'),
+(10, 5, 'Esteli/Esteli3.jpg', '', '', '2014-12-22 19:25:56', '0000-00-00 00:00:00'),
+(11, 5, 'Esteli/Esteli4.jpg', '', '', '2014-12-22 19:25:56', '0000-00-00 00:00:00'),
+(12, 5, 'Esteli/Esteli5.jpg', '', '', '2014-12-22 19:25:56', '0000-00-00 00:00:00'),
+(13, 5, 'Esteli/Esteli6.jpg', '', '', '2014-12-22 19:25:56', '0000-00-00 00:00:00'),
+(14, 5, 'Esteli/Esteli7.jpg', '', '', '2014-12-22 19:25:56', '0000-00-00 00:00:00'),
+(16, 5, 'Esteli/Esteli9.jpg', '', '', '2014-12-22 19:25:56', '0000-00-00 00:00:00'),
+(17, 5, 'Esteli/Esteli10.jpg', '', '', '2014-12-22 19:25:56', '0000-00-00 00:00:00'),
+(18, 6, 'Granada/Granada4.jpg', '', '', '2014-12-22 19:25:56', '0000-00-00 00:00:00'),
+(19, 6, 'Granada/Gueguense1.jpg', '', '', '2014-12-22 19:25:56', '0000-00-00 00:00:00'),
+(20, 6, 'Granada/Mombacho1.jpg', '', '', '2014-12-22 19:25:56', '0000-00-00 00:00:00'),
+(22, 8, 'Leon/Cerro-Negro.jpg', '', '', '2014-12-22 19:25:56', '0000-00-00 00:00:00'),
+(23, 8, 'Leon/Leon1.jpg', '', '', '2014-12-22 19:25:56', '0000-00-00 00:00:00'),
+(24, 8, 'Leon/Leon3.jpg', '', '', '2014-12-22 19:25:56', '0000-00-00 00:00:00'),
+(25, 8, 'Leon/Leon6.jpg', '', '', '2014-12-22 19:25:56', '0000-00-00 00:00:00'),
+(26, 8, 'Leon/Leon5.jpg', '', '', '2014-12-22 19:25:56', '0000-00-00 00:00:00'),
+(27, 9, 'Madriz/somoto1.jpg', '', '', '2014-12-22 19:25:56', '0000-00-00 00:00:00'),
+(28, 9, 'Madriz/somoto2.jpg', '', '', '2014-12-22 19:25:56', '0000-00-00 00:00:00'),
+(29, 9, 'Madriz/somoto3.jpg', '', '', '2014-12-22 19:25:56', '0000-00-00 00:00:00'),
+(30, 9, 'Madriz/somoto4.jpg', '', '', '2014-12-22 19:25:56', '0000-00-00 00:00:00'),
+(31, 10, 'Managua/Managua2.jpg', '', '', '2014-12-22 19:25:56', '0000-00-00 00:00:00'),
+(32, 10, 'Managua/Managua1.jpg', '', '', '2014-12-22 19:25:56', '0000-00-00 00:00:00'),
+(33, 10, 'Managua/Salvador-Allende1.jpg', '', '', '2014-12-22 19:25:56', '0000-00-00 00:00:00'),
+(34, 10, 'Managua/Managua3.jpg', '', '', '2014-12-22 19:25:56', '0000-00-00 00:00:00'),
+(35, 10, 'Managua/Salvador-Allende3.jpg', '', '', '2014-12-22 19:25:56', '0000-00-00 00:00:00'),
+(36, 10, 'Managua/Salvador-Allende4.jpg', '', '', '2014-12-22 19:25:56', '0000-00-00 00:00:00'),
+(37, 10, 'Managua/Salvador-Allende7.jpg', '', '', '2014-12-22 19:25:56', '0000-00-00 00:00:00'),
+(38, 10, 'Managua/Salvador-Allende5.jpg', '', '', '2014-12-22 19:25:56', '0000-00-00 00:00:00'),
+(39, 11, 'Masaya/Masaya1.jpg', '', '', '2014-12-22 19:25:56', '0000-00-00 00:00:00'),
+(40, 11, 'Masaya/Masaya2.jpg', '', '', '2014-12-22 19:25:56', '0000-00-00 00:00:00'),
+(41, 12, 'Matagalpa/Matagalpa.jpg', '', '', '2014-12-22 19:25:56', '0000-00-00 00:00:00'),
+(42, 12, 'Matagalpa/Selva-Negra1.jpg', '', '', '2014-12-22 19:25:56', '0000-00-00 00:00:00'),
+(43, 12, 'Matagalpa/Selva-Negra2.jpg', '', '', '2014-12-22 19:25:56', '0000-00-00 00:00:00'),
+(44, 12, 'Matagalpa/Selva-Negra3.jpg', '', '', '2014-12-22 19:25:56', '0000-00-00 00:00:00'),
+(45, 12, 'Matagalpa/Selva-Negra4.jpg', '', '', '2014-12-22 19:25:56', '0000-00-00 00:00:00'),
+(46, 13, 'Nueva Segovia/Nueva-Segovia1.jpg', '', '', '2014-12-22 19:25:56', '0000-00-00 00:00:00'),
+(47, 13, 'Nueva Segovia/Nueva-Segovia2.jpg', '', '', '2014-12-22 19:25:56', '0000-00-00 00:00:00'),
+(48, 13, 'Nueva Segovia/Nueva-Segovia3.jpg', '', '', '2014-12-22 19:25:56', '0000-00-00 00:00:00'),
+(49, 13, 'Nueva Segovia/Nueva-Segovia4.jpg', '', '', '2014-12-22 19:25:56', '0000-00-00 00:00:00'),
+(50, 13, 'Nueva Segovia/Nueva-Segovia5.jpg', '', '', '2014-12-22 19:25:56', '0000-00-00 00:00:00'),
+(51, 17, 'RAAS/Bluefields2.jpg', '', '', '2014-12-22 19:25:56', '0000-00-00 00:00:00'),
+(52, 17, 'RAAS/Bluefields3.jpg', '', '', '2014-12-22 19:25:56', '0000-00-00 00:00:00'),
+(53, 17, 'RAAS/Corn-Island1.jpg', '', '', '2014-12-22 19:25:56', '0000-00-00 00:00:00'),
+(54, 17, 'RAAS/Corn-Island4.jpg', '', '', '2014-12-22 19:25:56', '0000-00-00 00:00:00'),
+(55, 17, 'RAAS/RAAS1.jpg', '', '', '2014-12-22 19:25:56', '0000-00-00 00:00:00'),
+(56, 17, 'RAAS/RAAS2.jpg', '', '', '2014-12-22 19:25:56', '0000-00-00 00:00:00'),
+(57, 17, 'RAAS/RAAS3.jpg', '', '', '2014-12-22 19:25:56', '0000-00-00 00:00:00'),
+(58, 17, 'RAAS/RAAS4.jpg', '', '', '2014-12-22 19:25:56', '0000-00-00 00:00:00'),
+(59, 15, 'Rio San Juan/Rio-san-juan9.jpg', '', '', '2014-12-22 19:25:56', '0000-00-00 00:00:00'),
+(60, 15, 'Rio San Juan/Rio-san-juan4.jpg', '', '', '2014-12-22 19:25:56', '0000-00-00 00:00:00'),
+(61, 15, 'Rio San Juan/Rio-san-juan1.jpg', '', '', '2014-12-22 19:25:56', '0000-00-00 00:00:00'),
+(62, 15, 'Rio San Juan/Rio-san-juan7.jpg', '', '', '2014-12-22 19:25:56', '0000-00-00 00:00:00'),
+(63, 15, 'Rio San Juan/Rio-san-juan12.jpg', '', '', '2014-12-22 19:25:56', '0000-00-00 00:00:00'),
+(64, 15, 'Rio San Juan/Rio-san-juan6.jpg', '', '', '2014-12-22 19:25:56', '0000-00-00 00:00:00'),
+(65, 14, 'Rivas/Rivas2.jpg', '', '', '2014-12-22 19:25:56', '0000-00-00 00:00:00'),
+(66, 14, 'Rivas/San-juan-del-sur11.jpg', '', '', '2014-12-22 19:25:56', '0000-00-00 00:00:00'),
+(67, 14, 'Rivas/San-juan-del-sur16.jpg', '', '', '2014-12-22 19:25:56', '0000-00-00 00:00:00'),
+(68, 14, 'Rivas/San-juan-del-sur18.jpg', '', '', '2014-12-22 19:25:56', '0000-00-00 00:00:00'),
+(69, 14, 'Rivas/Ometepe1.jpg', '', '', '2014-12-22 19:25:56', '0000-00-00 00:00:00'),
+(70, 14, 'Rivas/Ometepe5.jpg', '', '', '2014-12-22 19:25:56', '0000-00-00 00:00:00'),
+(71, 14, 'Rivas/Ometepe4.jpg', '', '', '2014-12-22 19:25:56', '0000-00-00 00:00:00'),
+(76, 6, 'Granada/Mombacho3.jpg', '', '', '2014-12-24 11:53:25', '2014-12-24 11:53:25');
 
 -- --------------------------------------------------------
 
@@ -1863,7 +1865,8 @@ INSERT INTO `migrations` (`migration`, `batch`) VALUES
 ('2015_01_21_172318_crear_tabla_calendario', 10),
 ('2015_01_21_190252_crear_tabla_traduccion_calendario', 11),
 ('2015_02_05_170618_crear_tablas_para_estadisticas', 12),
-('2015_02_13_050652_tabla_hoteles', 12);
+('2015_02_13_050652_tabla_hoteles', 12),
+('2015_02_23_054054_crear_tabla_traduccion_slider', 13);
 
 -- --------------------------------------------------------
 
@@ -3614,6 +3617,30 @@ CREATE TABLE IF NOT EXISTS `traduccionrestaurantes` (
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `traduccionslider`
+--
+
+CREATE TABLE IF NOT EXISTS `traduccionslider` (
+`id` int(10) unsigned NOT NULL,
+  `id_slide` int(11) NOT NULL,
+  `id_idioma` int(11) NOT NULL,
+  `id_depto` int(11) NOT NULL,
+  `titulo` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `descripcion` text COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `traduccionslider`
+--
+
+INSERT INTO `traduccionslider` (`id`, `id_slide`, `id_idioma`, `id_depto`, `titulo`, `descripcion`, `created_at`, `updated_at`) VALUES
+(1, 1, 2, 6, 'Granada Cathedral', 'The cathedral is a neoclassical style with two towers with domes and bell tower and flashlights. The side walls of the cathedral are composed of two parts divided by a double cornice.', '2015-02-24 10:16:50', '2015-02-24 10:28:29');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `usuarios`
 --
 
@@ -3736,6 +3763,12 @@ ALTER TABLE `traduccionrestaurantes`
  ADD PRIMARY KEY (`id`);
 
 --
+-- Indices de la tabla `traduccionslider`
+--
+ALTER TABLE `traduccionslider`
+ ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
@@ -3825,6 +3858,11 @@ MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT;
 --
 ALTER TABLE `traduccionrestaurantes`
 MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `traduccionslider`
+--
+ALTER TABLE `traduccionslider`
+MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --

@@ -225,6 +225,7 @@
       
     });
   </script>
+  @yield('Scripts')
 
   <script>
  new WOW().init();

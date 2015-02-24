@@ -87,15 +87,27 @@ Nicaragua Tour - Conoce {{$depto->nombre}}
 	</div>
 </div>
 
-<div class="sliderdpto">
+<!--div class="sliderdpto">
 	<img src="{{ asset('img/item4.jpg') }}">
-</div>
+</div-->
 
-<div class="evento">
+<section id="features" class="">
+            <div class="content ">
+              <div class="slider center" >
+                <div style="background:#3498db; height:300px; margin: 0px 5px;"><h3 style="margin:150px 100px;"><span>Anunciate aquí</span></h3></div>
+                <div style="background:#3498db; height:300px; margin: 0px 5px;"><h3 style="margin:150px 100px;"><span>Anunciate aquí</span></h3></div>
+                <div style="background:#3498db; height:300px; margin: 0px 5px;"><h3 style="margin:150px 100px;"><span>Anunciate aquí</span></h3></div>
+                <div style="background:#3498db; height:300px; margin: 0px 5px;"><h3 style="margin:150px 100px;"><span>Anunciate aquí</span></h3></div>
+                <div style="background:#3498db; height:300px; margin: 0px 5px;"><h3 style="margin:150px 100px;"><span>Anunciate aquí</span></h3></div>               
+              </div>
+            </div>
+          </section>
+
+<!--div class="evento">
 	<img src="{{ asset('img/item1.jpg') }}">
 	<h3 class="titul2">27 de Agosto</h3>
 	<h2>Summer Fest, <span> en las maravillosas playas de san juan del sur</span></h2>
-</div>
+</div-->
 
 <div class="anuncios">
 	<div class="row">
@@ -175,6 +187,13 @@ Nicaragua Tour - Conoce {{$depto->nombre}}
 		
 	</div>
 </div>
+@stop
+
+@section('Scripts')
+<script>
+	
+</script>
+
 @stop
 
 

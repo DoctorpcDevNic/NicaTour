@@ -58,12 +58,13 @@ Nicaragua Tour - {{$opcion}} de {{$dpto->nombre}}
 @stop
 
 @section('contenido') 
-<div class="container-fluid">
+<div class="container-fluid" style="margin-top:-40px;">
   <div class="row">
   	<div class="col-md-12">
   		<section class="slidercenter degra">
           <div>
             <section id="features" class="">
+            <!--style="height:430px;" -->
               <div class="content ">
                 <div class="slider responsive2">                                    
                    @foreach($info_detalle as $value)                      
@@ -73,11 +74,15 @@ Nicaragua Tour - {{$opcion}} de {{$dpto->nombre}}
                                     <div class="container-fluid">
                                       <div class="row">
                                           <div class="col-md-7">
+                                          <!-- style="height:380px; width:auto !important; margin: 0 10%; " -->
                                             <img src="{{ asset('img/'. $value->foto .'') }}">
                                           </div>
                                           <div class="col-md-5 descripcion">
                                             <h3>{{ $key->titulo }}</h3>
-                                            <p>{{ $key->texto }}</p>
+                                            <?php $texto = rawurlencode($key->texto);
+
+                                            $texto = rawurldecode(str_replace("%0D%0A","<br>",$texto)); ?>
+                                            <p>{{ $texto }}</p>
                                            </div>
                                       </div>
                                     </div>

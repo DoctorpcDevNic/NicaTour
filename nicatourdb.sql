@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 24-02-2015 a las 05:32:14
+-- Tiempo de generación: 02-03-2015 a las 23:07:07
 -- Versión del servidor: 5.6.21
 -- Versión de PHP: 5.6.3
 
@@ -124,7 +124,19 @@ CREATE TABLE IF NOT EXISTS `descripcioncultura` (
   `texto` text COLLATE utf8_unicode_ci NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `descripcioncultura`
+--
+
+INSERT INTO `descripcioncultura` (`id`, `id_depto`, `id_tipo`, `id_foto`, `id_idioma`, `titulo`, `texto`, `created_at`, `updated_at`) VALUES
+(1, 6, 2, 1, 1, 'Iglesia de Guadalupe', 'La Iglesia de Guadalupe está localizada en la parte Este de Granada, en la Calle de la Calzada. Fue construida en 1626 por Fray Benito Baltodano.\r\n\r\nFue reconstruida en 1965, por la ocupación de William Walker lo que causó muchos daños.', '2015-02-26 10:54:43', '2015-02-26 11:00:22'),
+(2, 6, 2, 2, 1, 'Estación de ferrocarril', 'Al final de la Calle Atravesada, al frente del Parque Sandino, se encuentra este restaurado edificio.\r\n\r\nLa construcción comenzó en 1882, pero fue hasta en 1886 que el primer tren llegó a la estación. Recientemente, la embajada española ha estado restaurando la vieja estación que ahora sirve como colegio y taller.\r\n\r\nEl edificio está construido en un estilo neoclásico con mucha influencia inglesa y francesa.', '2015-02-26 11:11:15', '2015-02-26 11:13:03'),
+(3, 6, 3, 3, 1, 'El Güegüense', 'La obra del Güegüense es una síntesis de la fusión de las culturas española e indígena que combinan el teatro, la danza y la música, siendo considerada entre las expresiones folklóricas y literarias más distintivas de la era colonial en América Latina.', '2015-02-26 11:31:51', '2015-02-26 11:31:51'),
+(4, 6, 3, 4, 1, 'El viejo y la vieja', 'El Viejo y la Vieja son dos personajes que se caracterizan por bailar animadamente al son de la marimba. Sus vestuarios son idénticos al de un(a) viejo(a), y usan disfraces (máscaras) para cubrir sus rostros.\r\n\r\nEste baile es una expresión cultural del mestizaje heredado de los antepasados, lo que indica que por sus venas corre sangre indígena y española, profundas raíces que se manifiestan en nuestra cultura.', '2015-02-26 11:45:54', '2015-02-26 11:45:54'),
+(5, 6, 1, 5, 1, 'Vigorón', 'Su nombre lo sugiere, no es un vigor cualquiera sino un "vigorón" el que se adquiere después de haber ingerido esta exquisitéz de la cocina nicaragüense. Por la sencilléz de sus ingredientes, el vigorón es un plato que saca de apuros a cualquiera que no disponga de mucho dinero para almorzar o cenar.\r\n\r\nEl vigorón es yuca cocida con chicharrón de cerdo y por supuesto, su respectiva ensalada de repollos con tomates y vinagre de guineo. Aunque el vinagre ideal es el de guineo, generalmente se le prepara con vinagre de frutas, vinagre blanco o vinagre negro.', '2015-02-26 11:52:42', '2015-02-26 11:53:50'),
+(6, 6, 1, 6, 1, 'Sopa de mondongo', 'Esta delicia es nada más y nada menos que el estómago de la res que, manipulada de manera artística, se convierte en un verdadero representante del arte culinario nicaragüense.\r\n\r\nEn Nicaragua es una sopa nacional, conocida y preparada en todo el territorio nacional, sin embargo Masatepe, municipio de Masaya es donde se sirve el mejor mondongo de Nicaragua. Lo refiere Carlos Mejía Godoy en su canción Antojitos nicaragüenses “…si acaso te propongo a Masatepe ir, vas a probar mondongo el mejor del país, un plato copeteado servime pronto Inés, sino tiene tufito mejor no me lo dés…”', '2015-02-26 11:58:16', '2015-02-26 11:58:16');
 
 -- --------------------------------------------------------
 
@@ -231,7 +243,19 @@ CREATE TABLE IF NOT EXISTS `fotocultura` (
   `foto` text COLLATE utf8_unicode_ci NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `fotocultura`
+--
+
+INSERT INTO `fotocultura` (`id`, `id_depto`, `id_tipo`, `foto`, `created_at`, `updated_at`) VALUES
+(1, 6, 2, 'Granada/Tesoros Coloniales-Granada-26-2-15-iglesia-de-Guadalupe.jpg', '2015-02-26 10:54:43', '2015-02-26 10:54:43'),
+(2, 6, 2, 'Granada/Tesoros Coloniales-Granada-26-2-15-estacion-ferrocarril.jpg', '2015-02-26 11:11:14', '2015-02-26 11:11:14'),
+(3, 6, 3, 'Granada/Danza-Granada-26-2-15-Gueguense.jpg', '2015-02-26 11:31:51', '2015-02-26 11:31:51'),
+(4, 6, 3, 'Granada/Danza-Granada-26-2-15-viejo-y-vieja.jpg', '2015-02-26 11:45:54', '2015-02-26 11:45:54'),
+(5, 6, 1, 'Boaco/Gastronomia-Boaco-26-2-15-vigoron.jpg', '2015-02-26 11:52:42', '2015-02-26 11:53:50'),
+(6, 6, 1, 'Granada/Gastronomia-Granada-26-2-15-sopa-mondongo.jpg', '2015-02-26 11:58:15', '2015-02-26 11:58:15');
 
 -- --------------------------------------------------------
 
@@ -277,7 +301,7 @@ CREATE TABLE IF NOT EXISTS `hoteles` (
   `direccion` text COLLATE utf8_unicode_ci NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
-) ENGINE=InnoDB AUTO_INCREMENT=2048 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1525 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `hoteles`
@@ -3797,7 +3821,7 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=18;
 -- AUTO_INCREMENT de la tabla `descripcioncultura`
 --
 ALTER TABLE `descripcioncultura`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT;
+MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT de la tabla `detalleslider`
 --
@@ -3807,7 +3831,7 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=77;
 -- AUTO_INCREMENT de la tabla `fotocultura`
 --
 ALTER TABLE `fotocultura`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT;
+MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT de la tabla `gasolineras`
 --
@@ -3817,7 +3841,7 @@ MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
 -- AUTO_INCREMENT de la tabla `hoteles`
 --
 ALTER TABLE `hoteles`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2048;
+MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=1525;
 --
 -- AUTO_INCREMENT de la tabla `idioma`
 --

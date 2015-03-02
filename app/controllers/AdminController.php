@@ -276,13 +276,13 @@ class AdminController extends \BaseController {
 	public function InfoNew()
 	{	
 		$reglas= array(
-				'archivo'=> 'required|image|max:350',
-				'titulo' => 'required|min:8|max:50',
+				'archivo'=> 'required|mimes:jpeg,bmp,png|max:350',
+				'titulo' => 'required|min:4|max:50',
 				'texto'=> 'required|min:25|max:650'
 			);
 		$alertas = array(
             'archivo.required' => 'La imagen no puede estar vacia.',
-            'archivo.image' => 'El archivo seleccionado no es correcto, asegurese de seleccionar un formato de archivo de imagen compatible (jpeg,bmp,png)',
+            'archivo.mimes' => 'El archivo seleccionado no es correcto, asegurese de seleccionar un formato de archivo de imagen compatible (jpeg,bmp,png)',
             'archivo.max' => 'La imagen es demasiado pesada, asegurese de no sobrepasar los 350kb',
             'titulo.required' => 'El titulo de la imagen no puede estar vacio',
 			'titulo.min' => 'El titulo de la imagen, debe tener como minimo :min caracteres',
@@ -365,7 +365,7 @@ class AdminController extends \BaseController {
 	public function InfoUpdate($idioma, $id)
 	{
 		$reglas= array(
-				'titulo'.$id => 'required|min:8|max:50',
+				'titulo'.$id => 'required|min:4|max:50',
 				'texto'.$id => 'required|min:25|max:650'
 			);
 		$alertas = array(
@@ -407,7 +407,7 @@ class AdminController extends \BaseController {
 		//Actualiza la informacion general (departamento y tipo) de la imagen
 
 		$reglas= array(
-				'titulo' => 'required|min:8|max:50',
+				'titulo' => 'required|min:4|max:50',
 				'texto'=> 'required|min:25|max:650'
 			);
 		$alertas = array(

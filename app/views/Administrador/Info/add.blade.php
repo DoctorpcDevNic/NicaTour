@@ -16,14 +16,14 @@
 						<p class="alert alert-danger">{{ $errors->first('titulo') }}</p>
 					</div>
 				</div>
-			@endif
-			@if( $errors->has('descripcion'))
+		@endif
+		@if( $errors->has('descripcion'))
 				<div class="row">
 					<div class="col-sm-7 col-sm-offset-2">
 						<p class="alert alert-danger">{{ $errors->first('descripcion') }}</p>
 					</div>
 				</div>
-			@endif
+		@endif
 		{{ Form::open(array('url' => 'administrador/Info/Add', 'files' => 'true', 'class' => 'form-horizontal')) }}
 			
 			<div class="form-group">

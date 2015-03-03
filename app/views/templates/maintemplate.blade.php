@@ -23,21 +23,22 @@
         <meta property="og:url" content=" http://nicaraguatour.com.ni/" />
         <meta property="og:image" content="{{asset('img/logo.png')}}" />
         <meta property="og:description" content="Nicaragua Tour, para conocer y sentir." />
-        <meta property="og:site_name" content="Nicaragua Tour">
-       
-		{{ HTML::style('css/main.css') }} 
+        <meta property="og:site_name" content="Nicaragua Tour">    
+		
  
-    {{ HTML::style('css/slick.css') }}
-		{{ HTML::style('css/monokai.min.css') }}
-		{{ HTML::style('css/styleSlidePost.css') }}
-        
+        {{ HTML::style('css/slick.css') }}
+    		{{ HTML::style('css/monokai.min.css') }}
+    		{{ HTML::style('css/styleSlidePost.css') }}
+            
 
-        <!--PLUGIN -->
-		{{ HTML::style('css/bootstrap.min.css') }}
+            <!--PLUGIN -->
+    		{{ HTML::style('css/bootstrap.min.css') }}
 
-		{{ HTML::style('css/camera.css') }}
+    		{{ HTML::style('css/camera.css') }}
 
-    {{ HTML::style('css/animate.css') }}
+        {{ HTML::style('css/animate.css') }}
+
+        {{ HTML::style('css/main.css') }} 
     <style>
 
       .videoWrapper {
@@ -83,20 +84,18 @@
                           </div>
                       </div>
                   </div>
-            </div>
-          
+            </div>         
                
             <div class="logo">
               <a href="{{ URL::to('/') }}"><img src="{{ asset( 'img/logorevistafinareto.png' ) }}"></a>
-            </div>             
-                      
-        </section>
-        <!-- end slider -->
+            </div>   
+          </section>
+          <!-- end slider -->
 
 
-          	<!-- Menu -->
-        	<div class="degra">            
-	            <nav class="navbar navbar-default menumain" role="navigation">
+          <!-- Menu -->
+        	<div>            
+	            <nav class="navbar navbar-default menumain navbar-static-top" role="navigation">
 	              <!-- MENU MOVIL -->
 	              <div class="navbar-header">
 	                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -200,7 +199,7 @@
       <p class="hidden-md hidden-lg hidden-sm">Designed by <a href="http://doctorpc.com.ni/" target="new">Doctor PC</a></p>
 		</footer>
 
-	{{ HTML::script('js/vendor/jquery-1.11.1.min.js') }}
+    {{ HTML::script('js/vendor/jquery-1.11.1.min.js') }}
     
     {{ HTML::script('js/vendor/bootstrap.min.js') }}
     {{ HTML::script('js/vendor/bootstrap-hover-dropdown.min.js') }}
@@ -215,20 +214,30 @@
 
     {{ HTML::script('js/wow.min.js') }}
 
-     <script>
-    jQuery(function(){
-      
-      jQuery('#camera_wrap_1').camera({        
-        height: '40%',   
-        pagination: false,       
-      });
-      
-    });
-  </script>
-  @yield('Scripts')
+    <script type="text/javascript">      
+      if($(window).width() < 760){
+          jQuery('#camera_wrap_1').camera({ 
+              height: '200px',
+              pagination: false               
+          });
+      }else if($(window).width() > 760 && $(window).width() < 1024){
+          jQuery('#camera_wrap_1').camera({ 
+              height: '350px',
+              pagination: false               
+          });
+      }else{
+          jQuery('#camera_wrap_1').camera({ 
+              height: '500px',
+              pagination: false               
+          });
+      }
+    </script>  
+   
+    <script>
+     new WOW().init();
+   </script>
 
-  <script>
- new WOW().init();
-</script>
-      </body>
+    @yield('Scripts')
+
+  </body>
 </html>
